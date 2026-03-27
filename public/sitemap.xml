@@ -32,17 +32,22 @@
 
   <!-- Artículos -->
   <url>
-    <loc>https://www.pymesegura.org/salud-y-clinicas/guia-lopdgdd-ciberseguridad-clinicas</loc>
+    <loc>https://www.pymesegura.org/salud-y-clinicas</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.pymesegura.org/ecommerce-y-retail/ciberseguridad-ecommerce-rgpd-pci-dss</loc>
+    <loc>https://www.pymesegura.org/sector-inmobiliario</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.pymesegura.org/legal-y-asesorias/ciberseguridad-despachos-abogados-secreto-profesional</loc>
+    <loc>https://www.pymesegura.org/ecommerce-y-retail</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/legal-y-asesorias</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
