@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useNavigate, useLocation, Routes, Route } from "react-router-dom";
 import { Shield, Building2, ShoppingCart, Scale, Heart, ChevronRight, Menu, X, Search, Clock, User, ArrowRight, CheckCircle, AlertTriangle, Lock, FileText, Mail, Phone, MapPin, ExternalLink, TrendingUp, Eye, BookOpen, ChevronDown, Globe, Zap, Award, Users } from "lucide-react";
 
 /* ═══════════════════════════════════════════════════════
@@ -14,14 +15,10 @@ import { Shield, Building2, ShoppingCart, Scale, Heart, ChevronRight, Menu, X, S
 
 // ─── ROUTING ─────────────────────────────────────────
 function useRouter() {
-  const [path, setPath] = useState(window.location.hash.slice(1) || "/");
-  useEffect(() => {
-    const handler = () => setPath(window.location.hash.slice(1) || "/");
-    window.addEventListener("hashchange", handler);
-    return () => window.removeEventListener("hashchange", handler);
-  }, []);
-  const navigate = useCallback((to) => { window.location.hash = to; }, []);
-  return { path, navigate };
+  const location = useLocation();
+  const nav = useNavigate();
+  const navigate = useCallback((to) => nav(to), [nav]);
+  return { path: location.pathname, navigate };
 }
 
 // ─── CONSTANTS ───────────────────────────────────────
@@ -215,7 +212,7 @@ function Breadcrumbs({ items }) {
             {i > 0 && <ChevronRight size={10} />}
             {i < items.length - 1 ? (
               <a
-                href={`#${item.path}`}
+                href={`${item.path}`}
                 onClick={(e) => { e.preventDefault(); navigate(item.path); }}
                 style={{ color: "var(--accent)", textDecoration: "none" }}
               >
@@ -278,7 +275,7 @@ function Navbar() {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "64px" }}>
           {/* Logo */}
           <a
-            href="#/"
+            href="/"
             onClick={(e) => { e.preventDefault(); navigate("/"); }}
             style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}
           >
@@ -304,7 +301,7 @@ function Navbar() {
             {navItems.map((item) => (
               <a
                 key={item.path}
-                href={`#${item.path}`}
+                href={`${item.path}`}
                 onClick={(e) => { e.preventDefault(); navigate(item.path); }}
                 style={{
                   padding: "8px 14px",
@@ -346,7 +343,7 @@ function Navbar() {
             {navItems.map((item) => (
               <a
                 key={item.path}
-                href={`#${item.path}`}
+                href={`${item.path}`}
                 onClick={(e) => { e.preventDefault(); navigate(item.path); }}
                 style={{
                   padding: "12px 16px",
@@ -392,7 +389,7 @@ function Footer() {
           <div>
             <h4 style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: "16px", color: "var(--amber)" }}>Sectores</h4>
             {CATEGORIES.map((c) => (
-              <a key={c.id} href={`#/${c.id}`} onClick={(e) => { e.preventDefault(); navigate(`/${c.id}`); }}
+              <a key={c.id} href={`/${c.id}`} onClick={(e) => { e.preventDefault(); navigate(`/${c.id}`); }}
                 style={{ display: "block", fontSize: "13px", opacity: 0.7, textDecoration: "none", color: "white", padding: "4px 0", fontFamily: "var(--font-body)" }}>
                 {c.name}
               </a>
@@ -408,7 +405,7 @@ function Footer() {
               { label: "Política de Cookies", path: "/cookies" },
               { label: "Contacto", path: "/contacto" },
             ].map((item) => (
-              <a key={item.path} href={`#${item.path}`} onClick={(e) => { e.preventDefault(); navigate(item.path); }}
+              <a key={item.path} href={`${item.path}`} onClick={(e) => { e.preventDefault(); navigate(item.path); }}
                 style={{ display: "block", fontSize: "13px", opacity: 0.7, textDecoration: "none", color: "white", padding: "4px 0", fontFamily: "var(--font-body)" }}>
                 {item.label}
               </a>
@@ -511,7 +508,7 @@ function HomePage() {
 
             <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
               <a
-                href="#/salud-y-clinicas"
+                href="/salud-y-clinicas"
                 onClick={(e) => { e.preventDefault(); navigate("/salud-y-clinicas"); }}
                 style={{
                   padding: "14px 28px", background: "var(--amber)", color: "var(--navy)",
@@ -523,7 +520,7 @@ function HomePage() {
                 Explorar guías <ArrowRight size={16} />
               </a>
               <a
-                href="#/contacto"
+                href="/contacto"
                 onClick={(e) => { e.preventDefault(); navigate("/contacto"); }}
                 style={{
                   padding: "14px 28px", background: "transparent",
@@ -568,7 +565,7 @@ function HomePage() {
             return (
               <a
                 key={cat.id}
-                href={`#/${cat.id}`}
+                href={`/${cat.id}`}
                 onClick={(e) => { e.preventDefault(); navigate(`/${cat.id}`); }}
                 style={{
                   display: "block", textDecoration: "none",
@@ -643,7 +640,7 @@ function HomePage() {
                 return (
                   <a
                     key={article.id}
-                    href={`#/${article.slug}`}
+                    href={`/${article.slug}`}
                     onClick={(e) => { e.preventDefault(); navigate(`/${article.slug}`); }}
                     style={{ textDecoration: "none", display: "block", marginBottom: "20px" }}
                   >
@@ -689,7 +686,7 @@ function HomePage() {
                   return (
                     <a
                       key={article.id}
-                      href={`#/${article.slug}`}
+                      href={`/${article.slug}`}
                       onClick={(e) => { e.preventDefault(); navigate(`/${article.slug}`); }}
                       style={{ textDecoration: "none" }}
                     >
@@ -880,7 +877,7 @@ function CategoryPage({ categoryId }) {
             {articles.length > 0 ? articles.map((article) => (
               <a
                 key={article.id}
-                href={`#/${article.slug}`}
+                href={`/${article.slug}`}
                 onClick={(e) => { e.preventDefault(); navigate(`/${article.slug}`); }}
                 style={{ textDecoration: "none" }}
               >
@@ -938,7 +935,7 @@ function CategoryPage({ categoryId }) {
               {CATEGORIES.filter((c) => c.id !== categoryId).map((c) => {
                 const CIcon = c.icon;
                 return (
-                  <a key={c.id} href={`#/${c.id}`} onClick={(e) => { e.preventDefault(); navigate(`/${c.id}`); }}
+                  <a key={c.id} href={`/${c.id}`} onClick={(e) => { e.preventDefault(); navigate(`/${c.id}`); }}
                     style={{
                       display: "flex", alignItems: "center", gap: "10px", padding: "10px 0",
                       borderBottom: "1px solid var(--border)", textDecoration: "none",
@@ -1350,7 +1347,7 @@ function ArticleGuiaLopdgddClinicas() {
 
           {/* Volver a la categoría */}
           <a
-            href="#/salud-y-clinicas"
+            href="/salud-y-clinicas"
             onClick={(e) => { e.preventDefault(); navigate("/salud-y-clinicas"); }}
             style={{
               display: "inline-flex", alignItems: "center", gap: "6px",
@@ -1412,7 +1409,7 @@ function ArticleGuiaLopdgddClinicas() {
               {CATEGORIES.filter((c) => c.id !== "salud-y-clinicas").map((c) => {
                 const CIcon = c.icon;
                 return (
-                  <a key={c.id} href={`#/${c.id}`} onClick={(e) => { e.preventDefault(); navigate(`/${c.id}`); }}
+                  <a key={c.id} href={`/${c.id}`} onClick={(e) => { e.preventDefault(); navigate(`/${c.id}`); }}
                     style={{
                       display: "flex", alignItems: "center", gap: "10px", padding: "10px 0",
                       borderBottom: "1px solid var(--border)", textDecoration: "none",
@@ -1624,7 +1621,7 @@ function ContactPage() {
                   style={{ marginTop: "3px" }}
                 />
                 <span style={{ fontSize: "12px", color: "var(--text-secondary)", lineHeight: 1.6, fontFamily: "var(--font-body)" }}>
-                  He leído y acepto la <a href="#/privacidad" style={{ color: "var(--accent)" }}>Política de Privacidad</a>. 
+                  He leído y acepto la <a href="/privacidad" style={{ color: "var(--accent)" }}>Política de Privacidad</a>. 
                   Autorizo el tratamiento de mis datos para atender mi consulta. *
                 </span>
               </label>
@@ -1682,7 +1679,7 @@ function NotFoundPage() {
         La página que buscas no existe o ha sido movida.
       </p>
       <a
-        href="#/"
+        href="/"
         onClick={(e) => { e.preventDefault(); navigate("/"); }}
         style={{
           padding: "12px 24px", background: "var(--navy)", color: "white",
@@ -1968,7 +1965,7 @@ function ArticleCiberseguridadEcommerce() {
 
           {/* Volver a la categoría */}
           <a
-            href="#/ecommerce-y-retail"
+            href="/ecommerce-y-retail"
             onClick={(e) => { e.preventDefault(); navigate("/ecommerce-y-retail"); }}
             style={{
               display: "inline-flex", alignItems: "center", gap: "6px",
@@ -2029,7 +2026,7 @@ function ArticleCiberseguridadEcommerce() {
               {CATEGORIES.filter((c) => c.id !== "ecommerce-y-retail").map((c) => {
                 const CIcon = c.icon;
                 return (
-                  <a key={c.id} href={`#/${c.id}`} onClick={(e) => { e.preventDefault(); navigate(`/${c.id}`); }}
+                  <a key={c.id} href={`/${c.id}`} onClick={(e) => { e.preventDefault(); navigate(`/${c.id}`); }}
                     style={{
                       display: "flex", alignItems: "center", gap: "10px", padding: "10px 0",
                       borderBottom: "1px solid var(--border)", textDecoration: "none",
@@ -2344,7 +2341,7 @@ function ArticleCiberseguridadDespachos() {
 
           {/* Volver a la categoría */}
           <a
-            href="#/legal-y-asesorias"
+            href="/legal-y-asesorias"
             onClick={(e) => { e.preventDefault(); navigate("/legal-y-asesorias"); }}
             style={{
               display: "inline-flex", alignItems: "center", gap: "6px",
@@ -2406,7 +2403,7 @@ function ArticleCiberseguridadDespachos() {
               {CATEGORIES.filter((c) => c.id !== "legal-y-asesorias").map((c) => {
                 const CIcon = c.icon;
                 return (
-                  <a key={c.id} href={`#/${c.id}`} onClick={(e) => { e.preventDefault(); navigate(`/${c.id}`); }}
+                  <a key={c.id} href={`/${c.id}`} onClick={(e) => { e.preventDefault(); navigate(`/${c.id}`); }}
                     style={{
                       display: "flex", alignItems: "center", gap: "10px", padding: "10px 0",
                       borderBottom: "1px solid var(--border)", textDecoration: "none",
@@ -2426,27 +2423,43 @@ function ArticleCiberseguridadDespachos() {
   );
 }
 
+// ─── SCROLL TO TOP ON ROUTE CHANGE ───────────────────
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
+
 // ─── ROUTER ──────────────────────────────────────────
 function Router() {
-  const { path } = useRouter();
+  return (
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/contacto" element={<ContactPage />} />
+        <Route path="/privacidad" element={<LegalPage type="privacidad" />} />
+        <Route path="/politica-de-privacidad" element={<LegalPage type="privacidad" />} />
+        <Route path="/aviso-legal" element={<LegalPage type="aviso-legal" />} />
+        <Route path="/cookies" element={<LegalPage type="cookies" />} />
+        <Route path="/articulo/:id" element={<ArticlePageWrapper />} />
+        <Route path="/salud-y-clinicas" element={<CategoryPage categoryId="salud-y-clinicas" />} />
+        <Route path="/salud-y-clinicas/guia-lopdgdd-ciberseguridad-clinicas" element={<ArticleGuiaLopdgddClinicas />} />
+        <Route path="/ecommerce-y-retail" element={<CategoryPage categoryId="ecommerce-y-retail" />} />
+        <Route path="/ecommerce-y-retail/ciberseguridad-ecommerce-rgpd-pci-dss" element={<ArticleCiberseguridadEcommerce />} />
+        <Route path="/sector-inmobiliario" element={<CategoryPage categoryId="sector-inmobiliario" />} />
+        <Route path="/legal-y-asesorias" element={<CategoryPage categoryId="legal-y-asesorias" />} />
+        <Route path="/legal-y-asesorias/ciberseguridad-despachos-abogados-secreto-profesional" element={<ArticleCiberseguridadDespachos />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
+  );
+}
 
-  // Scroll to top on route change
-  useEffect(() => { window.scrollTo(0, 0); }, [path]);
-
-  if (path === "/") return <HomePage />;
-  if (path === "/contacto") return <ContactPage />;
-  if (path === "/privacidad") return <LegalPage type="privacidad" />;
-  if (path === "/aviso-legal") return <LegalPage type="aviso-legal" />;
-  if (path === "/cookies") return <LegalPage type="cookies" />;
-  if (path.startsWith("/articulo/")) return <ArticlePage articleId={path.split("/")[2]} />;
-  if (path === "/salud-y-clinicas/guia-lopdgdd-ciberseguridad-clinicas") return <ArticleGuiaLopdgddClinicas />;
-  if (path === "/ecommerce-y-retail/ciberseguridad-ecommerce-rgpd-pci-dss") return <ArticleCiberseguridadEcommerce />;
-  if (path === "/legal-y-asesorias/ciberseguridad-despachos-abogados-secreto-profesional") return <ArticleCiberseguridadDespachos />;
-
-  const categoryMatch = CATEGORIES.find((c) => path === `/${c.id}`);
-  if (categoryMatch) return <CategoryPage categoryId={categoryMatch.id} />;
-
-  return <NotFoundPage />;
+function ArticlePageWrapper() {
+  const { pathname } = useLocation();
+  const id = pathname.split("/")[2];
+  return <ArticlePage articleId={id} />;
 }
 
 // ─── APP ─────────────────────────────────────────────
