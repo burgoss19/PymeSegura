@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate, useLocation, Routes, Route } from "react-router-dom";
-import { Shield, Building2, ShoppingCart, Scale, Heart, ChevronRight, Menu, X, Search, Clock, User, ArrowRight, CheckCircle, AlertTriangle, Lock, FileText, Mail, Phone, MapPin, ExternalLink, TrendingUp, Eye, BookOpen, ChevronDown, Globe, Zap, Award, Users, Truck, Package, ShieldCheck, Hotel, Wifi, CreditCard, UserCheck, ShieldAlert, GraduationCap, Video, FileLock, Stethoscope, Activity, Trash2, Download, Gavel, FileKey, FileX, Cloud, RefreshCw, BadgeAlert, MousePointerClick, Receipt } from "lucide-react";
+import { Shield, Building2, ShoppingCart, Scale, Heart, ChevronRight, Menu, X, Search, Clock, User, ArrowRight, CheckCircle, AlertTriangle, Lock, FileText, Mail, Phone, MapPin, ExternalLink, TrendingUp, Eye, BookOpen, ChevronDown, Globe, Zap, Award, Users, Truck, Package, ShieldCheck, Hotel, Wifi, CreditCard, UserCheck, ShieldAlert, GraduationCap, Video, FileLock, Stethoscope, Activity, Trash2, Download, Gavel, FileKey, FileX, Cloud, RefreshCw, BadgeAlert, MousePointerClick, Receipt, Target } from "lucide-react";
 
 /* ═══════════════════════════════════════════════════════
    PYMESEGURA.COM — Authority Site for Cybersecurity & 
@@ -369,6 +369,7 @@ function Navbar() {
   const navItems = [
     { label: "Inicio", path: "/" },
     ...CATEGORIES.map((c) => ({ label: c.shortName, path: `/${c.id}` })),
+    { label: "Nosotros", path: "/nosotros" },
     { label: "Contacto", path: "/contacto" },
   ];
 
@@ -524,6 +525,7 @@ function Footer() {
           <div>
             <h4 style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: "16px", color: "var(--amber)" }}>Legal</h4>
             {[
+              { label: "Quiénes Somos", path: "/nosotros" },
               { label: "Política de Privacidad", path: "/privacidad" },
               { label: "Aviso Legal", path: "/aviso-legal" },
               { label: "Política de Cookies", path: "/cookies" },
@@ -4539,6 +4541,419 @@ function ScrollToTop() {
   return null;
 }
 
+// ─── NOSOTROS PAGE ───────────────────────────────────
+function NosotrosPage() {
+  const { navigate } = useRouter();
+
+  const stats = [
+    { value: "+500", label: "Auditorías Realizadas", icon: ShieldCheck },
+    { value: "10", label: "Sectores Especializados", icon: Target },
+    { value: "99%", label: "Clientes Satisfechos", icon: Award },
+    { value: "+15", label: "Años de Experiencia", icon: Users },
+  ];
+
+  const valores = [
+    {
+      icon: Users,
+      title: "Cercanía y trato directo",
+      desc: "Sin intermediarios ni burocracia. Hablas directamente con el experto que conoce tu sector y entiende tu negocio.",
+    },
+    {
+      icon: Target,
+      title: "Lenguaje claro, sin tecnicismos",
+      desc: "La ciberseguridad no tiene que ser incomprensible. Traducimos la complejidad técnica en acciones concretas para tu empresa.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Especialización sectorial",
+      desc: "No somos generalistas. Cada sector tiene sus propias normativas, amenazas y vulnerabilidades, y nosotros las conocemos en profundidad.",
+    },
+    {
+      icon: MapPin,
+      title: "Presencia nacional, proximidad local",
+      desc: "Sede en Madrid, operando en toda España de forma remota. Estamos donde tu empresa esté, sin coste de desplazamiento.",
+    },
+  ];
+
+  const sectores = [
+    { name: "Salud y Clínicas", detail: "Historiales clínicos, RGPD sanitario, ENS." },
+    { name: "Legal y Asesorías", detail: "Secreto profesional digital, cumplimiento deontológico." },
+    { name: "E-commerce", detail: "PCI-DSS, pasarelas de pago, fraude online." },
+    { name: "Hostelería", detail: "WiFi de huéspedes, PMS hotelero, Booking scams." },
+    { name: "Transporte y Logística", detail: "Flota GPS, ransomware en cadena de suministro." },
+    { name: "Educación Digital", detail: "Datos de menores, LMS seguro, LOPD educativa." },
+  ];
+
+  return (
+    <main>
+      <Breadcrumbs items={[
+        { name: "Inicio", path: "/" },
+        { name: "Quiénes Somos", path: "/nosotros" },
+      ]} />
+
+      {/* ── Hero ─────────────────────────────────────── */}
+      <section style={{
+        background: "var(--navy)",
+        color: "white",
+        padding: "80px 20px",
+        textAlign: "center",
+        marginBottom: "0",
+      }}>
+        <div style={{ maxWidth: "760px", margin: "0 auto" }}>
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: "8px",
+            background: "rgba(217,164,48,0.15)", border: "1px solid rgba(217,164,48,0.3)",
+            borderRadius: "20px", padding: "6px 16px", marginBottom: "28px",
+          }}>
+            <Shield size={14} color="var(--amber)" />
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--amber)" }}>
+              PymeSegura · Madrid
+            </span>
+          </div>
+          <h1 style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(32px, 5vw, 52px)",
+            fontWeight: 800,
+            letterSpacing: "-1px",
+            lineHeight: 1.15,
+            marginBottom: "20px",
+          }}>
+            Tu tranquilidad digital<br />
+            <span style={{ color: "var(--amber)" }}>es nuestro compromiso</span>
+          </h1>
+          <p style={{
+            fontSize: "clamp(16px, 2vw, 18px)",
+            lineHeight: 1.75,
+            opacity: 0.8,
+            fontFamily: "var(--font-body)",
+            maxWidth: "600px",
+            margin: "0 auto 36px",
+          }}>
+            Democratizamos la ciberseguridad de alto nivel para que ninguna PYME española
+            cierre por un ataque informático. Porque la seguridad digital no debería ser
+            solo para las grandes corporaciones.
+          </p>
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+            <a
+              href="/contacto"
+              onClick={(e) => { e.preventDefault(); navigate("/contacto"); }}
+              style={{
+                display: "inline-flex", alignItems: "center", gap: "8px",
+                background: "var(--amber)", color: "var(--navy)",
+                padding: "14px 28px", borderRadius: "4px",
+                fontWeight: 700, fontSize: "14px", textDecoration: "none",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              Agenda una consultoría gratuita <ArrowRight size={16} />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Stats ────────────────────────────────────── */}
+      <section style={{
+        background: "var(--navy-light)",
+        padding: "48px 20px",
+        marginBottom: "0",
+      }}>
+        <div style={{
+          maxWidth: "1000px", margin: "0 auto",
+          display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+          gap: "0",
+        }}>
+          {stats.map((stat, i) => {
+            const Icon = stat.icon;
+            return (
+              <div key={i} style={{
+                textAlign: "center", padding: "32px 20px",
+                borderRight: i < stats.length - 1 ? "1px solid rgba(255,255,255,0.08)" : "none",
+              }}>
+                <Icon size={22} color="var(--amber)" style={{ marginBottom: "12px" }} />
+                <div style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(34px, 4vw, 48px)",
+                  fontWeight: 800, color: "white",
+                  letterSpacing: "-1px", lineHeight: 1,
+                  marginBottom: "8px",
+                }}>
+                  {stat.value}
+                </div>
+                <div style={{
+                  fontFamily: "var(--font-mono)", fontSize: "11px",
+                  letterSpacing: "1px", textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.55)",
+                }}>
+                  {stat.label}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ── Nuestra Historia ─────────────────────────── */}
+      <section style={{ padding: "80px 20px", maxWidth: "880px", margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "center" }} className="content-grid">
+          <div>
+            <span style={{
+              fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "1.5px",
+              textTransform: "uppercase", color: "var(--amber)", display: "block", marginBottom: "12px",
+            }}>
+              Nuestra historia
+            </span>
+            <h2 style={{
+              fontFamily: "var(--font-display)", fontSize: "clamp(24px, 3.5vw, 34px)",
+              fontWeight: 800, color: "var(--navy)", letterSpacing: "-0.5px",
+              lineHeight: 1.2, marginBottom: "20px",
+            }}>
+              Vimos el problema antes de que afectara a miles de empresas
+            </h2>
+            <p style={{
+              fontSize: "15px", color: "var(--text-secondary)", lineHeight: 1.8,
+              fontFamily: "var(--font-body)", marginBottom: "16px",
+            }}>
+              Fundada por ingenieros con más de 15 años protegiendo infraestructuras críticas
+              — banca, energía, administración pública —, llegó un momento en que nos hicimos
+              una pregunta incómoda: <strong>¿quién protege a las PYMES?</strong>
+            </p>
+            <p style={{
+              fontSize: "15px", color: "var(--text-secondary)", lineHeight: 1.8,
+              fontFamily: "var(--font-body)", marginBottom: "16px",
+            }}>
+              Las grandes consultoras cobran honorarios inaccesibles. Las soluciones genéricas
+              no entienden que una clínica dental tiene riesgos muy distintos a los de una
+              agencia inmobiliaria. Y mientras tanto, el 60% de las PYMES que sufren un
+              ciberataque grave cierran en menos de seis meses.
+            </p>
+            <p style={{
+              fontSize: "15px", color: "var(--text-secondary)", lineHeight: 1.8,
+              fontFamily: "var(--font-body)",
+            }}>
+              Por eso creamos PymeSegura: para llevar la ciberseguridad de alto nivel
+              a cada rincón del tejido empresarial español, con el lenguaje claro y la
+              especialización sectorial que las pequeñas empresas merecen.
+            </p>
+          </div>
+          <div style={{
+            background: "var(--bg-warm)", border: "1px solid var(--border)",
+            borderRadius: "8px", padding: "36px", position: "relative", overflow: "hidden",
+          }}>
+            <div style={{
+              position: "absolute", top: 0, left: 0, right: 0, height: "4px",
+              background: "linear-gradient(90deg, var(--amber), var(--navy))",
+            }} />
+            <div style={{
+              fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "1px",
+              textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "20px",
+            }}>
+              Nuestra misión
+            </div>
+            <p style={{
+              fontFamily: "var(--font-display)", fontSize: "20px", fontWeight: 700,
+              color: "var(--navy)", lineHeight: 1.5, marginBottom: "24px", letterSpacing: "-0.3px",
+            }}>
+              "Democratizar la ciberseguridad de alto nivel para que ninguna PYME española
+              cierre por un ataque informático."
+            </p>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <div style={{
+                width: "40px", height: "40px", background: "var(--navy)", borderRadius: "50%",
+                display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+              }}>
+                <Shield size={18} color="var(--amber)" />
+              </div>
+              <div>
+                <div style={{ fontWeight: 700, fontSize: "14px", color: "var(--navy)", fontFamily: "var(--font-body)" }}>
+                  Equipo PymeSegura
+                </div>
+                <div style={{ fontSize: "12px", color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>
+                  Sede central · Madrid
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Nuestro Enfoque ──────────────────────────── */}
+      <section style={{ background: "var(--bg-warm)", padding: "80px 20px" }}>
+        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "52px" }}>
+            <span style={{
+              fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "1.5px",
+              textTransform: "uppercase", color: "var(--amber)", display: "block", marginBottom: "12px",
+            }}>
+              Nuestro enfoque
+            </span>
+            <h2 style={{
+              fontFamily: "var(--font-display)", fontSize: "clamp(24px, 3.5vw, 34px)",
+              fontWeight: 800, color: "var(--navy)", letterSpacing: "-0.5px", marginBottom: "16px",
+            }}>
+              Por qué trabajamos por sectores
+            </h2>
+            <p style={{
+              fontSize: "16px", color: "var(--text-secondary)", lineHeight: 1.7,
+              fontFamily: "var(--font-body)", maxWidth: "560px", margin: "0 auto",
+            }}>
+              Cada sector tiene su propio marco normativo, sus vectores de ataque habituales
+              y sus particularidades operativas. La seguridad genérica no sirve.
+            </p>
+          </div>
+
+          <div style={{
+            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "20px", marginBottom: "48px",
+          }}>
+            {valores.map((v, i) => {
+              const Icon = v.icon;
+              return (
+                <div key={i} style={{
+                  background: "white", border: "1px solid var(--border)",
+                  borderRadius: "6px", padding: "28px",
+                  transition: "box-shadow 0.2s ease",
+                }}>
+                  <div style={{
+                    width: "44px", height: "44px",
+                    background: "var(--navy)", borderRadius: "6px",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    marginBottom: "16px",
+                  }}>
+                    <Icon size={20} color="var(--amber)" />
+                  </div>
+                  <h3 style={{
+                    fontFamily: "var(--font-display)", fontSize: "16px",
+                    fontWeight: 700, color: "var(--navy)", marginBottom: "10px",
+                  }}>
+                    {v.title}
+                  </h3>
+                  <p style={{
+                    fontSize: "14px", color: "var(--text-secondary)",
+                    lineHeight: 1.7, fontFamily: "var(--font-body)",
+                  }}>
+                    {v.desc}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Sectores grid */}
+          <div style={{
+            background: "var(--navy)", borderRadius: "8px", padding: "40px",
+            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "16px",
+          }}>
+            <div style={{ gridColumn: "1 / -1", marginBottom: "8px" }}>
+              <span style={{
+                fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "1.5px",
+                textTransform: "uppercase", color: "var(--amber)",
+              }}>
+                Sectores en los que somos especialistas
+              </span>
+            </div>
+            {sectores.map((s, i) => (
+              <div key={i} style={{
+                display: "flex", alignItems: "flex-start", gap: "12px",
+                padding: "14px", borderRadius: "4px",
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.07)",
+              }}>
+                <CheckCircle size={16} color="var(--amber)" style={{ marginTop: "2px", flexShrink: 0 }} />
+                <div>
+                  <div style={{
+                    fontWeight: 700, fontSize: "14px", color: "white",
+                    fontFamily: "var(--font-body)", marginBottom: "4px",
+                  }}>
+                    {s.name}
+                  </div>
+                  <div style={{
+                    fontSize: "12px", color: "rgba(255,255,255,0.55)",
+                    fontFamily: "var(--font-mono)",
+                  }}>
+                    {s.detail}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA Banner ───────────────────────────────── */}
+      <section style={{
+        background: "var(--amber)", padding: "64px 20px", textAlign: "center",
+      }}>
+        <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+          <MapPin size={28} color="var(--navy)" style={{ marginBottom: "16px" }} />
+          <h2 style={{
+            fontFamily: "var(--font-display)", fontSize: "clamp(24px, 3.5vw, 36px)",
+            fontWeight: 800, color: "var(--navy)", letterSpacing: "-0.5px",
+            lineHeight: 1.2, marginBottom: "16px",
+          }}>
+            ¿Quieres saber si tu empresa está realmente protegida?
+          </h2>
+          <p style={{
+            fontSize: "16px", color: "rgba(15,29,53,0.75)", lineHeight: 1.7,
+            fontFamily: "var(--font-body)", marginBottom: "32px", maxWidth: "520px",
+            margin: "0 auto 32px",
+          }}>
+            Agenda una consultoría inicial gratuita y en menos de 30 minutos te diremos
+            exactamente qué riesgos tiene tu negocio y qué medidas priorizar.
+          </p>
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+            <a
+              href="/contacto"
+              onClick={(e) => { e.preventDefault(); navigate("/contacto"); }}
+              style={{
+                display: "inline-flex", alignItems: "center", gap: "8px",
+                background: "var(--navy)", color: "white",
+                padding: "16px 32px", borderRadius: "4px",
+                fontWeight: 700, fontSize: "15px", textDecoration: "none",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              Solicitar consultoría gratuita <ArrowRight size={16} />
+            </a>
+            <a
+              href="/"
+              onClick={(e) => { e.preventDefault(); navigate("/"); }}
+              style={{
+                display: "inline-flex", alignItems: "center", gap: "8px",
+                background: "transparent", color: "var(--navy)",
+                padding: "16px 32px", borderRadius: "4px",
+                fontWeight: 600, fontSize: "15px", textDecoration: "none",
+                fontFamily: "var(--font-body)", border: "2px solid var(--navy)",
+              }}
+            >
+              Ver guías por sector
+            </a>
+          </div>
+          <div style={{
+            display: "flex", gap: "24px", justifyContent: "center", marginTop: "28px",
+            flexWrap: "wrap",
+          }}>
+            {[
+              { icon: MapPin, text: "Sede en Madrid · Operamos en toda España" },
+              { icon: ShieldCheck, text: "+15 años en infraestructuras críticas" },
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <div key={i} style={{
+                  display: "flex", alignItems: "center", gap: "8px",
+                  fontSize: "13px", color: "rgba(15,29,53,0.7)", fontFamily: "var(--font-body)",
+                }}>
+                  <Icon size={14} color="var(--navy)" />
+                  {item.text}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
 // ─── ROUTER ──────────────────────────────────────────
 function Router() {
   return (
@@ -4546,6 +4961,7 @@ function Router() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/nosotros" element={<NosotrosPage />} />
         <Route path="/contacto" element={<ContactPage />} />
         <Route path="/privacidad" element={<LegalPage type="privacidad" />} />
         <Route path="/politica-de-privacidad" element={<LegalPage type="privacidad" />} />
