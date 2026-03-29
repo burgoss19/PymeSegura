@@ -368,9 +368,10 @@ function Navbar() {
 
   const navItems = [
     { label: "Inicio", path: "/" },
-    ...CATEGORIES.map((c) => ({ label: c.shortName, path: `/${c.id}` })),
-    { label: "Nosotros", path: "/nosotros" },
-    { label: "Contacto", path: "/contacto" },
+    ...CATEGORIES.map((c) => ({ label: c.shortName, path: `/${c.id}`, type: "sector" })),
+    { type: "divider" },
+    { label: "Nosotros", path: "/nosotros", type: "page" },
+    { label: "Contacto", path: "/contacto", type: "cta" },
   ];
 
   return (
@@ -423,27 +424,78 @@ function Navbar() {
 
           {/* Desktop nav */}
           <div className="desktop-nav" style={{ display: "flex", gap: "4px", alignItems: "center" }}>
-            {navItems.map((item) => (
-              <a
-                key={item.path}
-                href={`${item.path}`}
-                onClick={(e) => { e.preventDefault(); navigate(item.path); }}
-                style={{
-                  padding: "8px 14px",
-                  fontSize: "13px",
-                  fontWeight: path === item.path ? 700 : 500,
-                  color: path === item.path ? "var(--navy)" : "var(--text-secondary)",
-                  textDecoration: "none",
-                  borderRadius: "4px",
-                  background: path === item.path ? "var(--bg-warm)" : "transparent",
-                  transition: "all 0.15s ease",
-                  fontFamily: "var(--font-body)",
-                  letterSpacing: "-0.1px",
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item, i) => {
+              if (item.type === "divider") {
+                return <div key="divider" style={{ width: "1px", height: "18px", background: "var(--border)", margin: "0 8px", flexShrink: 0 }} />;
+              }
+              if (item.type === "cta") {
+                return (
+                  <a
+                    key={item.path}
+                    href={item.path}
+                    onClick={(e) => { e.preventDefault(); navigate(item.path); }}
+                    style={{
+                      padding: "8px 16px",
+                      fontSize: "13px",
+                      fontWeight: 700,
+                      color: path === item.path ? "var(--amber)" : "white",
+                      textDecoration: "none",
+                      borderRadius: "4px",
+                      background: "var(--navy)",
+                      transition: "all 0.15s ease",
+                      fontFamily: "var(--font-body)",
+                    }}
+                  >
+                    {item.label}
+                  </a>
+                );
+              }
+              if (item.type === "page") {
+                return (
+                  <a
+                    key={item.path}
+                    href={item.path}
+                    onClick={(e) => { e.preventDefault(); navigate(item.path); }}
+                    style={{
+                      padding: "7px 14px",
+                      fontSize: "13px",
+                      fontWeight: path === item.path ? 700 : 500,
+                      color: path === item.path ? "var(--navy)" : "var(--text-secondary)",
+                      textDecoration: "none",
+                      borderRadius: "4px",
+                      background: path === item.path ? "var(--bg-warm)" : "transparent",
+                      border: `1px solid ${path === item.path ? "var(--border)" : "var(--border)"}`,
+                      transition: "all 0.15s ease",
+                      fontFamily: "var(--font-body)",
+                    }}
+                  >
+                    {item.label}
+                  </a>
+                );
+              }
+              // type: "sector" or "Inicio"
+              return (
+                <a
+                  key={item.path}
+                  href={item.path}
+                  onClick={(e) => { e.preventDefault(); navigate(item.path); }}
+                  style={{
+                    padding: "8px 14px",
+                    fontSize: "13px",
+                    fontWeight: path === item.path ? 700 : 500,
+                    color: path === item.path ? "var(--navy)" : "var(--text-secondary)",
+                    textDecoration: "none",
+                    borderRadius: "4px",
+                    background: path === item.path ? "var(--bg-warm)" : "transparent",
+                    transition: "all 0.15s ease",
+                    fontFamily: "var(--font-body)",
+                    letterSpacing: "-0.1px",
+                  }}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </div>
 
           {/* Mobile toggle */}
@@ -462,27 +514,74 @@ function Navbar() {
         {/* Mobile menu */}
         {mobileOpen && (
           <div style={{
-            padding: "0 0 16px", borderTop: "1px solid var(--border)",
+            padding: "8px 0 16px", borderTop: "1px solid var(--border)",
             display: "flex", flexDirection: "column", gap: "2px",
           }}>
-            {navItems.map((item) => (
-              <a
-                key={item.path}
-                href={`${item.path}`}
-                onClick={(e) => { e.preventDefault(); navigate(item.path); }}
-                style={{
-                  padding: "12px 16px",
-                  fontSize: "15px",
-                  fontWeight: path === item.path ? 700 : 400,
-                  color: "var(--navy)",
-                  textDecoration: "none",
-                  borderRadius: "4px",
-                  background: path === item.path ? "var(--bg-warm)" : "transparent",
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item, i) => {
+              if (item.type === "divider") {
+                return (
+                  <div key="mob-divider" style={{ padding: "10px 16px 2px" }}>
+                    <span style={{
+                      fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "1.5px",
+                      textTransform: "uppercase", color: "var(--text-muted)",
+                    }}>
+                      Páginas
+                    </span>
+                  </div>
+                );
+              }
+              if (i === 1) {
+                return (
+                  <div key={`group-${item.path}`} style={{ display: "contents" }}>
+                    <div style={{ padding: "10px 16px 2px" }}>
+                      <span style={{
+                        fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "1.5px",
+                        textTransform: "uppercase", color: "var(--text-muted)",
+                      }}>
+                        Sectores
+                      </span>
+                    </div>
+                    <a
+                      href={item.path}
+                      onClick={(e) => { e.preventDefault(); navigate(item.path); }}
+                      style={{
+                        padding: "12px 16px",
+                        fontSize: "15px",
+                        fontWeight: path === item.path ? 700 : 400,
+                        color: "var(--navy)",
+                        textDecoration: "none",
+                        borderRadius: "4px",
+                        background: path === item.path ? "var(--bg-warm)" : "transparent",
+                      }}
+                    >
+                      {item.label}
+                    </a>
+                  </div>
+                );
+              }
+              return (
+                <a
+                  key={item.path}
+                  href={item.path}
+                  onClick={(e) => { e.preventDefault(); navigate(item.path); }}
+                  style={{
+                    padding: "12px 16px",
+                    fontSize: "15px",
+                    fontWeight: path === item.path ? 700 : 400,
+                    color: item.type === "cta" ? "white" : "var(--navy)",
+                    textDecoration: "none",
+                    borderRadius: "4px",
+                    background: item.type === "cta"
+                      ? "var(--navy)"
+                      : path === item.path ? "var(--bg-warm)" : "transparent",
+                    marginLeft: item.type === "cta" || item.type === "page" ? "0" : "0",
+                    fontWeight: item.type === "cta" ? 700 : path === item.path ? 700 : 400,
+                  }}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </div>
         )}
       </nav>
@@ -4571,7 +4670,7 @@ function NosotrosPage() {
     {
       icon: MapPin,
       title: "Presencia nacional, proximidad local",
-      desc: "Sede en Madrid, operando en toda España de forma remota. Estamos donde tu empresa esté, sin coste de desplazamiento.",
+      desc: "Sede en Valencia, operando en toda España de forma remota. Estamos donde tu empresa esté, sin coste de desplazamiento.",
     },
   ];
 
@@ -4607,7 +4706,7 @@ function NosotrosPage() {
           }}>
             <Shield size={14} color="var(--amber)" />
             <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--amber)" }}>
-              PymeSegura · Madrid
+              PymeSegura · Valencia
             </span>
           </div>
           <h1 style={{
@@ -4768,7 +4867,7 @@ function NosotrosPage() {
                   Equipo PymeSegura
                 </div>
                 <div style={{ fontSize: "12px", color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}>
-                  Sede central · Madrid
+                  Sede central · Valencia
                 </div>
               </div>
             </div>
@@ -4933,7 +5032,7 @@ function NosotrosPage() {
             flexWrap: "wrap",
           }}>
             {[
-              { icon: MapPin, text: "Sede en Madrid · Operamos en toda España" },
+              { icon: MapPin, text: "Sede en Valencia · Operamos en toda España" },
               { icon: ShieldCheck, text: "+15 años en infraestructuras críticas" },
             ].map((item, i) => {
               const Icon = item.icon;

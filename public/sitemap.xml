@@ -103,7 +103,7 @@
 
   <!-- Artículo #9 (Legal — refuerzo) -->
   <url>
-    <loc>https://www.pymesegura.org/legal-y-asesorias/secreto-profesional</loc>
+    <loc>https://www.pymesegura.org/legal-y-asesorias/secreto-profesional</loc> <!-- Seguir indexando por aquí -->
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
