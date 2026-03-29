@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate, useLocation, Routes, Route } from "react-router-dom";
-import { Shield, Building2, ShoppingCart, Scale, Heart, ChevronRight, Menu, X, Search, Clock, User, ArrowRight, CheckCircle, AlertTriangle, Lock, FileText, Mail, Phone, MapPin, ExternalLink, TrendingUp, Eye, BookOpen, ChevronDown, Globe, Zap, Award, Users } from "lucide-react";
+import { Shield, Building2, ShoppingCart, Scale, Heart, ChevronRight, Menu, X, Search, Clock, User, ArrowRight, CheckCircle, AlertTriangle, Lock, FileText, Mail, Phone, MapPin, ExternalLink, TrendingUp, Eye, BookOpen, ChevronDown, Globe, Zap, Award, Users, Truck, Package, ShieldCheck, Hotel, Wifi, CreditCard, UserCheck, ShieldAlert, GraduationCap, Video, FileLock, Stethoscope, Activity, Trash2, Download, Gavel, FileKey, FileX, Cloud, RefreshCw, BadgeAlert, MousePointerClick, Receipt } from "lucide-react";
 
 /* ═══════════════════════════════════════════════════════
    PYMESEGURA.COM — Authority Site for Cybersecurity & 
@@ -49,7 +49,7 @@ const CATEGORIES = [
     color: "#2563eb",
     bgColor: "#eff6ff",
     description: "Seguridad en transacciones, firma digital y protección de datos en operaciones inmobiliarias.",
-    articles: 0,
+    articles: 1,
     featured: "Firma digital en contratos de compraventa: lo que debes saber",
   },
   {
@@ -73,6 +73,39 @@ const CATEGORIES = [
     description: "Deontología digital, secreto profesional en la nube y cumplimiento del ENS.",
     articles: 1,
     featured: "IA generativa en despachos: riesgos legales que no puedes ignorar",
+  },
+  {
+    id: "transporte-y-logistica",
+    name: "Transporte y Logística",
+    shortName: "Logística",
+    icon: Truck,
+    color: "#ea580c",
+    bgColor: "#fff7ed",
+    description: "Protección de flotas GPS, cadena de suministro segura y continuidad ante ransomware.",
+    articles: 1,
+    featured: "Cómo evitar que el Ransomware detenga tu flota",
+  },
+  {
+    id: "hosteleria-y-turismo",
+    name: "Hostelería y Turismo",
+    shortName: "Hostelería",
+    icon: Hotel,
+    color: "#0891b2",
+    bgColor: "#ecfeff",
+    description: "Seguridad WiFi para huéspedes, cumplimiento PCI-DSS y protección del PMS hotelero.",
+    articles: 1,
+    featured: "Ciberseguridad en Hostelería: Blindando la Confianza del Huésped",
+  },
+  {
+    id: "educacion-digital",
+    name: "Educación Digital",
+    shortName: "Educación",
+    icon: GraduationCap,
+    color: "#2563eb",
+    bgColor: "#eff6ff",
+    description: "Protección de datos de estudiantes, seguridad en LMS y privacidad en clases online.",
+    articles: 1,
+    featured: "Ciberseguridad en Academias y Colegios: Blindando el futuro de la Educación Online",
   },
 ];
 
@@ -114,6 +147,97 @@ const SAMPLE_ARTICLES = [
     author: "Equipo PymeSegura",
     date: "2026-03-26",
     readTime: "7 min",
+    featured: false,
+  },
+  {
+    id: 4,
+    slug: "sector-inmobiliario/ciberseguridad-inmobiliarias-fraude-transferencias",
+    category: "sector-inmobiliario",
+    title: "Ciberseguridad en Inmobiliarias: Blindando el Cierre de Operaciones",
+    seoTitle: "Ciberseguridad en Inmobiliarias: Cómo evitar el fraude en transferencias de depósitos",
+    metaDescription: "Descubre cómo proteger tu agencia inmobiliaria del fraude BEC y el cambio de cuenta bancaria. Guía práctica con checklist de cumplimiento AEPD para el sector.",
+    excerpt: "No permitas que un ciberdelincuente se lleve la comisión de tu vida o el ahorro de tus clientes. El momento del pago de la reserva o señal es el punto de mayor vulnerabilidad en toda operación inmobiliaria.",
+    author: "Equipo PymeSegura",
+    date: "2026-03-29",
+    readTime: "6 min",
+    featured: false,
+  },
+  {
+    id: 5,
+    slug: "sector-logistica/ciberseguridad-logistica-ransomware-flota",
+    category: "transporte-y-logistica",
+    title: "Ciberseguridad en Logística: Blindando la Cadena de Suministro",
+    seoTitle: "Ciberseguridad en Logística: Cómo evitar que el Ransomware detenga tu flota (2026)",
+    metaDescription: "El coste de un camión parado por ransomware supera los 5.000€/hora. Aprende a proteger tu flota GPS, cifrar albaranes y crear un plan de contingencia para PYMEs de transporte.",
+    excerpt: "En un mundo de entregas en 24h, un sistema bloqueado por Ransomware es una sentencia de muerte para tu rentabilidad. Descubre cómo blindar tu flota y cadena de suministro.",
+    author: "Equipo PymeSegura",
+    date: "2026-03-29",
+    readTime: "7 min",
+    featured: false,
+  },
+  {
+    id: 6,
+    slug: "hosteleria-y-turismo/ciberseguridad-hoteles-proteccion-huespedes",
+    category: "hosteleria-y-turismo",
+    title: "Ciberseguridad en Hostelería: Blindando la Confianza del Huésped",
+    seoTitle: "Ciberseguridad en Hoteles y Hostelería: Cómo proteger los datos de tus huéspedes (2026)",
+    metaDescription: "Protege tu hotel de estafas en Booking, ransomware en el PMS y ataques WiFi. Guía completa de ciberseguridad y cumplimiento PCI-DSS para el sector HORECA.",
+    excerpt: "En 2026, la seguridad digital es la quinta estrella de cualquier establecimiento. Protege tus reservas, los datos de tus huéspedes y el prestigio de tu marca ante el auge de las estafas digitales en hostelería.",
+    author: "Equipo PymeSegura",
+    date: "2026-03-29",
+    readTime: "10 min",
+    featured: false,
+  },
+  {
+    id: 7,
+    slug: "educacion-digital/ciberseguridad-academias-colegios-elearning",
+    category: "educacion-digital",
+    title: "Ciberseguridad en la Era del E-learning: Protegiendo el Conocimiento",
+    seoTitle: "Ciberseguridad en Academias y Colegios: Blindando el futuro de la Educación Online (2026)",
+    metaDescription: "Protege los datos de tus alumnos, tu LMS y tus clases online. Guía de ciberseguridad y cumplimiento LOPD/RGPD para academias, colegios y plataformas de e-learning.",
+    excerpt: "En 2026, una brecha de datos en tu academia no solo expone nombres, sino el futuro y la privacidad de tus alumnos. Descubre cómo blindar tu plataforma educativa frente a ransomware, Zoombombing y robo de contenidos.",
+    author: "Equipo PymeSegura",
+    date: "2026-03-29",
+    readTime: "9 min",
+    featured: false,
+  },
+  {
+    id: 8,
+    slug: "salud-y-clinicas/auditoria-seguridad-clinicas-ens-historial-clinico",
+    category: "salud-y-clinicas",
+    title: "La Auditoría de Ciberseguridad en Centros de Salud: Más allá del Antivirus",
+    seoTitle: "Auditoría de Seguridad en Clínicas: Guía ENS y protección del Historial Clínico (2026)",
+    metaDescription: "Cumple con el ENS y el RGPD en tu clínica. Guía de auditoría de ciberseguridad para el historial clínico digital: control de accesos, cifrado, cloud seguro y borrado certificado.",
+    excerpt: "En 2026, la historia clínica electrónica es el activo más valioso y vulnerable de tu consulta. Descubre cómo superar una inspección de la AEPD y cumplir el Esquema Nacional de Seguridad.",
+    author: "Equipo PymeSegura",
+    date: "2026-03-29",
+    readTime: "8 min",
+    featured: false,
+  },
+  {
+    id: 9,
+    slug: "legal-y-asesorias/secreto-profesional-ciberseguridad-despachos",
+    category: "legal-y-asesorias",
+    title: "El Secreto Profesional en 2026: Ciberseguridad para el Sector Legal",
+    seoTitle: "Ciberseguridad para Abogados: El Secreto Profesional en la Era de la Nube (2026)",
+    metaDescription: "Protege el secreto profesional de tu despacho con cifrado de expedientes, cloud jurídico certificado y borrado seguro. Guía para abogados, gestorías y asesorías.",
+    excerpt: "Un despacho hackeado no solo pierde datos; pierde la licencia para ejercer la confianza de sus clientes. Descubre cómo blindar tu despacho frente a fugas de expedientes, responsabilidad civil y ataques dirigidos.",
+    author: "Equipo PymeSegura",
+    date: "2026-03-29",
+    readTime: "8 min",
+    featured: false,
+  },
+  {
+    id: 10,
+    slug: "ecommerce-y-retail/seguridad-pagos-tpv-virtual-fraude",
+    category: "ecommerce-y-retail",
+    title: "Seguridad en el Checkout: El Corazón de tu Ecommerce en 2026",
+    seoTitle: "Seguridad en Pagos Online: Cómo proteger tu TPV Virtual contra el Fraude (2026)",
+    metaDescription: "Tokenización, SCA/PSD3, detección de fraude y protocolo anti-chargeback. Guía técnica de seguridad en pasarelas de pago para tiendas online en 2026.",
+    excerpt: "Una tienda rápida vende, pero una tienda segura es la única que sobrevive a las reclamaciones bancarias. Descubre cómo blindar tu checkout frente al robo de sesión, carding y chargebacks fraudulentos.",
+    author: "Equipo PymeSegura",
+    date: "2026-03-29",
+    readTime: "8 min",
     featured: false,
   },
 ];
@@ -1435,7 +1559,7 @@ function LegalPage({ type }) {
     privacidad: {
       title: "Política de Privacidad",
       content: [
-        { heading: "1. Responsable del tratamiento", text: "Identidad: [NOMBRE/RAZÓN SOCIAL] — NIF: [TU NIF] — Dirección: [TU DIRECCIÓN] — Email: privacidad@pymesegura.com" },
+        { heading: "1. Responsable del tratamiento", text: "Identidad: Sergio Burgos — Dirección: C / Isabel Villena, Valencia — Email: privacidad@pymesegura.com" },
         { heading: "2. Finalidad del tratamiento", text: "Los datos personales que nos proporciones a través del formulario de contacto serán tratados con la finalidad de atender tu consulta. Los datos de navegación se recopilan para análisis estadístico y optimización del sitio web." },
         { heading: "3. Base legal", text: "El tratamiento de datos se basa en tu consentimiento expreso (art. 6.1.a RGPD) al completar los formularios del sitio, y en nuestro interés legítimo (art. 6.1.f RGPD) para el análisis de tráfico web." },
         { heading: "4. Destinatarios", text: "Tus datos no serán cedidos a terceros salvo obligación legal. Utilizamos Google Analytics y Google AdSense, cuyos servidores pueden estar fuera del EEE. Estas transferencias están amparadas por las Cláusulas Contractuales Tipo de la Comisión Europea." },
@@ -2423,6 +2547,1991 @@ function ArticleCiberseguridadDespachos() {
   );
 }
 
+// ─── ARTICLE: CIBERSEGURIDAD INMOBILIARIAS ───────────
+function ArticleCiberseguridadInmobiliarias() {
+  const { navigate } = useRouter();
+  const article = SAMPLE_ARTICLES.find((a) => a.slug === "sector-inmobiliario/ciberseguridad-inmobiliarias-fraude-transferencias");
+  const cat = CATEGORIES.find((c) => c.id === "sector-inmobiliario");
+
+  const pStyle = {
+    marginBottom: "20px", fontSize: "16px", lineHeight: 1.8,
+    color: "var(--text-secondary)", fontFamily: "var(--font-body)",
+  };
+  const h2Style = {
+    fontFamily: "var(--font-display)", fontSize: "22px", fontWeight: 700,
+    color: "var(--navy)", marginBottom: "16px", marginTop: "40px", letterSpacing: "-0.3px",
+    paddingBottom: "10px", borderBottom: "2px solid var(--border)",
+  };
+
+  return (
+    <main style={{ maxWidth: "1200px", margin: "0 auto", padding: "32px 20px" }}>
+      <SchemaMarkup type="article" data={article} />
+      <Breadcrumbs items={[
+        { name: "Inicio", path: "/" },
+        { name: cat.name, path: "/sector-inmobiliario" },
+        { name: "Ciberseguridad en Inmobiliarias: Fraude en Transferencias", path: `/${article.slug}` },
+      ]} />
+
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 300px", gap: "48px" }} className="content-grid">
+        <article>
+
+          {/* ── HERO SECTION ── */}
+          <div style={{
+            background: "linear-gradient(135deg, #0f1d35 0%, #1a2d4d 60%, #1e3a5f 100%)",
+            borderRadius: "10px", padding: "48px 40px", marginBottom: "36px",
+            position: "relative", overflow: "hidden",
+          }}>
+            <div style={{
+              position: "absolute", top: "-40%", right: "-10%", width: "50%", height: "200%",
+              background: "radial-gradient(ellipse, rgba(37,99,235,0.15) 0%, transparent 70%)",
+            }} />
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: "6px",
+              padding: "4px 10px", background: cat.bgColor, color: cat.color,
+              fontSize: "11px", fontWeight: 700, borderRadius: "3px",
+              fontFamily: "var(--font-mono)", textTransform: "uppercase",
+              letterSpacing: "0.5px", marginBottom: "20px",
+            }}>
+              <Building2 size={11} /> {cat.shortName}
+            </div>
+            <h1 style={{
+              fontFamily: "var(--font-display)", fontSize: "clamp(26px, 4vw, 38px)",
+              fontWeight: 800, color: "white", lineHeight: 1.1, letterSpacing: "-1px",
+              marginBottom: "16px",
+            }}>
+              Ciberseguridad en Inmobiliarias:{" "}
+              <span style={{ color: "var(--amber)" }}>Blindando el Cierre de Operaciones</span>
+            </h1>
+            <p style={{
+              fontSize: "17px", color: "rgba(255,255,255,0.75)", lineHeight: 1.65,
+              fontFamily: "var(--font-body)", marginBottom: "20px", maxWidth: "600px",
+            }}>
+              No permitas que un ciberdelincuente se lleve la comisión de tu vida o el ahorro de tus clientes.
+            </p>
+            <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+              <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "4px" }}>
+                <User size={11} /> {article.author}
+              </span>
+              <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "4px" }}>
+                <Clock size={11} /> {article.readTime} de lectura
+              </span>
+              <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)" }}>
+                {new Date(article.date).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}
+              </span>
+            </div>
+          </div>
+
+          {/* AD: Leaderboard */}
+          <div style={{ margin: "0 0 36px" }}>
+            <AdSlot position="below-h1" />
+          </div>
+
+          {/* ── ALERTA BEC ── */}
+          <div style={{
+            background: "#fff7ed", border: "1px solid #fed7aa",
+            borderLeft: "4px solid #ea580c", borderRadius: "0 8px 8px 0",
+            padding: "24px 28px", marginBottom: "36px",
+          }}>
+            <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+              <AlertTriangle size={22} color="#ea580c" style={{ flexShrink: 0, marginTop: "2px" }} />
+              <div>
+                <div style={{
+                  fontFamily: "var(--font-mono)", fontSize: "11px", textTransform: "uppercase",
+                  letterSpacing: "1px", color: "#ea580c", marginBottom: "8px", fontWeight: 700,
+                }}>
+                  Alerta 2026 — Fraude BEC en auge
+                </div>
+                <p style={{ ...pStyle, marginBottom: "6px", fontSize: "15px", color: "#7c2d12" }}>
+                  Los ataques <strong>Business Email Compromise (BEC)</strong> dirigidos al sector inmobiliario se han
+                  incrementado un <strong>+340% en los últimos dos años</strong> en España. La pérdida media por
+                  operación fraudulenta supera los <strong>28.000 €</strong>.
+                </p>
+                <p style={{ ...pStyle, marginBottom: 0, fontSize: "13px", color: "#9a3412" }}>
+                  Fuente: Informe de Cibercrimen 2025 — Europol / AEPD
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* ── SECCIÓN 1 ── */}
+          <h2 style={h2Style}>El Fraude del «Cambio de Cuenta»</h2>
+          <p style={pStyle}>
+            En el sector inmobiliario, el momento de mayor vulnerabilidad es el <strong>pago de la reserva o señal</strong>.
+            Los atacantes utilizan técnicas de <strong>Business Email Compromise (BEC)</strong>: interceptan los correos
+            entre el agente y el comprador, suplantan la identidad de la inmobiliaria y envían un número de cuenta
+            bancaria modificado justo antes de que el cliente realice el depósito.
+          </p>
+          <p style={pStyle}>
+            El cliente transfiere el dinero convencido de que está pagando a tu agencia. Cuando se descubre el fraude,
+            el dinero ya ha desaparecido y la responsabilidad —tanto legal como reputacional— recae sobre la inmobiliaria
+            que no aplicó las medidas de seguridad adecuadas.
+          </p>
+
+          {/* ── CARDS PREVENCIÓN ── */}
+          <h2 style={h2Style}>Medidas de Prevención Esenciales</h2>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "16px", marginBottom: "36px" }}>
+            {[
+              {
+                icon: Phone,
+                color: "#2563eb",
+                bg: "#eff6ff",
+                title: "Verificación Telefónica Obligatoria",
+                text: "Nunca realices una transferencia basada solo en un email. Llama siempre al cliente o al agente para confirmar el IBAN antes de cualquier movimiento bancario.",
+              },
+              {
+                icon: FileText,
+                color: "#059669",
+                bg: "#ecfdf5",
+                title: "Firmas Digitales Encriptadas",
+                text: "Utiliza plataformas que certifiquen que el documento no ha sido alterado tras su envío. La firma cualificada garantiza la integridad del contenido.",
+              },
+              {
+                icon: Lock,
+                color: "#ea580c",
+                bg: "#fff7ed",
+                title: "MFA en el Correo Corporativo",
+                text: "El 90% de estos robos ocurren porque el email del agente no tenía doble factor de autenticación. Es la medida de mayor impacto y la más fácil de activar.",
+              },
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <div key={i} style={{
+                  padding: "24px", background: "white", border: "1px solid var(--border)",
+                  borderRadius: "8px", borderTop: `3px solid ${item.color}`,
+                }}>
+                  <div style={{
+                    width: "44px", height: "44px", background: item.bg, borderRadius: "10px",
+                    display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "14px",
+                  }}>
+                    <Icon size={22} color={item.color} strokeWidth={2} />
+                  </div>
+                  <div style={{
+                    fontFamily: "var(--font-display)", fontSize: "15px", fontWeight: 700,
+                    color: "var(--navy)", marginBottom: "8px",
+                  }}>
+                    {item.title}
+                  </div>
+                  <p style={{ ...pStyle, marginBottom: 0, fontSize: "13px", lineHeight: 1.65 }}>{item.text}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* AD: In-Article */}
+          <div style={{ margin: "36px 0", display: "flex", justifyContent: "center" }}>
+            <AdSlot position="in-content" />
+          </div>
+
+          {/* ── CHECKLIST ── */}
+          <h2 style={h2Style}>Checklist de Cumplimiento para Agencias Inmobiliarias</h2>
+          <p style={pStyle}>
+            Revisa punto por punto con tu equipo de IT o tu proveedor tecnológico:
+          </p>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "36px" }}>
+            {[
+              "Auditoría periódica de los accesos al CRM inmobiliario.",
+              "Cifrado de extremo a extremo en el envío de contratos de arras.",
+              "Formación del personal en detección de Phishing avanzado.",
+              "Cumplimiento estricto de la normativa AEPD en el manejo de datos de clientes.",
+              "Política de verificación de IBAN por doble canal (teléfono + email) antes de cualquier transferencia.",
+              "Contrato de encargo con el DPO (Delegado de Protección de Datos) actualizado.",
+            ].map((item, i) => (
+              <div key={i} style={{
+                display: "flex", gap: "12px", alignItems: "flex-start",
+                padding: "14px 18px", background: "#f0fdf4",
+                border: "1px solid #bbf7d0", borderRadius: "6px",
+              }}>
+                <CheckCircle size={18} color="#16a34a" style={{ flexShrink: 0, marginTop: "2px" }} />
+                <span style={{ fontSize: "14px", color: "#14532d", lineHeight: 1.65, fontFamily: "var(--font-body)" }}>
+                  {item}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* ── CTA ── */}
+          <div style={{
+            background: "linear-gradient(135deg, #1e3a5f 0%, #0f1d35 100%)",
+            borderRadius: "10px", padding: "36px 32px", marginBottom: "40px",
+            border: "1px solid rgba(37,99,235,0.2)",
+          }}>
+            <div style={{
+              fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "2px",
+              textTransform: "uppercase", color: "#60a5fa", marginBottom: "12px",
+            }}>
+              ¿Es tu agencia un objetivo fácil?
+            </div>
+            <h2 style={{
+              fontFamily: "var(--font-display)", fontSize: "22px", fontWeight: 800,
+              color: "white", lineHeight: 1.3, letterSpacing: "-0.3px", marginBottom: "16px",
+            }}>
+              Realizamos auditorías de seguridad específicas para oficinas inmobiliarias
+            </h2>
+            <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, fontFamily: "var(--font-body)", marginBottom: "24px" }}>
+              Asegura tus operaciones, protege a tus inversores y mantén la confianza de tus clientes.
+              Una sola operación fraudulenta puede suponer el fin de tu reputación en el sector.
+            </p>
+            <a
+              href="/contacto"
+              onClick={(e) => { e.preventDefault(); navigate("/contacto"); }}
+              style={{
+                display: "inline-flex", alignItems: "center", gap: "8px",
+                padding: "14px 28px", background: "var(--amber)", color: "var(--navy)",
+                textDecoration: "none", fontWeight: 700, fontSize: "14px", borderRadius: "6px",
+                fontFamily: "var(--font-body)", letterSpacing: "-0.2px",
+              }}
+            >
+              Solicitar auditoría gratuita <ArrowRight size={16} />
+            </a>
+          </div>
+
+          {/* Nota legal */}
+          <div style={{
+            padding: "16px 20px", background: "var(--bg-warm)", border: "1px solid var(--border)",
+            borderRadius: "6px", fontSize: "12px", color: "var(--text-muted)",
+            fontFamily: "var(--font-mono)", marginBottom: "32px",
+          }}>
+            Este contenido es informativo y no constituye asesoramiento legal. Consulta con un profesional cualificado para tu caso particular. Última revisión: 29 de marzo de 2026.
+          </div>
+
+          {/* AD: Inferior */}
+          <div style={{ margin: "0 0 24px" }}>
+            <AdSlot position="below-h1" />
+          </div>
+
+          <a
+            href="/sector-inmobiliario"
+            onClick={(e) => { e.preventDefault(); navigate("/sector-inmobiliario"); }}
+            style={{
+              display: "inline-flex", alignItems: "center", gap: "6px",
+              color: "var(--accent)", fontWeight: 600, fontSize: "14px",
+              textDecoration: "none", fontFamily: "var(--font-body)",
+            }}
+          >
+            ← Ver más guías del Sector Inmobiliario
+          </a>
+        </article>
+
+        {/* ── SIDEBAR ── */}
+        <aside className="sidebar-aside" style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <div style={{ position: "sticky", top: "100px", display: "flex", flexDirection: "column", gap: "24px" }}>
+            <AdSlot position="sidebar" />
+
+            <div style={{ border: "1px solid var(--border)", borderRadius: "6px", padding: "20px", background: "white" }}>
+              <h3 style={{
+                fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "1.5px",
+                textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "16px",
+              }}>
+                En este artículo
+              </h3>
+              {[
+                "El fraude del «cambio de cuenta»",
+                "Medidas de prevención esenciales",
+                "Checklist de cumplimiento",
+                "Auditoría para tu agencia",
+              ].map((item, i) => (
+                <div key={i} style={{
+                  display: "flex", gap: "8px", padding: "8px 0",
+                  borderBottom: "1px solid var(--border)", alignItems: "flex-start",
+                }}>
+                  <span style={{
+                    fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--amber)",
+                    fontWeight: 700, minWidth: "16px", marginTop: "1px",
+                  }}>
+                    {i + 1}.
+                  </span>
+                  <span style={{ fontSize: "12px", color: "var(--navy)", lineHeight: 1.5, fontFamily: "var(--font-body)" }}>
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <AdSlot position="sidebar-tall" />
+
+            <div style={{ border: "1px solid var(--border)", borderRadius: "6px", padding: "20px", background: "white" }}>
+              <h3 style={{
+                fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "1.5px",
+                textTransform: "uppercase", color: "var(--text-muted)", marginBottom: "16px",
+              }}>
+                Otros sectores
+              </h3>
+              {CATEGORIES.filter((c) => c.id !== "sector-inmobiliario").map((c) => {
+                const CIcon = c.icon;
+                return (
+                  <a key={c.id} href={`/${c.id}`} onClick={(e) => { e.preventDefault(); navigate(`/${c.id}`); }}
+                    style={{
+                      display: "flex", alignItems: "center", gap: "10px", padding: "10px 0",
+                      borderBottom: "1px solid var(--border)", textDecoration: "none",
+                    }}>
+                    <CIcon size={15} color={c.color} />
+                    <span style={{ fontSize: "13px", color: "var(--navy)", fontWeight: 500, fontFamily: "var(--font-body)" }}>
+                      {c.name}
+                    </span>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+  );
+}
+
+// ─── ARTICLE: CIBERSEGURIDAD LOGÍSTICA ───────────────
+function ArticleCiberseguridadLogistica() {
+  const { navigate } = useRouter();
+  const article = SAMPLE_ARTICLES.find((a) => a.slug === "sector-logistica/ciberseguridad-logistica-ransomware-flota");
+
+  const pStyle = { fontFamily: "var(--font-body)", fontSize: "16px", lineHeight: "1.85", color: "var(--text-secondary)", marginBottom: "20px" };
+  const h2Style = { fontFamily: "var(--font-display)", fontSize: "22px", fontWeight: 800, color: "var(--text-primary)", marginBottom: "16px", marginTop: "40px", paddingTop: "16px", borderTop: "1px solid var(--border)" };
+
+  return (
+    <main style={{ background: "var(--bg-page)", minHeight: "100vh" }}>
+      <SchemaMarkup type="article" data={article} />
+      <SchemaMarkup type="breadcrumb" data={{ items: [
+        { name: "Inicio", path: "/" },
+        { name: "Transporte y Logística", path: "/transporte-y-logistica" },
+        { name: "Ciberseguridad en Logística", path: "/sector-logistica/ciberseguridad-logistica-ransomware-flota" },
+      ]}} />
+
+      {/* HERO */}
+      <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #431407 100%)", padding: "64px 24px 56px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(ellipse at 70% 50%, rgba(234,88,12,0.15) 0%, transparent 60%)" }} />
+        <div style={{ maxWidth: "860px", margin: "0 auto", position: "relative" }}>
+          {/* Breadcrumb */}
+          <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "20px", flexWrap: "wrap" }}>
+            <span onClick={() => navigate("/")} style={{ fontSize: "13px", color: "rgba(255,255,255,0.55)", cursor: "pointer", fontFamily: "var(--font-mono)" }}>Inicio</span>
+            <ChevronRight size={12} color="rgba(255,255,255,0.35)" />
+            <span onClick={() => navigate("/transporte-y-logistica")} style={{ fontSize: "13px", color: "rgba(255,255,255,0.55)", cursor: "pointer", fontFamily: "var(--font-mono)" }}>Transporte y Logística</span>
+            <ChevronRight size={12} color="rgba(255,255,255,0.35)" />
+            <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.35)", fontFamily: "var(--font-mono)" }}>Ciberseguridad en Logística</span>
+          </div>
+
+          {/* Category badge */}
+          <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(234,88,12,0.2)", border: "1px solid rgba(234,88,12,0.4)", borderRadius: "20px", padding: "4px 14px", marginBottom: "20px" }}>
+            <Truck size={13} color="#fb923c" />
+            <span style={{ fontSize: "12px", color: "#fb923c", fontFamily: "var(--font-mono)", fontWeight: 600, letterSpacing: "0.5px" }}>TRANSPORTE Y LOGÍSTICA</span>
+          </div>
+
+          <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(26px,4.5vw,42px)", fontWeight: 800, color: "#ffffff", lineHeight: 1.15, marginBottom: "20px", letterSpacing: "-0.5px" }}>
+            Ciberseguridad en Logística:<br />
+            <span style={{ color: "#fb923c" }}>Blindando la Cadena de Suministro</span>
+          </h1>
+          <p style={{ fontSize: "18px", color: "rgba(255,255,255,0.72)", lineHeight: 1.65, marginBottom: "28px", maxWidth: "660px" }}>
+            En un mundo de entregas en 24h, un sistema bloqueado por Ransomware es una sentencia de muerte para tu rentabilidad.
+          </p>
+
+          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "4px" }}>
+              <User size={11} /> {article?.author}
+            </span>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "4px" }}>
+              <Clock size={11} /> {article?.readTime} de lectura
+            </span>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)" }}>
+              {article && new Date(article.date).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* CONTENT */}
+      <div style={{ maxWidth: "860px", margin: "0 auto", padding: "48px 24px 80px" }}>
+
+        {/* AD: Below H1 */}
+        <div style={{ margin: "0 0 36px" }}>
+          <AdSlot position="below-h1" />
+        </div>
+
+        {/* CIFRA DE IMPACTO */}
+        <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #1c1917 100%)", borderRadius: "12px", padding: "36px 40px", marginBottom: "40px", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", top: 0, right: 0, width: "200px", height: "200px", background: "radial-gradient(circle, rgba(234,88,12,0.2) 0%, transparent 70%)" }} />
+          <div style={{ display: "flex", alignItems: "flex-start", gap: "20px", position: "relative" }}>
+            <div style={{ background: "rgba(234,88,12,0.15)", border: "1px solid rgba(234,88,12,0.3)", borderRadius: "12px", padding: "14px", flexShrink: 0 }}>
+              <Truck size={32} color="#fb923c" />
+            </div>
+            <div>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "2px", color: "#fb923c", marginBottom: "10px", fontWeight: 700 }}>
+                Dato Clave 2026 — Coste de Inactividad
+              </div>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,6vw,56px)", fontWeight: 800, color: "#ffffff", lineHeight: 1, marginBottom: "12px" }}>
+                +5.000 €<span style={{ fontSize: "20px", color: "rgba(255,255,255,0.55)", fontWeight: 400 }}>/hora</span>
+              </div>
+              <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", lineHeight: 1.65, margin: 0 }}>
+                Coste medio de inactividad para una PYME logística española cuando un ransomware bloquea su software de gestión de rutas o seguimiento GPS.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* SECCIÓN 1 */}
+        <h2 style={h2Style}>El Ransomware: El Nuevo «Pirata» de la Carretera</h2>
+        <p style={pStyle}>
+          Hoy en día, los ciberdelincuentes no roban camiones en las áreas de servicio; <strong>roban el acceso a tus servidores</strong>. Si tu software de gestión de rutas o tu sistema de seguimiento GPS cae, tu flota se detiene. El coste medio de inactividad para una PYME logística en España ha superado ya los <strong>5.000 € por hora en 2026</strong>.
+        </p>
+        <p style={pStyle}>
+          A diferencia de otros sectores, en logística el impacto es inmediato y visible: pedidos sin entregar, contratos incumplidos y clientes que nunca vuelven. Los atacantes lo saben y apuntan específicamente a empresas de transporte porque el dolor económico de pararse es tan alto que muchas terminan pagando el rescate.
+        </p>
+
+        {/* AD: In-content */}
+        <div style={{ margin: "8px 0 32px" }}>
+          <AdSlot position="in-content" />
+        </div>
+
+        {/* SECCIÓN 2: VULNERABILIDADES */}
+        <h2 style={h2Style}>Vulnerabilidades en la Cadena de Suministro</h2>
+        <p style={pStyle}>
+          La cadena de suministro moderna es un ecosistema digital interconectado: sistemas ERP, plataformas de gestión de pedidos, dispositivos IoT en almacén y GPS en vehículos. Cada punto de conexión es una puerta potencial. Los tres vectores de ataque más frecuentes en el sector son:
+        </p>
+        <ul style={{ ...pStyle, paddingLeft: "24px", marginBottom: "36px" }}>
+          <li style={{ marginBottom: "12px" }}><strong>Dispositivos IoT sin actualizar:</strong> Sensores de temperatura, GPS y sistemas de telemetría suelen correr firmware desactualizado, sin cifrado y con contraseñas de fábrica.</li>
+          <li style={{ marginBottom: "12px" }}><strong>Correo electrónico de operaciones:</strong> Las órdenes de carga, albaranes y confirmaciones de entrega son el vector preferido para el phishing y la suplantación de proveedores.</li>
+          <li style={{ marginBottom: "12px" }}><strong>Accesos remotos de terceros:</strong> Talleres, transportistas subcontratados o clientes con acceso a tu TMS (Transportation Management System) pueden ser el eslabón débil.</li>
+        </ul>
+
+        {/* CARDS DE PROTECCIÓN */}
+        <h2 style={h2Style}>Soluciones de Protección Logística</h2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "16px", marginBottom: "36px" }}>
+          {[
+            {
+              icon: Truck,
+              color: "#ea580c",
+              bg: "#fff7ed",
+              title: "Seguridad en Dispositivos IoT",
+              text: "Cada sensor de temperatura y cada GPS en tus camiones es una puerta de entrada. Usa redes segmentadas (VLAN) para aislar estos dispositivos del resto de tu infraestructura.",
+            },
+            {
+              icon: Package,
+              color: "#2563eb",
+              bg: "#eff6ff",
+              title: "Cifrado de Albaranes Digitales",
+              text: "Evita la manipulación de destinos y facturas mediante firmas digitales seguras en cada envío. Un albarán alterado puede costarte una entrega completa y una demanda.",
+            },
+            {
+              icon: ShieldCheck,
+              color: "#059669",
+              bg: "#ecfdf5",
+              title: "Backups Offline (Fuera de Línea)",
+              text: "La única forma de no pagar un rescate es tener una copia de tus rutas y clientes fuera del alcance de la red principal. Regla 3-2-1: 3 copias, 2 soportes, 1 offline.",
+            },
+          ].map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <div key={i} style={{ padding: "24px", background: "white", border: "1px solid var(--border)", borderRadius: "8px", borderTop: `3px solid ${item.color}` }}>
+                <div style={{ width: "44px", height: "44px", background: item.bg, borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "14px" }}>
+                  <Icon size={22} color={item.color} strokeWidth={2} />
+                </div>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: "15px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "8px" }}>{item.title}</div>
+                <p style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.7", margin: 0 }}>{item.text}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* PLAN DE CONTINGENCIA */}
+        <h2 style={h2Style}>Plan de Contingencia 24h Tras un Ataque</h2>
+        <div style={{ border: "2px dashed #ea580c", borderRadius: "12px", padding: "28px 32px", marginBottom: "36px", background: "#fff7ed" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}>
+            <AlertTriangle size={20} color="#ea580c" />
+            <span style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 800, color: "#9a3412" }}>
+              Protocolo de Respuesta Inmediata
+            </span>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+            {[
+              { n: "01", text: "Aislamiento inmediato de los equipos infectados de la red.", sub: "Desconecta físicamente los equipos afectados. No los apagues — preservas evidencias." },
+              { n: "02", text: "Activación del protocolo de comunicación manual con conductores.", sub: "Usa teléfono y radio como canal alternativo. Ten preparadas las rutas del día en papel." },
+              { n: "03", text: "Notificación a la AEPD, clientes afectados y tu aseguradora.", sub: "Tienes 72 horas para notificar a la autoridad si hay datos personales comprometidos." },
+              { n: "04", text: "Restauración de sistemas críticos desde copias de seguridad verificadas.", sub: "Solo restaura desde backups que confirmes limpios y anteriores al ataque." },
+            ].map((step) => (
+              <div key={step.n} style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
+                <div style={{ width: "32px", height: "32px", background: "#ea580c", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <span style={{ fontFamily: "var(--font-mono)", fontSize: "12px", fontWeight: 700, color: "white" }}>{step.n}</span>
+                </div>
+                <div>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: "15px", fontWeight: 700, color: "#7c2d12", marginBottom: "4px" }}>{step.text}</div>
+                  <div style={{ fontSize: "13px", color: "#9a3412", lineHeight: "1.6" }}>{step.sub}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* AD: In-content 2 */}
+        <div style={{ margin: "8px 0 32px" }}>
+          <AdSlot position="in-content" />
+        </div>
+
+        {/* CTA FINAL */}
+        <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)", borderRadius: "12px", padding: "40px", textAlign: "center", marginBottom: "40px" }}>
+          <div style={{ width: "56px", height: "56px", background: "rgba(234,88,12,0.15)", border: "1px solid rgba(234,88,12,0.3)", borderRadius: "14px", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
+            <Truck size={28} color="#fb923c" />
+          </div>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "24px", fontWeight: 800, color: "#ffffff", marginBottom: "12px" }}>
+            ¿Tu flota está preparada para un ataque sorpresa?
+          </h2>
+          <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", lineHeight: "1.7", marginBottom: "28px", maxWidth: "520px", margin: "0 auto 28px" }}>
+            No esperes a que un camión se detenga. Analizamos las vulnerabilidades de tu cadena de suministro y creamos protocolos de respuesta rápida ante Ransomware.
+          </p>
+          <button
+            onClick={() => navigate("/contacto")}
+            style={{ background: "#ea580c", color: "white", border: "none", borderRadius: "8px", padding: "14px 32px", fontSize: "15px", fontWeight: 700, fontFamily: "var(--font-display)", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "8px" }}
+          >
+            Consultoría de Continuidad de Negocio
+            <ArrowRight size={18} />
+          </button>
+        </div>
+
+        {/* Back link */}
+        <div style={{ textAlign: "center" }}>
+          <button
+            onClick={() => navigate("/transporte-y-logistica")}
+            style={{ background: "none", border: "none", color: "var(--accent)", cursor: "pointer", fontSize: "14px", fontFamily: "var(--font-body)", display: "inline-flex", alignItems: "center", gap: "6px" }}
+          >
+            <ChevronRight size={14} style={{ transform: "rotate(180deg)" }} />
+            Ver todos los artículos de Transporte y Logística
+          </button>
+        </div>
+
+      </div>
+    </main>
+  );
+}
+
+// ─── ARTICLE: CIBERSEGURIDAD HOSTELERÍA ──────────────
+function ArticleCiberseguridadHosteleria() {
+  const { navigate } = useRouter();
+  const article = SAMPLE_ARTICLES.find((a) => a.slug === "hosteleria-y-turismo/ciberseguridad-hoteles-proteccion-huespedes");
+
+  const pStyle = { fontFamily: "var(--font-body)", fontSize: "16px", lineHeight: "1.85", color: "var(--text-secondary)", marginBottom: "20px" };
+  const h2Style = { fontFamily: "var(--font-display)", fontSize: "22px", fontWeight: 800, color: "var(--text-primary)", marginBottom: "16px", marginTop: "40px", paddingTop: "16px", borderTop: "1px solid var(--border)" };
+  const h3Style = { fontFamily: "var(--font-display)", fontSize: "17px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "10px", marginTop: "28px" };
+
+  return (
+    <main style={{ background: "var(--bg-page)", minHeight: "100vh" }}>
+      <SchemaMarkup type="article" data={article} />
+      <SchemaMarkup type="breadcrumb" data={{ items: [
+        { name: "Inicio", path: "/" },
+        { name: "Hostelería y Turismo", path: "/hosteleria-y-turismo" },
+        { name: "Ciberseguridad en Hostelería", path: "/hosteleria" },
+      ]}} />
+
+      {/* HERO */}
+      <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #164e63 60%, #0e7490 100%)", padding: "64px 24px 56px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(ellipse at 65% 40%, rgba(8,145,178,0.25) 0%, transparent 55%)" }} />
+        <div style={{ maxWidth: "860px", margin: "0 auto", position: "relative" }}>
+          <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "20px", flexWrap: "wrap" }}>
+            <span onClick={() => navigate("/")} style={{ fontSize: "13px", color: "rgba(255,255,255,0.55)", cursor: "pointer", fontFamily: "var(--font-mono)" }}>Inicio</span>
+            <ChevronRight size={12} color="rgba(255,255,255,0.35)" />
+            <span onClick={() => navigate("/hosteleria-y-turismo")} style={{ fontSize: "13px", color: "rgba(255,255,255,0.55)", cursor: "pointer", fontFamily: "var(--font-mono)" }}>Hostelería y Turismo</span>
+            <ChevronRight size={12} color="rgba(255,255,255,0.35)" />
+            <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.35)", fontFamily: "var(--font-mono)" }}>Ciberseguridad en Hostelería</span>
+          </div>
+
+          <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(8,145,178,0.2)", border: "1px solid rgba(8,145,178,0.45)", borderRadius: "20px", padding: "4px 14px", marginBottom: "20px" }}>
+            <Hotel size={13} color="#22d3ee" />
+            <span style={{ fontSize: "12px", color: "#22d3ee", fontFamily: "var(--font-mono)", fontWeight: 600, letterSpacing: "0.5px" }}>HOSTELERÍA Y TURISMO</span>
+          </div>
+
+          <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(26px,4.5vw,44px)", fontWeight: 800, color: "#ffffff", lineHeight: 1.15, marginBottom: "20px", letterSpacing: "-0.5px" }}>
+            Ciberseguridad en Hostelería:<br />
+            <span style={{ color: "#22d3ee" }}>Blindando la Confianza del Huésped</span>
+          </h1>
+          <p style={{ fontSize: "18px", color: "rgba(255,255,255,0.72)", lineHeight: 1.65, marginBottom: "28px", maxWidth: "680px" }}>
+            En 2026, la seguridad digital es la quinta estrella de cualquier establecimiento. Protege tus reservas y el prestigio de tu marca.
+          </p>
+
+          {/* Meta row */}
+          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "4px" }}>
+              <User size={11} /> {article?.author}
+            </span>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "4px" }}>
+              <Clock size={11} /> {article?.readTime} de lectura
+            </span>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)" }}>
+              {article && new Date(article.date).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* CONTENT */}
+      <div style={{ maxWidth: "860px", margin: "0 auto", padding: "48px 24px 80px" }}>
+
+        {/* AD: Below H1 */}
+        <div style={{ marginBottom: "36px" }}>
+          <AdSlot position="below-h1" />
+        </div>
+
+        {/* ── SECCIÓN 1: ESCENARIO ACTUAL ── */}
+        <h2 style={h2Style}>¿Por qué tu hotel está en el punto de mira?</h2>
+        <p style={pStyle}>
+          Un hotel no solo vende habitaciones; <strong>gestiona identidades y activos financieros</strong>. Con la digitalización total de los procesos de check-in y la integración de canales de venta globales (Booking, Expedia, Airbnb), las brechas de seguridad se han multiplicado exponencialmente. Un solo ataque de <strong>Phishing a un recepcionista</strong> puede comprometer la base de datos de miles de turistas internacionales, incluyendo sus documentos de identidad, tarjetas de crédito y preferencias de estancia.
+        </p>
+        <p style={pStyle}>
+          El sector HORECA es especialmente atractivo para los ciberdelincuentes por tres razones: maneja grandes volúmenes de datos financieros, opera con personal rotativo difícil de formar y depende de sistemas de terceros (PMS, channel managers, OTAs) que amplían la superficie de ataque.
+        </p>
+
+        {/* Stat strip */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px", marginBottom: "40px" }}>
+          {[
+            { value: "85%", label: "de incidentes por error humano" },
+            { value: "+340%", label: "aumento de estafas en OTAs desde 2023" },
+            { value: "72h", label: "plazo máximo de notificación AEPD" },
+          ].map((s, i) => (
+            <div key={i} style={{ background: "linear-gradient(135deg, #0f172a, #164e63)", borderRadius: "10px", padding: "20px 24px", textAlign: "center" }}>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: "28px", fontWeight: 800, color: "#22d3ee", marginBottom: "6px" }}>{s.value}</div>
+              <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.65)", lineHeight: 1.5 }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── SECCIÓN 2: AMENAZAS CRÍTICAS ── */}
+        <h2 style={h2Style}>Amenazas Críticas en 2026</h2>
+        <p style={pStyle}>Las tres grandes amenazas que afectan al sector en este momento son cualitativamente distintas y requieren respuestas específicas:</p>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "16px", marginBottom: "36px" }}>
+          {[
+            {
+              icon: ShieldAlert,
+              color: "#dc2626",
+              bg: "#fef2f2",
+              title: "Suplantación en Portales de Reserva",
+              text: "Ciberdelincuentes que hackean la extranet de Booking o Expedia para contactar directamente a los clientes con links fraudulentos solicitando pagos adicionales o «confirmación de tarjeta». El hotel paga la indemnización aunque no sea el culpable directo.",
+            },
+            {
+              icon: Lock,
+              color: "#7c3aed",
+              bg: "#f5f3ff",
+              title: "Ransomware en el PMS",
+              text: "Bloqueo del software de gestión de habitaciones (Property Management System) para exigir un rescate. Resultado: imposibilidad de hacer check-in o check-out, pérdida de reservas y colapso total de operaciones mientras dure el ataque.",
+            },
+            {
+              icon: Wifi,
+              color: "#ea580c",
+              bg: "#fff7ed",
+              title: "Ataques 'Evil Twin' en el WiFi",
+              text: "Creación de redes WiFi falsas con el nombre del hotel («Hotel_Wifi_Free») para interceptar los datos bancarios de los clientes mientras navegan desde su habitación. Un ataque invisible para el huésped y devastador para la reputación del establecimiento.",
+            },
+          ].map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <div key={i} style={{ padding: "24px", background: "white", border: "1px solid var(--border)", borderRadius: "8px", borderTop: `3px solid ${item.color}` }}>
+                <div style={{ width: "44px", height: "44px", background: item.bg, borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "14px" }}>
+                  <Icon size={22} color={item.color} strokeWidth={2} />
+                </div>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: "15px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "8px" }}>{item.title}</div>
+                <p style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.7", margin: 0 }}>{item.text}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* AD: In-content */}
+        <div style={{ marginBottom: "36px" }}>
+          <AdSlot position="in-content" />
+        </div>
+
+        {/* ── SECCIÓN 3: WIFI ── */}
+        <h2 style={h2Style}>La Guía Definitiva de Seguridad WiFi para Hoteles</h2>
+        <p style={pStyle}>
+          Es imperativo que la red que utilizan los huéspedes esté <strong>totalmente aislada (VLAN)</strong> de la red donde se gestionan los pagos y los datos de la empresa. Mezclar ambas redes es una infracción directa de las mejores prácticas de PCI-DSS y un riesgo inaceptable.
+        </p>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "36px" }}>
+          {[
+            {
+              icon: Wifi,
+              color: "#0891b2",
+              title: "Client Isolation",
+              text: "Activa el aislamiento entre clientes para que ningún dispositivo conectado a la red de huéspedes pueda comunicarse con otro. Evita que un dispositivo infectado propague malware por la red.",
+            },
+            {
+              icon: Lock,
+              color: "#059669",
+              title: "Rotación de Contraseñas",
+              text: "Renueva automáticamente las contraseñas de la red WiFi cada temporada o cada mes. Las contraseñas permanentes son una puerta abierta para atacantes que regresan.",
+            },
+            {
+              icon: Shield,
+              color: "#7c3aed",
+              title: "Portal Cautivo Seguro",
+              text: "Usa portales de acceso que requieran aceptar términos de privacidad actualizados. Además de ser un requisito legal (RGPD), registra y protege el acceso desde el primer momento.",
+            },
+            {
+              icon: ShieldCheck,
+              color: "#ea580c",
+              title: "Segmentación de VLANs",
+              text: "Red de huéspedes, red de administración y red de TPV deben ser tres redes completamente separadas. Una brecha en la WiFi de un huésped no debe poder afectar nunca al sistema de cobros.",
+            },
+          ].map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <div key={i} style={{ padding: "22px", background: "var(--bg-warm)", border: "1px solid var(--border)", borderRadius: "8px", display: "flex", gap: "16px", alignItems: "flex-start" }}>
+                <div style={{ width: "40px", height: "40px", background: "white", border: "1px solid var(--border)", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <Icon size={20} color={item.color} />
+                </div>
+                <div>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "6px" }}>{item.title}</div>
+                  <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: "1.65", margin: 0 }}>{item.text}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* ── SECCIÓN 4: PCI-DSS ── */}
+        <h2 style={h2Style}>Protocolo PCI-DSS: El Estándar de Seguridad para Tarjetas</h2>
+        <div style={{ background: "#fff7ed", border: "1px solid #fed7aa", borderLeft: "4px solid #ea580c", borderRadius: "0 8px 8px 0", padding: "20px 24px", marginBottom: "24px" }}>
+          <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+            <AlertTriangle size={20} color="#ea580c" style={{ flexShrink: 0, marginTop: "2px" }} />
+            <div>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "1px", color: "#ea580c", marginBottom: "6px", fontWeight: 700 }}>Obligatorio — No es opcional</div>
+              <p style={{ ...pStyle, marginBottom: 0, fontSize: "14px", color: "#7c2d12" }}>El incumplimiento de PCI-DSS puede suponer multas de entre <strong>5.000 y 100.000 €/mes</strong> y la retirada de la capacidad de procesar pagos con tarjeta. En un hotel, esto equivale al cierre efectivo del negocio.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "36px" }}>
+          {[
+            { icon: CreditCard, color: "#dc2626", title: "Nunca almacenes el CVV", text: "El código de verificación de la tarjeta no puede guardarse en ningún sistema, ni en papel ni en Excel. Es la regla más básica y más incumplida del sector." },
+            { icon: Lock, color: "#2563eb", title: "TPV encriptados y actualizados", text: "Usa terminales de pago certificados PCI. Actualiza el firmware regularmente y nunca conectes un TPV a la red de administración general." },
+            { icon: UserCheck, color: "#059669", title: "Acceso de mínimo privilegio", text: "Solo el personal estrictamente necesario debe tener acceso a los datos de tarjeta. Audita los permisos trimestralmente y revoca accesos al cambiar de empleado." },
+            { icon: Eye, color: "#7c3aed", title: "Monitorización continua", text: "Activa alertas en tiempo real para transacciones inusuales. Un cargo múltiple desde la misma habitación en minutos es una señal de alarma clara." },
+          ].map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <div key={i} style={{ padding: "22px", background: "white", border: "1px solid var(--border)", borderRadius: "8px", borderLeft: `3px solid ${item.color}` }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+                  <Icon size={18} color={item.color} />
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 700, color: "var(--text-primary)" }}>{item.title}</div>
+                </div>
+                <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: "1.65", margin: 0 }}>{item.text}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* AD: In-content */}
+        <div style={{ marginBottom: "36px" }}>
+          <AdSlot position="in-content" />
+        </div>
+
+        {/* ── SECCIÓN 5: FACTOR HUMANO ── */}
+        <h2 style={h2Style}>El Factor Humano: La Primera Línea de Defensa</h2>
+        <p style={pStyle}>
+          El <strong>85% de los incidentes de ciberseguridad en hostelería comienzan por un error humano</strong>. No se trata de negligencia: el personal de recepción gestiona cientos de interacciones diarias bajo presión, lo que lo convierte en el objetivo preferido de los atacantes mediante técnicas de ingeniería social.
+        </p>
+
+        <h3 style={h3Style}>Protocolo de Mesa Limpia</h3>
+        <p style={pStyle}>
+          Ninguna contraseña puede estar escrita en post-its visibles desde el mostrador de recepción. Parece obvio, pero sigue siendo la vulnerabilidad más frecuente detectada en auditorías de hoteles de hasta 4 estrellas. Establece una política formal por escrito y realiza revisiones periódicas.
+        </p>
+
+        <h3 style={h3Style}>Formación en Detección de Phishing</h3>
+        <p style={pStyle}>
+          Forma a tu equipo para identificar correos que simulan ser facturas de proveedores, quejas urgentes de clientes o comunicaciones de plataformas de reserva. Las señales más comunes: remitentes con dominios ligeramente alterados (<em>bookking.com</em> en lugar de <em>booking.com</em>), solicitudes de transferencias urgentes y archivos adjuntos inesperados.
+        </p>
+
+        {/* ── CHECKLIST ── */}
+        <h2 style={h2Style}>Checklist de Auditoría Anual para PYMEs Turísticas</h2>
+        <div style={{ background: "var(--bg-warm)", border: "1px solid var(--border)", borderRadius: "12px", padding: "28px 32px", marginBottom: "36px" }}>
+          {[
+            { ok: true,  text: "¿Tienes backups diarios fuera del servidor principal (regla 3-2-1)?" },
+            { ok: true,  text: "¿El WiFi de clientes tiene un firewall independiente y VLAN separada del sistema de cobros?" },
+            { ok: false, text: "¿Utilizas autenticación de dos factores (MFA) para acceder a Booking, Expedia y tu extranet?" },
+            { ok: false, text: "¿Has destruido de forma segura los registros físicos antiguos de huéspedes (trituradora certificada)?" },
+            { ok: true,  text: "¿Tu personal sabe qué hacer ante una caída total del sistema PMS?" },
+            { ok: false, text: "¿Tu contrato con el proveedor de PMS incluye cláusulas de responsabilidad en caso de brecha?" },
+            { ok: true,  text: "¿Tienes un registro de actividad (log) de todos los accesos al sistema de reservas?" },
+            { ok: false, text: "¿Has realizado un análisis de vulnerabilidades de tu red en los últimos 12 meses?" },
+            { ok: true,  text: "¿Tus TPV están actualizados y certificados PCI-DSS por tu proveedor bancario?" },
+            { ok: false, text: "¿Dispones de un protocolo escrito de respuesta ante incidentes visible para todo el equipo?" },
+          ].map((item, i) => (
+            <div key={i} style={{ display: "flex", gap: "12px", alignItems: "flex-start", padding: "10px 0", borderBottom: i < 9 ? "1px solid var(--border)" : "none" }}>
+              <div style={{ width: "22px", height: "22px", border: `2px solid ${item.ok ? "#059669" : "#d1d5db"}`, borderRadius: "4px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: "1px", background: item.ok ? "#ecfdf5" : "white" }}>
+                {item.ok && <CheckCircle size={14} color="#059669" />}
+              </div>
+              <span style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.65" }}>{item.text}</span>
+            </div>
+          ))}
+          <p style={{ fontSize: "13px", color: "var(--text-muted)", fontStyle: "italic", marginTop: "16px", marginBottom: 0 }}>
+            Los ítems sin marcar representan las carencias más habituales detectadas en auditorías del sector. ¿Cuántos tienes pendientes?
+          </p>
+        </div>
+
+        {/* CTA FINAL */}
+        <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #164e63 100%)", borderRadius: "12px", padding: "44px 40px", textAlign: "center", marginBottom: "40px" }}>
+          <div style={{ width: "60px", height: "60px", background: "rgba(8,145,178,0.15)", border: "1px solid rgba(8,145,178,0.35)", borderRadius: "14px", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
+            <Hotel size={30} color="#22d3ee" />
+          </div>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "26px", fontWeight: 800, color: "#ffffff", marginBottom: "14px" }}>
+            Haz de la seguridad tu mejor ventaja competitiva
+          </h2>
+          <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", lineHeight: "1.7", maxWidth: "540px", margin: "0 auto 28px" }}>
+            Un hotel seguro es un hotel que recibe mejores reseñas. Ofrecemos consultoría especializada para el sector HORECA. Asegura tu negocio hoy para dormir tranquilo mañana.
+          </p>
+          <button
+            onClick={() => navigate("/contacto")}
+            style={{ background: "#0891b2", color: "white", border: "none", borderRadius: "8px", padding: "14px 32px", fontSize: "15px", fontWeight: 700, fontFamily: "var(--font-display)", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "8px" }}
+          >
+            Consultoría para el Sector HORECA
+            <ArrowRight size={18} />
+          </button>
+        </div>
+
+        {/* Back link */}
+        <div style={{ textAlign: "center" }}>
+          <button
+            onClick={() => navigate("/hosteleria-y-turismo")}
+            style={{ background: "none", border: "none", color: "var(--accent)", cursor: "pointer", fontSize: "14px", fontFamily: "var(--font-body)", display: "inline-flex", alignItems: "center", gap: "6px" }}
+          >
+            <ChevronRight size={14} style={{ transform: "rotate(180deg)" }} />
+            Ver todos los artículos de Hostelería y Turismo
+          </button>
+        </div>
+
+      </div>
+    </main>
+  );
+}
+
+// ─── ARTICLE: CIBERSEGURIDAD EDUCACIÓN ───────────────
+function ArticleCiberseguridadEducacion() {
+  const { navigate } = useRouter();
+  const article = SAMPLE_ARTICLES.find((a) => a.slug === "educacion-digital/ciberseguridad-academias-colegios-elearning");
+
+  const pStyle = { fontFamily: "var(--font-body)", fontSize: "16px", lineHeight: "1.85", color: "var(--text-secondary)", marginBottom: "20px" };
+  const h2Style = { fontFamily: "var(--font-display)", fontSize: "22px", fontWeight: 800, color: "var(--text-primary)", marginBottom: "16px", marginTop: "40px", paddingTop: "16px", borderTop: "1px solid var(--border)" };
+  const h3Style = { fontFamily: "var(--font-display)", fontSize: "17px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "10px", marginTop: "28px" };
+
+  return (
+    <main style={{ background: "var(--bg-page)", minHeight: "100vh" }}>
+      <SchemaMarkup type="article" data={article} />
+      <SchemaMarkup type="breadcrumb" data={{ items: [
+        { name: "Inicio", path: "/" },
+        { name: "Educación Digital", path: "/educacion-digital" },
+        { name: "Ciberseguridad en Academias", path: "/educacion" },
+      ]}} />
+
+      {/* HERO */}
+      <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #1d4ed8 100%)", padding: "64px 24px 56px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(ellipse at 60% 30%, rgba(59,130,246,0.3) 0%, transparent 55%)" }} />
+        <div style={{ maxWidth: "860px", margin: "0 auto", position: "relative" }}>
+          {/* Breadcrumb */}
+          <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "20px", flexWrap: "wrap" }}>
+            <span onClick={() => navigate("/")} style={{ fontSize: "13px", color: "rgba(255,255,255,0.55)", cursor: "pointer", fontFamily: "var(--font-mono)" }}>Inicio</span>
+            <ChevronRight size={12} color="rgba(255,255,255,0.35)" />
+            <span onClick={() => navigate("/educacion-digital")} style={{ fontSize: "13px", color: "rgba(255,255,255,0.55)", cursor: "pointer", fontFamily: "var(--font-mono)" }}>Educación Digital</span>
+            <ChevronRight size={12} color="rgba(255,255,255,0.35)" />
+            <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.35)", fontFamily: "var(--font-mono)" }}>Ciberseguridad en Academias</span>
+          </div>
+
+          {/* Category badge */}
+          <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(59,130,246,0.2)", border: "1px solid rgba(59,130,246,0.45)", borderRadius: "20px", padding: "4px 14px", marginBottom: "20px" }}>
+            <GraduationCap size={13} color="#93c5fd" />
+            <span style={{ fontSize: "12px", color: "#93c5fd", fontFamily: "var(--font-mono)", fontWeight: 600, letterSpacing: "0.5px" }}>EDUCACIÓN DIGITAL</span>
+          </div>
+
+          <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(26px,4.5vw,44px)", fontWeight: 800, color: "#ffffff", lineHeight: 1.15, marginBottom: "20px", letterSpacing: "-0.5px" }}>
+            Ciberseguridad en la Era del E-learning:<br />
+            <span style={{ color: "#93c5fd" }}>Protegiendo el Conocimiento</span>
+          </h1>
+          <p style={{ fontSize: "18px", color: "rgba(255,255,255,0.72)", lineHeight: 1.65, marginBottom: "28px", maxWidth: "680px" }}>
+            En 2026, una brecha de datos en tu academia no solo expone nombres, sino el futuro y la privacidad de tus alumnos.
+          </p>
+
+          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "4px" }}>
+              <User size={11} /> {article?.author}
+            </span>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "4px" }}>
+              <Clock size={11} /> {article?.readTime} de lectura
+            </span>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)" }}>
+              {article && new Date(article.date).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* CONTENT */}
+      <div style={{ maxWidth: "860px", margin: "0 auto", padding: "48px 24px 80px" }}>
+
+        {/* AD: Below H1 */}
+        <div style={{ marginBottom: "36px" }}>
+          <AdSlot position="below-h1" />
+        </div>
+
+        {/* ── SECCIÓN 1: ESCENARIO ── */}
+        <h2 style={h2Style}>¿Por qué las academias online están bajo ataque?</h2>
+        <p style={pStyle}>
+          Las instituciones educativas manejan una combinación explosiva para un ciberdelincuente: <strong>datos personales sensibles</strong> (incluyendo datos de menores), información de pago recurrente y una infraestructura técnica a menudo desactualizada. Un ataque de <strong>Ransomware a una academia online</strong> puede paralizar el aprendizaje de miles de alumnos y destruir años de material lectivo en segundos.
+        </p>
+        <p style={pStyle}>
+          El sector educativo registró en 2025 un incremento del <strong>+238% en ataques dirigidos a plataformas LMS</strong>, convirtiéndose en el tercer sector más atacado a nivel global, por detrás de la sanidad y las finanzas. La razón es sencilla: los sistemas educativos digitales suelen estar gestionados por equipos pequeños, sin departamento de IT dedicado y con presupuestos de seguridad mínimos.
+        </p>
+
+        {/* Stat strip */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: "12px", marginBottom: "40px" }}>
+          {[
+            { value: "+238%", label: "aumento de ataques a LMS en 2025" },
+            { value: "3er", label: "sector más atacado a nivel global" },
+            { value: "14 años", label: "edad mínima para consentimiento LOPD sin tutor" },
+          ].map((s, i) => (
+            <div key={i} style={{ background: "linear-gradient(135deg, #0f172a, #1e3a8a)", borderRadius: "10px", padding: "20px 22px", textAlign: "center" }}>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: "26px", fontWeight: 800, color: "#93c5fd", marginBottom: "6px" }}>{s.value}</div>
+              <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.65)", lineHeight: 1.5 }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── SECCIÓN 2: 4 COLUMNAS ── */}
+        <h2 style={h2Style}>Las 4 Columnas de la Academia Segura</h2>
+        <p style={pStyle}>Una academia digital robusta se apoya en cuatro pilares que deben trabajar de forma coordinada:</p>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(195px, 1fr))", gap: "16px", marginBottom: "36px" }}>
+          {[
+            {
+              icon: Shield,
+              color: "#2563eb",
+              bg: "#eff6ff",
+              n: "01",
+              title: "Integridad del LMS",
+              text: "Moodle, Canvas o plataforma propia: actualiza plugins y base de datos. Los plugins obsoletos son el vector de ataque #1 en plataformas educativas.",
+            },
+            {
+              icon: Users,
+              color: "#7c3aed",
+              bg: "#f5f3ff",
+              n: "02",
+              title: "Privacidad de Menores",
+              text: "El consentimiento para grabaciones y almacenamiento de fotos de alumnos menores debe estar digitalmente certificado por sus tutores legales.",
+            },
+            {
+              icon: Video,
+              color: "#0891b2",
+              bg: "#ecfeff",
+              n: "03",
+              title: "Seguridad en Videoconferencias",
+              text: "Salas de espera activadas, acceso bloqueado tras inicio de clase y cifrado extremo a extremo. El Zoombombing sigue siendo una amenaza real.",
+            },
+            {
+              icon: FileLock,
+              color: "#059669",
+              bg: "#ecfdf5",
+              n: "04",
+              title: "Protección de Contenido",
+              text: "Tus cursos son tu activo más valioso. Marcas de agua dinámicas y sistemas de acceso único frenan la piratería y el acceso compartido de cuentas.",
+            },
+          ].map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <div key={i} style={{ padding: "24px", background: "white", border: "1px solid var(--border)", borderRadius: "8px", borderTop: `3px solid ${item.color}`, position: "relative" }}>
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: item.color, fontWeight: 700, marginBottom: "12px", letterSpacing: "1px" }}>{item.n}</div>
+                <div style={{ width: "42px", height: "42px", background: item.bg, borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "14px" }}>
+                  <Icon size={21} color={item.color} strokeWidth={2} />
+                </div>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: "15px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "8px" }}>{item.title}</div>
+                <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: "1.7", margin: 0 }}>{item.text}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* AD: In-content */}
+        <div style={{ marginBottom: "36px" }}>
+          <AdSlot position="in-content" />
+        </div>
+
+        {/* ── SECCIÓN 3: VIDEOCONFERENCIAS ── */}
+        <h2 style={h2Style}>Guía de Clases por Videoconferencia: Cómo Evitar el Zoombombing</h2>
+        <div style={{ background: "linear-gradient(135deg, #eff6ff, #dbeafe)", border: "1px solid #bfdbfe", borderRadius: "12px", padding: "28px 32px", marginBottom: "36px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}>
+            <Video size={22} color="#2563eb" />
+            <span style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 800, color: "#1e3a8a" }}>Protocolo de Clase Segura</span>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+            {[
+              { step: "Sala de Espera", desc: "Activa siempre la sala de espera en Zoom, Teams o Google Meet. Valida manualmente quién entra antes de iniciar la clase." },
+              { step: "Bloqueo post-inicio", desc: "Una vez que todos los alumnos han entrado, bloquea la sala. Nadie más puede acceder aunque tenga el enlace." },
+              { step: "No compartas el enlace públicamente", desc: "Envía el link solo por canales internos (LMS, email corporativo). Nunca lo publiques en redes sociales ni grupos abiertos." },
+              { step: "Cifrado extremo a extremo", desc: "Usa plataformas que garanticen E2E encryption para las clases. Google Meet, Zoom Pro y Teams cumplen este requisito cuando se configura correctamente." },
+              { step: "Gestión de grabaciones", desc: "Las grabaciones deben almacenarse en ubicación segura, con acceso restringido y borradas automáticamente al finalizar el curso." },
+            ].map((item, i) => (
+              <div key={i} style={{ display: "flex", gap: "14px", alignItems: "flex-start" }}>
+                <CheckCircle size={18} color="#2563eb" style={{ flexShrink: 0, marginTop: "2px" }} />
+                <div>
+                  <span style={{ fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 700, color: "#1e3a8a" }}>{item.step}: </span>
+                  <span style={{ fontSize: "14px", color: "#374151", lineHeight: "1.65" }}>{item.desc}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── SECCIÓN 4: LMS ── */}
+        <h2 style={h2Style}>Seguridad en el LMS: De Moodle a las Plataformas Personalizadas</h2>
+        <p style={pStyle}>
+          Independientemente de si usas Moodle, Canvas, Teachable, o una plataforma desarrollada a medida, los vectores de ataque son los mismos. La diferencia está en cómo los gestionas.
+        </p>
+
+        <h3 style={h3Style}>Control de Acceso y Permisos</h3>
+        <p style={pStyle}>
+          <strong>Segmenta los permisos de forma estricta</strong>: un profesor no debe tener acceso a la base de datos de pagos, y un alumno solo debe ver su propio progreso. El principio de mínimo privilegio no es burocracia, es la diferencia entre una brecha contenida y una catástrofe de datos.
+        </p>
+
+        <h3 style={h3Style}>Integridad de Exámenes y Anti-fraude</h3>
+        <p style={pStyle}>
+          El fraude académico digital ha evolucionado significativamente. Para mantener el prestigio de tu certificación, implementa <strong>autenticación 2FA para el acceso a evaluaciones críticas</strong>. Considera herramientas de proctoring que detecten comportamientos sospechosos durante los exámenes online sin invadir la privacidad del alumno más allá de lo necesario.
+        </p>
+
+        <h3 style={h3Style}>Plan ante Caída del Sistema</h3>
+        <div style={{ background: "#fff7ed", border: "1px solid #fed7aa", borderLeft: "4px solid #ea580c", borderRadius: "0 8px 8px 0", padding: "20px 24px", marginBottom: "20px" }}>
+          <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+            <AlertTriangle size={20} color="#ea580c" style={{ flexShrink: 0, marginTop: "2px" }} />
+            <div>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "1px", color: "#ea580c", marginBottom: "6px", fontWeight: 700 }}>Continuidad del Servicio</div>
+              <p style={{ ...pStyle, marginBottom: "8px", fontSize: "14px", color: "#7c2d12" }}>
+                <strong>Backups incrementales cada hora:</strong> Para que ningún alumno pierda su progreso en un curso, especialmente cerca de las fechas de examen.
+              </p>
+              <p style={{ ...pStyle, marginBottom: 0, fontSize: "14px", color: "#7c2d12" }}>
+                <strong>Servidores espejo (Mirroring):</strong> Para que la academia siga online mientras reparas el servidor principal. El tiempo de inactividad percibido por el alumno es cero.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* AD: In-content */}
+        <div style={{ marginBottom: "36px" }}>
+          <AdSlot position="in-content" />
+        </div>
+
+        {/* ── CHECKLIST LOPD ── */}
+        <h2 style={h2Style}>Checklist de Privacidad LOPD/RGPD para el Sector Educativo</h2>
+        <p style={pStyle}>
+          El sector educativo tiene obligaciones específicas bajo la LOPDGDD, especialmente cuando se tratan datos de menores. Esta lista cubre los puntos críticos que más frecuentemente faltan en las auditorías:
+        </p>
+        <div style={{ background: "var(--bg-warm)", border: "1px solid var(--border)", borderRadius: "12px", padding: "28px 32px", marginBottom: "36px" }}>
+          {[
+            { ok: true,  text: "¿Están todos los plugins de tu LMS (Moodle/WordPress) actualizados a su última versión estable?" },
+            { ok: false, text: "¿Las grabaciones de las clases se borran automáticamente tras la finalización del curso?" },
+            { ok: true,  text: "¿Usas una pasarela de pago externa certificada para no almacenar datos bancarios en tu servidor?" },
+            { ok: false, text: "¿Tienes un aviso legal específico y adaptado para menores de 14 años con consentimiento de tutor?" },
+            { ok: false, text: "¿Has formado a tus profesores en la detección de correos de Phishing dirigidos al sector educativo?" },
+            { ok: true,  text: "¿Los contratos con proveedores de cloud (AWS, Google, Microsoft) incluyen cláusulas de tratamiento de datos RGPD?" },
+            { ok: false, text: "¿Dispones de un Registro de Actividades de Tratamiento (RAT) actualizado conforme al Artículo 30 RGPD?" },
+            { ok: true,  text: "¿El acceso al LMS requiere autenticación de doble factor (2FA) para administradores y profesores?" },
+          ].map((item, i) => (
+            <div key={i} style={{ display: "flex", gap: "12px", alignItems: "flex-start", padding: "10px 0", borderBottom: i < 7 ? "1px solid var(--border)" : "none" }}>
+              <div style={{ width: "22px", height: "22px", border: `2px solid ${item.ok ? "#059669" : "#d1d5db"}`, borderRadius: "4px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: "1px", background: item.ok ? "#ecfdf5" : "white" }}>
+                {item.ok && <CheckCircle size={14} color="#059669" />}
+              </div>
+              <span style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.65" }}>{item.text}</span>
+            </div>
+          ))}
+          <p style={{ fontSize: "13px", color: "var(--text-muted)", fontStyle: "italic", marginTop: "16px", marginBottom: 0 }}>
+            Cada ítem sin marcar es una vulnerabilidad legal o técnica activa. ¿Cuántos tienes pendientes en tu academia?
+          </p>
+        </div>
+
+        {/* CTA FINAL */}
+        <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)", borderRadius: "12px", padding: "44px 40px", textAlign: "center", marginBottom: "40px" }}>
+          <div style={{ width: "60px", height: "60px", background: "rgba(59,130,246,0.15)", border: "1px solid rgba(59,130,246,0.35)", borderRadius: "14px", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
+            <GraduationCap size={30} color="#93c5fd" />
+          </div>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "26px", fontWeight: 800, color: "#ffffff", marginBottom: "14px" }}>
+            Convierte la seguridad en un valor añadido para tus alumnos
+          </h2>
+          <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", lineHeight: "1.7", maxWidth: "540px", margin: "0 auto 28px" }}>
+            Una academia segura es una academia con prestigio. Te ayudamos a cumplir con la normativa y a blindar tu plataforma contra ataques externos. Haz que el aprendizaje sea tu única preocupación.
+          </p>
+          <button
+            onClick={() => navigate("/contacto")}
+            style={{ background: "#2563eb", color: "white", border: "none", borderRadius: "8px", padding: "14px 32px", fontSize: "15px", fontWeight: 700, fontFamily: "var(--font-display)", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "8px" }}
+          >
+            Auditoría para Centros Educativos
+            <ArrowRight size={18} />
+          </button>
+        </div>
+
+        {/* Back link */}
+        <div style={{ textAlign: "center" }}>
+          <button
+            onClick={() => navigate("/educacion-digital")}
+            style={{ background: "none", border: "none", color: "var(--accent)", cursor: "pointer", fontSize: "14px", fontFamily: "var(--font-body)", display: "inline-flex", alignItems: "center", gap: "6px" }}
+          >
+            <ChevronRight size={14} style={{ transform: "rotate(180deg)" }} />
+            Ver todos los artículos de Educación Digital
+          </button>
+        </div>
+
+      </div>
+    </main>
+  );
+}
+
+// ─── ARTICLE: AUDITORÍA SEGURIDAD CLÍNICAS ───────────
+function ArticleAuditoriaSaludClinicas() {
+  const { navigate } = useRouter();
+  const article = SAMPLE_ARTICLES.find((a) => a.slug === "salud-y-clinicas/auditoria-seguridad-clinicas-ens-historial-clinico");
+
+  const pStyle = { fontFamily: "var(--font-body)", fontSize: "16px", lineHeight: "1.85", color: "var(--text-secondary)", marginBottom: "20px" };
+  const h2Style = { fontFamily: "var(--font-display)", fontSize: "22px", fontWeight: 800, color: "var(--text-primary)", marginBottom: "16px", marginTop: "40px", paddingTop: "16px", borderTop: "1px solid var(--border)" };
+  const h3Style = { fontFamily: "var(--font-display)", fontSize: "17px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "10px", marginTop: "28px" };
+
+  return (
+    <main style={{ background: "#f8fafc", minHeight: "100vh" }}>
+      <SchemaMarkup type="article" data={article} />
+      <SchemaMarkup type="breadcrumb" data={{ items: [
+        { name: "Inicio", path: "/" },
+        { name: "Salud y Clínicas", path: "/salud-y-clinicas" },
+        { name: "Auditoría de Seguridad en Clínicas", path: "/auditoria-salud" },
+      ]}} />
+
+      {/* HERO — estilo limpio, casi clínico */}
+      <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #0c4a6e 60%, #0369a1 100%)", padding: "64px 24px 56px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(ellipse at 70% 40%, rgba(14,165,233,0.2) 0%, transparent 55%)" }} />
+        <div style={{ maxWidth: "860px", margin: "0 auto", position: "relative" }}>
+          {/* Breadcrumb */}
+          <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "20px", flexWrap: "wrap" }}>
+            <span onClick={() => navigate("/")} style={{ fontSize: "13px", color: "rgba(255,255,255,0.55)", cursor: "pointer", fontFamily: "var(--font-mono)" }}>Inicio</span>
+            <ChevronRight size={12} color="rgba(255,255,255,0.35)" />
+            <span onClick={() => navigate("/salud-y-clinicas")} style={{ fontSize: "13px", color: "rgba(255,255,255,0.55)", cursor: "pointer", fontFamily: "var(--font-mono)" }}>Salud y Clínicas</span>
+            <ChevronRight size={12} color="rgba(255,255,255,0.35)" />
+            <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.35)", fontFamily: "var(--font-mono)" }}>Auditoría de Seguridad</span>
+          </div>
+
+          {/* Badge */}
+          <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(14,165,233,0.2)", border: "1px solid rgba(14,165,233,0.4)", borderRadius: "20px", padding: "4px 14px", marginBottom: "20px" }}>
+            <Stethoscope size={13} color="#7dd3fc" />
+            <span style={{ fontSize: "12px", color: "#7dd3fc", fontFamily: "var(--font-mono)", fontWeight: 600, letterSpacing: "0.5px" }}>SALUD Y CLÍNICAS</span>
+          </div>
+
+          <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(26px,4.5vw,44px)", fontWeight: 800, color: "#ffffff", lineHeight: 1.15, marginBottom: "20px", letterSpacing: "-0.5px" }}>
+            La Auditoría de Ciberseguridad<br />en Centros de Salud:<br />
+            <span style={{ color: "#7dd3fc" }}>Más allá del Antivirus</span>
+          </h1>
+          <p style={{ fontSize: "18px", color: "rgba(255,255,255,0.72)", lineHeight: 1.65, marginBottom: "28px", maxWidth: "680px" }}>
+            En 2026, la historia clínica electrónica es el activo más valioso y vulnerable de tu consulta.
+          </p>
+
+          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "4px" }}>
+              <User size={11} /> {article?.author}
+            </span>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "4px" }}>
+              <Clock size={11} /> {article?.readTime} de lectura
+            </span>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)" }}>
+              {article && new Date(article.date).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* CONTENT */}
+      <div style={{ maxWidth: "860px", margin: "0 auto", padding: "48px 24px 80px" }}>
+
+        {/* AD: Below H1 */}
+        <div style={{ marginBottom: "36px" }}>
+          <AdSlot position="below-h1" />
+        </div>
+
+        {/* ── SECCIÓN 1: EL PESO DE LA LEY ── */}
+        <h2 style={h2Style}>La Protección de Datos de Salud: Categoría Especial</h2>
+        <p style={pStyle}>
+          Los datos de salud están catalogados como <strong>«Categoría Especial»</strong> por el RGPD (Art. 9), lo que implica el nivel más alto de obligaciones de protección. Una simple pérdida de una tablet con acceso al software de gestión puede acarrear <strong>sanciones de hasta el 4% de la facturación anual</strong> de la clínica, con un máximo de 20 millones de euros.
+        </p>
+        <p style={pStyle}>
+          No es solo software; es la custodia de la intimidad del paciente. En 2026, la AEPD ha reforzado sus campañas de inspección proactiva al sector sanitario, enfocándose especialmente en clínicas dentales, centros de estética médica y consultas de fisioterapia, que habitualmente presentan las mayores brechas de cumplimiento.
+        </p>
+
+        {/* Multas strip */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px", marginBottom: "40px" }}>
+          {[
+            { value: "4%", label: "de facturación anual — multa máxima RGPD" },
+            { value: "20M€", label: "tope absoluto por infracción grave" },
+            { value: "72h", label: "plazo de notificación a la AEPD tras brecha" },
+          ].map((s, i) => (
+            <div key={i} style={{ background: "white", border: "1px solid #e0f2fe", borderTop: "3px solid #0284c7", borderRadius: "8px", padding: "20px 22px", textAlign: "center", boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: "28px", fontWeight: 800, color: "#0284c7", marginBottom: "6px" }}>{s.value}</div>
+              <div style={{ fontSize: "12px", color: "var(--text-muted)", lineHeight: 1.5 }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── SECCIÓN 2: PUNTOS CRÍTICOS AUDITORÍA ── */}
+        <h2 style={h2Style}>Puntos Críticos de la Auditoría de Seguridad</h2>
+        <p style={pStyle}>Una auditoría técnica de ciberseguridad en un centro médico evalúa al menos estos tres vectores críticos:</p>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "36px" }}>
+          {[
+            {
+              icon: Eye,
+              color: "#0284c7",
+              bg: "#e0f2fe",
+              title: "Control de Accesos y Registro de Logs",
+              text: "¿Quién entra en qué ficha? Implementa el registro de logs que documente quién, cuándo y desde dónde se consultó un historial clínico. Sin esto, es imposible detectar accesos indebidos o exfiltración de datos por personal interno.",
+            },
+            {
+              icon: Lock,
+              color: "#7c3aed",
+              bg: "#f5f3ff",
+              title: "Cifrado en Reposo (At-Rest Encryption)",
+              text: "Los datos en tu servidor deben ser ilegibles si alguien roba el disco duro físico. El cifrado AES-256 garantiza que aunque el hardware sea sustraído, los historiales clínicos sean inutilizables sin la clave de descifrado.",
+            },
+            {
+              icon: Mail,
+              color: "#dc2626",
+              bg: "#fef2f2",
+              title: "La Trampa del Correo Electrónico",
+              text: "Enviar informes de laboratorio o diagnósticos por email convencional (Gmail, Outlook estándar) es una infracción directa del RGPD. Usa plataformas de mensajería cifrada certificadas o portales de paciente con autenticación.",
+            },
+          ].map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <div key={i} style={{ display: "flex", gap: "20px", padding: "24px", background: "white", border: "1px solid var(--border)", borderRadius: "8px", borderLeft: `4px solid ${item.color}`, alignItems: "flex-start" }}>
+                <div style={{ width: "46px", height: "46px", background: item.bg, borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <Icon size={22} color={item.color} strokeWidth={2} />
+                </div>
+                <div>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "8px" }}>{item.title}</div>
+                  <p style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.7", margin: 0 }}>{item.text}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* ── ENS BLOCK ── */}
+        <div style={{ background: "linear-gradient(135deg, #eff6ff, #dbeafe)", border: "1px solid #bfdbfe", borderRadius: "12px", padding: "28px 32px", marginBottom: "36px" }}>
+          <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+            <div style={{ width: "48px", height: "48px", background: "#2563eb", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <Shield size={24} color="white" />
+            </div>
+            <div>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "1.5px", color: "#2563eb", marginBottom: "8px", fontWeight: 700 }}>Marco Legal — ENS</div>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: "18px", fontWeight: 800, color: "#1e3a8a", marginBottom: "10px" }}>El Esquema Nacional de Seguridad (ENS)</div>
+              <p style={{ fontSize: "14px", color: "#1e40af", lineHeight: "1.7", marginBottom: "10px" }}>
+                El ENS es de <strong>aplicación obligatoria para centros sanitarios que intercambien datos con la Administración Pública</strong> (Seguridad Social, mutuas, informes para juzgados). Desde 2022, las clínicas privadas con receta electrónica o acceso a la historia clínica compartida del SNS deben tener <strong>certificación ENS de nivel medio</strong> como mínimo.
+              </p>
+              <p style={{ fontSize: "14px", color: "#1e40af", lineHeight: "1.7", margin: 0 }}>
+                Esto implica controles específicos de gestión de incidentes, continuidad del negocio y una política de seguridad documentada y revisada anualmente.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* AD: In-content */}
+        <div style={{ marginBottom: "36px" }}>
+          <AdSlot position="in-content" />
+        </div>
+
+        {/* ── SECCIÓN 3: LOCAL VS CLOUD ── */}
+        <h2 style={h2Style}>Local vs. Cloud Encriptado: La Gran Decisión de 2026</h2>
+        <p style={pStyle}>
+          El debate ya está resuelto en la mayoría de sectores, pero en sanidad las reticencias al cloud persisten. Estos son los datos objetivos:
+        </p>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0", marginBottom: "36px", border: "1px solid var(--border)", borderRadius: "12px", overflow: "hidden" }}>
+          {/* Header */}
+          <div style={{ background: "#f1f5f9", padding: "14px 20px", borderBottom: "1px solid var(--border)", borderRight: "1px solid var(--border)" }}>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 800, color: "var(--text-primary)", display: "flex", alignItems: "center", gap: "8px" }}>
+              <Activity size={16} color="#64748b" /> Servidor Local
+            </div>
+          </div>
+          <div style={{ background: "#eff6ff", padding: "14px 20px", borderBottom: "1px solid var(--border)" }}>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 800, color: "#1e40af", display: "flex", alignItems: "center", gap: "8px" }}>
+              <Shield size={16} color="#2563eb" /> Cloud Certificado
+            </div>
+          </div>
+          {/* Rows */}
+          {[
+            ["Control total del hardware", "Alta disponibilidad 99.99% SLA"],
+            ["Riesgo por incendio o robo físico", "Parches de seguridad automáticos"],
+            ["Depende del mantenimiento local", "Cifrado de grado militar AES-256"],
+            ["Sin redundancia geográfica", "Redundancia multi-región automática"],
+            ["Coste elevado de hardware inicial", "Coste predecible mensual (OpEx)"],
+            ["85% de clínicas ya ha migrado al cloud en 2026", "✓ Recomendado por la AEPD y el CCN-CERT"],
+          ].map((row, i) => (
+            <>
+              <div key={`a${i}`} style={{ padding: "12px 20px", background: i % 2 === 0 ? "white" : "#f8fafc", borderBottom: i < 5 ? "1px solid var(--border)" : "none", borderRight: "1px solid var(--border)", fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.5", display: "flex", alignItems: "center", gap: "8px" }}>
+                {i === 0 ? <CheckCircle size={14} color="#059669" /> : <AlertTriangle size={14} color="#f59e0b" />}
+                {row[0]}
+              </div>
+              <div key={`b${i}`} style={{ padding: "12px 20px", background: i % 2 === 0 ? "#fafbff" : "#f0f6ff", borderBottom: i < 5 ? "1px solid var(--border)" : "none", fontSize: "14px", color: "#1e40af", lineHeight: "1.5", display: "flex", alignItems: "center", gap: "8px" }}>
+                <CheckCircle size={14} color="#2563eb" />
+                {row[1]}
+              </div>
+            </>
+          ))}
+        </div>
+
+        {/* ── SECCIÓN 4: BORRADO SEGURO ── */}
+        <h2 style={h2Style}>El Protocolo de Borrado Seguro de Datos Médicos</h2>
+        <p style={pStyle}>
+          Cuando un paciente ejerce su <strong>Derecho al Olvido</strong> (Art. 17 RGPD) o la clínica cierra sus puertas, no basta con pulsar «Eliminar». Borrar un archivo en Windows solo elimina su referencia en el índice del sistema de archivos; los datos siguen físicamente en el disco y son recuperables con software forense básico.
+        </p>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "36px" }}>
+          {[
+            {
+              n: "01", icon: FileText, color: "#0284c7",
+              title: "Sobrescritura certificada",
+              text: "Usa software certificado (Eraser, DBAN o equivalente) que sobreescriba el espacio del disco con patrones aleatorios múltiples veces. El estándar DoD 5220.22-M requiere 7 pasadas.",
+            },
+            {
+              n: "02", icon: Trash2, color: "#dc2626",
+              title: "Destrucción física de soportes magnéticos",
+              text: "Para discos duros HDD o cintas de backup antiguas, la destrucción física (desmagnetización o trituración certificada) es el único método que garantiza la irreversibilidad.",
+            },
+            {
+              n: "03", icon: CheckCircle, color: "#059669",
+              title: "Acta de destrucción documentada",
+              text: "Genera y conserva un acta de destrucción de datos que puedas presentar ante la AEPD en caso de inspección. Incluye: fecha, tipo de soporte, método empleado y persona responsable.",
+            },
+          ].map((item) => {
+            const Icon = item.icon;
+            return (
+              <div key={item.n} style={{ display: "flex", gap: "16px", padding: "20px 24px", background: "white", border: "1px solid var(--border)", borderRadius: "8px", alignItems: "flex-start" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "6px", flexShrink: 0 }}>
+                  <div style={{ width: "32px", height: "32px", background: item.color, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", fontWeight: 700, color: "white" }}>{item.n}</span>
+                  </div>
+                  <Icon size={16} color={item.color} />
+                </div>
+                <div>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: "15px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "6px" }}>{item.title}</div>
+                  <p style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.7", margin: 0 }}>{item.text}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* AD: In-content */}
+        <div style={{ marginBottom: "36px" }}>
+          <AdSlot position="in-content" />
+        </div>
+
+        {/* CTA FINAL */}
+        <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #0c4a6e 100%)", borderRadius: "12px", padding: "44px 40px", textAlign: "center", marginBottom: "36px" }}>
+          <div style={{ width: "60px", height: "60px", background: "rgba(14,165,233,0.15)", border: "1px solid rgba(14,165,233,0.35)", borderRadius: "14px", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
+            <Stethoscope size={30} color="#7dd3fc" />
+          </div>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "26px", fontWeight: 800, color: "#ffffff", marginBottom: "14px" }}>
+            ¿Tu clínica pasaría hoy una inspección técnica?
+          </h2>
+          <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", lineHeight: "1.7", maxWidth: "520px", margin: "0 auto 28px" }}>
+            Realizamos pre-auditorías de seguridad para centros médicos y clínicas dentales. Asegura el cumplimiento normativo antes de que llegue el problema.
+          </p>
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+            <button
+              onClick={() => navigate("/contacto")}
+              style={{ background: "#0284c7", color: "white", border: "none", borderRadius: "8px", padding: "14px 28px", fontSize: "15px", fontWeight: 700, fontFamily: "var(--font-display)", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "8px" }}
+            >
+              Solicitar Pre-auditoría
+              <ArrowRight size={18} />
+            </button>
+            <button
+              onClick={() => navigate("/contacto")}
+              style={{ background: "rgba(255,255,255,0.1)", color: "white", border: "1px solid rgba(255,255,255,0.25)", borderRadius: "8px", padding: "14px 28px", fontSize: "15px", fontWeight: 600, fontFamily: "var(--font-display)", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "8px" }}
+            >
+              <Download size={16} />
+              Descargar Checklist de Auditoría
+            </button>
+          </div>
+        </div>
+
+        {/* INTERLINKING */}
+        <div style={{ background: "#f0f9ff", border: "1px solid #bae6fd", borderRadius: "10px", padding: "20px 24px", display: "flex", gap: "16px", alignItems: "center" }}>
+          <div style={{ width: "40px", height: "40px", background: "#0284c7", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+            <BookOpen size={20} color="white" />
+          </div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: "12px", color: "#0284c7", fontFamily: "var(--font-mono)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: "4px" }}>¿Eres nuevo aquí?</div>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "15px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "4px" }}>Lee nuestra Guía Básica de Ciberseguridad para Clínicas</div>
+            <p style={{ fontSize: "13px", color: "var(--text-secondary)", margin: 0 }}>El punto de partida imprescindible antes de abordar una auditoría completa: LOPDGDD, RGPD y las medidas técnicas básicas.</p>
+          </div>
+          <button
+            onClick={() => navigate("/salud-y-clinicas")}
+            style={{ background: "#0284c7", color: "white", border: "none", borderRadius: "8px", padding: "10px 18px", fontSize: "13px", fontWeight: 700, fontFamily: "var(--font-display)", cursor: "pointer", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: "6px" }}
+          >
+            Ver guía <ChevronRight size={14} />
+          </button>
+        </div>
+
+      </div>
+    </main>
+  );
+}
+
+// ─── ARTICLE: SECRETO PROFESIONAL LEGAL ──────────────
+function ArticleSecretoProfesionalLegal() {
+  const { navigate } = useRouter();
+  const article = SAMPLE_ARTICLES.find((a) => a.slug === "legal-y-asesorias/secreto-profesional-ciberseguridad-despachos");
+
+  const pStyle = { fontFamily: "var(--font-body)", fontSize: "16px", lineHeight: "1.85", color: "var(--text-secondary)", marginBottom: "20px" };
+  const h2Style = { fontFamily: "var(--font-display)", fontSize: "22px", fontWeight: 800, color: "var(--text-primary)", marginBottom: "16px", marginTop: "40px", paddingTop: "16px", borderTop: "1px solid var(--border)" };
+  const h3Style = { fontFamily: "var(--font-display)", fontSize: "17px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "10px", marginTop: "28px" };
+
+  return (
+    <main style={{ background: "var(--bg-page)", minHeight: "100vh" }}>
+      <SchemaMarkup type="article" data={article} />
+      <SchemaMarkup type="breadcrumb" data={{ items: [
+        { name: "Inicio", path: "/" },
+        { name: "Legal y Asesorías", path: "/legal-y-asesorias" },
+        { name: "Secreto Profesional Digital", path: "/legal-y-asesorias/secreto-profesional" },
+      ]}} />
+
+      {/* HERO — Gabinete Jurídico: slate + amber */}
+      <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #292524 100%)", padding: "64px 24px 56px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(ellipse at 65% 35%, rgba(217,164,48,0.15) 0%, transparent 55%)" }} />
+        <div style={{ maxWidth: "860px", margin: "0 auto", position: "relative" }}>
+          {/* Breadcrumb */}
+          <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "20px", flexWrap: "wrap" }}>
+            <span onClick={() => navigate("/")} style={{ fontSize: "13px", color: "rgba(255,255,255,0.55)", cursor: "pointer", fontFamily: "var(--font-mono)" }}>Inicio</span>
+            <ChevronRight size={12} color="rgba(255,255,255,0.35)" />
+            <span onClick={() => navigate("/legal-y-asesorias")} style={{ fontSize: "13px", color: "rgba(255,255,255,0.55)", cursor: "pointer", fontFamily: "var(--font-mono)" }}>Legal y Asesorías</span>
+            <ChevronRight size={12} color="rgba(255,255,255,0.35)" />
+            <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.35)", fontFamily: "var(--font-mono)" }}>Secreto Profesional Digital</span>
+          </div>
+
+          {/* Badge */}
+          <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(217,164,48,0.15)", border: "1px solid rgba(217,164,48,0.4)", borderRadius: "20px", padding: "4px 14px", marginBottom: "20px" }}>
+            <Gavel size={13} color="#fbbf24" />
+            <span style={{ fontSize: "12px", color: "#fbbf24", fontFamily: "var(--font-mono)", fontWeight: 600, letterSpacing: "0.5px" }}>LEGAL Y ASESORÍAS</span>
+          </div>
+
+          <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(26px,4.5vw,44px)", fontWeight: 800, color: "#ffffff", lineHeight: 1.15, marginBottom: "20px", letterSpacing: "-0.5px" }}>
+            El Secreto Profesional en 2026:<br />
+            <span style={{ color: "#fbbf24" }}>Ciberseguridad para el Sector Legal</span>
+          </h1>
+          <p style={{ fontSize: "18px", color: "rgba(255,255,255,0.72)", lineHeight: 1.65, marginBottom: "28px", maxWidth: "680px" }}>
+            Un despacho hackeado no solo pierde datos; pierde la licencia para ejercer la confianza de sus clientes.
+          </p>
+
+          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "4px" }}>
+              <User size={11} /> {article?.author}
+            </span>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "4px" }}>
+              <Clock size={11} /> {article?.readTime} de lectura
+            </span>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)" }}>
+              {article && new Date(article.date).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* CONTENT */}
+      <div style={{ maxWidth: "860px", margin: "0 auto", padding: "48px 24px 80px" }}>
+
+        {/* AD: Below H1 */}
+        <div style={{ marginBottom: "36px" }}>
+          <AdSlot position="below-h1" />
+        </div>
+
+        {/* ── SECCIÓN 1: RESPONSABILIDAD CIVIL ── */}
+        <h2 style={h2Style}>Más allá de la LOPD: La Responsabilidad Civil del Abogado</h2>
+        <p style={pStyle}>
+          En 2026, los tribunales españoles están empezando a exigir <strong>responsabilidades civiles directas a los abogados</strong> cuyos expedientes han sido filtrados por falta de medidas básicas de seguridad. Si un hacker accede a una estrategia de defensa o a un acuerdo de fusión confidencial, el daño patrimonial para el cliente puede ser incalculable y la responsabilidad profesional, inevitable.
+        </p>
+        <p style={pStyle}>
+          El Estatuto General de la Abogacía Española establece que la protección del secreto profesional es una obligación deontológica de primer orden. En el entorno digital, esto se traduce en la obligación de adoptar medidas técnicas equivalentes al nivel de sensibilidad de la información gestionada.
+        </p>
+
+        {/* Alerta de riesgo */}
+        <div style={{ background: "#fffbeb", border: "1px solid #fde68a", borderLeft: "4px solid #d97706", borderRadius: "0 8px 8px 0", padding: "20px 24px", marginBottom: "36px" }}>
+          <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+            <ShieldAlert size={22} color="#d97706" style={{ flexShrink: 0, marginTop: "2px" }} />
+            <div>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "1px", color: "#d97706", marginBottom: "8px", fontWeight: 700 }}>Jurisprudencia 2025-2026</div>
+              <p style={{ ...pStyle, marginBottom: "6px", fontSize: "14px", color: "#92400e" }}>
+                El Tribunal Supremo ha establecido en sentencias recientes que la negligencia en la custodia digital de información confidencial puede constituir <strong>mala praxis profesional sancionable</strong>, independientemente de si la brecha fue causada por un tercero (ciberataque), si el abogado no adoptó las medidas preventivas exigibles al estado actual de la tecnología.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* ── SECCIÓN 2: PUNTOS CRÍTICOS ── */}
+        <h2 style={h2Style}>Puntos Críticos del Despacho Digital</h2>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "36px" }}>
+          {[
+            {
+              icon: Mail,
+              color: "#dc2626",
+              bg: "#fef2f2",
+              title: "Comunicaciones Cifradas: El Email Convencional No Basta",
+              text: "El envío de pruebas, sentencias y datos personales por email sin cifrar (Gmail, Outlook estándar) es una práctica de alto riesgo que incumple el RGPD. Implementar portales de cliente seguros con autenticación es hoy una necesidad competitiva, no un lujo.",
+            },
+            {
+              icon: Lock,
+              color: "#7c3aed",
+              bg: "#f5f3ff",
+              title: "Gestión de Contraseñas y MFA Obligatorio",
+              text: "El acceso al software de gestión procesal debe estar protegido por doble factor de autenticación. Una contraseña apuntada en un expediente físico o en un post-it es un fallo de seguridad crítico que invalida todas las demás medidas tomadas.",
+            },
+            {
+              icon: FileKey,
+              color: "#d97706",
+              bg: "#fffbeb",
+              title: "El Problema Invisible: Los Metadatos",
+              text: "Un archivo Word puede revelar quién lo editó, cuánto tiempo se trabajó en él y los comentarios eliminados. La limpieza de metadatos antes del envío judicial (o a la parte contraria) es parte de la higiene digital básica de cualquier despacho.",
+            },
+          ].map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <div key={i} style={{ display: "flex", gap: "20px", padding: "24px", background: "white", border: "1px solid var(--border)", borderRadius: "8px", borderLeft: `4px solid ${item.color}`, alignItems: "flex-start" }}>
+                <div style={{ width: "46px", height: "46px", background: item.bg, borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <Icon size={22} color={item.color} strokeWidth={2} />
+                </div>
+                <div>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "8px" }}>{item.title}</div>
+                  <p style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.7", margin: 0 }}>{item.text}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* AD: In-content */}
+        <div style={{ marginBottom: "36px" }}>
+          <AdSlot position="in-content" />
+        </div>
+
+        {/* ── SECCIÓN 3: CLOUD JURÍDICA ── */}
+        <h2 style={h2Style}>La Nube Jurídica: Seguridad vs. Comodidad</h2>
+        <p style={pStyle}>
+          No todas las nubes son iguales. Dropbox y Google Drive son herramientas excelentes para uso personal, pero presentan brechas significativas para un despacho profesional que maneja información privilegiada. Un despacho jurídico requiere una solución de cloud que garantice:
+        </p>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0", marginBottom: "36px", border: "1px solid var(--border)", borderRadius: "12px", overflow: "hidden" }}>
+          {/* Headers */}
+          <div style={{ background: "#fef9c3", padding: "14px 20px", borderBottom: "1px solid var(--border)", borderRight: "1px solid var(--border)" }}>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 800, color: "#713f12", display: "flex", alignItems: "center", gap: "8px" }}>
+              <Cloud size={16} color="#a16207" /> Nube Pública (Dropbox/Drive)
+            </div>
+          </div>
+          <div style={{ background: "#f5f3ff", padding: "14px 20px", borderBottom: "1px solid var(--border)" }}>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 800, color: "#4c1d95", display: "flex", alignItems: "center", gap: "8px" }}>
+              <Shield size={16} color="#7c3aed" /> Nube Privada Cifrada
+            </div>
+          </div>
+          {/* Rows */}
+          {[
+            ["Servidores fuera de la UE (EE.UU.)", "Servidores en territorio UE — RGPD compliant"],
+            ["El proveedor puede acceder a tus archivos", "Cifrado punto a punto — ni el proveedor puede leer tus docs"],
+            ["Sin versiones históricas garantizadas", "Backups con versiones históricas — anti-ransomware"],
+            ["Sin control de acceso granular", "Permisos por expediente y por usuario"],
+            ["No apto para datos de Categoría Especial", "✓ Certificado para datos legales y de alta sensibilidad"],
+          ].map((row, i) => (
+            <>
+              <div key={`a${i}`} style={{ padding: "12px 20px", background: i % 2 === 0 ? "white" : "#fffdf0", borderBottom: i < 4 ? "1px solid var(--border)" : "none", borderRight: "1px solid var(--border)", fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.5", display: "flex", alignItems: "center", gap: "8px" }}>
+                <AlertTriangle size={14} color="#f59e0b" style={{ flexShrink: 0 }} />
+                {row[0]}
+              </div>
+              <div key={`b${i}`} style={{ padding: "12px 20px", background: i % 2 === 0 ? "#faf8ff" : "#f5f3ff", borderBottom: i < 4 ? "1px solid var(--border)" : "none", fontSize: "14px", color: "#4c1d95", lineHeight: "1.5", display: "flex", alignItems: "center", gap: "8px" }}>
+                <CheckCircle size={14} color="#7c3aed" style={{ flexShrink: 0 }} />
+                {row[1]}
+              </div>
+            </>
+          ))}
+        </div>
+
+        {/* ── SECCIÓN 4: DESPACHO SIN PAPELES ── */}
+        <h2 style={h2Style}>Protocolo de Despacho Sin Papeles Seguro</h2>
+        <p style={pStyle}>
+          La transición al despacho digital no termina en escanear los documentos. El proceso completo exige un protocolo que garantice la cadena de custodia digital y la destrucción certificada del soporte original:
+        </p>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "16px", marginBottom: "36px" }}>
+          {[
+            { n: "01", icon: FileText, color: "#7c3aed", title: "Escaneo con metadatos limpios", text: "Escanea los documentos físicos en formato PDF/A (archivístico). Verifica que el escáner no incruste metadatos de ubicación o dispositivo." },
+            { n: "02", icon: Lock, color: "#0284c7", title: "Almacenamiento cifrado inmediato", text: "El archivo digitalizado debe cifrarse y almacenarse en el repositorio seguro antes de ser enviado o compartido con cualquier parte." },
+            { n: "03", icon: Trash2, color: "#dc2626", title: "Destrucción certificada del original", text: "Los documentos físicos con datos personales deben destruirse mediante trituradora de nivel P-4 o superior (norma DIN 66399). Genera acta de destrucción." },
+            { n: "04", icon: CheckCircle, color: "#059669", title: "Registro en el log de custodia", text: "Cada acción sobre un expediente (creación, consulta, modificación, destrucción) debe quedar registrada con marca de tiempo para demostrar la cadena de custodia ante el tribunal." },
+          ].map((item) => {
+            const Icon = item.icon;
+            return (
+              <div key={item.n} style={{ padding: "22px", background: "white", border: "1px solid var(--border)", borderRadius: "8px", borderTop: `3px solid ${item.color}` }}>
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: item.color, fontWeight: 700, marginBottom: "10px", letterSpacing: "1px" }}>{item.n}</div>
+                <div style={{ width: "40px", height: "40px", background: item.color + "15", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "12px" }}>
+                  <Icon size={20} color={item.color} strokeWidth={2} />
+                </div>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "8px" }}>{item.title}</div>
+                <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: "1.7", margin: 0 }}>{item.text}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* ── SECCIÓN 5: DESTRUCCIÓN DE EVIDENCIAS ── */}
+        <h2 style={h2Style}>El Protocolo de Destrucción de Evidencias Digitales</h2>
+        <p style={pStyle}>
+          El fin de un caso no termina con la sentencia. La custodia de documentos digitales tras el cierre del expediente debe seguir un protocolo de <strong>«Congelación»</strong> (si hay posibilidad de recurso o apelación) o <strong>«Borrado Seguro Certificado»</strong> (una vez transcurridos los plazos de prescripción), evitando que discos duros antiguos terminen en el mercado de segunda mano con información privilegiada de clientes.
+        </p>
+        <div style={{ background: "#fffbeb", border: "2px dashed #d97706", borderRadius: "12px", padding: "24px 28px", marginBottom: "36px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
+            <Gavel size={20} color="#d97706" />
+            <span style={{ fontFamily: "var(--font-display)", fontSize: "15px", fontWeight: 800, color: "#92400e" }}>Regla de Oro: Plazos de Conservación</span>
+          </div>
+          <ul style={{ ...pStyle, paddingLeft: "20px", marginBottom: 0, fontSize: "14px", color: "#78350f" }}>
+            <li style={{ marginBottom: "10px" }}><strong>Expedientes civiles y mercantiles:</strong> Mínimo 6 años desde el cierre (Código de Comercio).</li>
+            <li style={{ marginBottom: "10px" }}><strong>Expedientes penales:</strong> Hasta la prescripción del delito o 15 años como máximo.</li>
+            <li style={{ marginBottom: "10px" }}><strong>Documentación fiscal del despacho:</strong> 4 años (período de prescripción tributaria).</li>
+            <li style={{ marginBottom: 0 }}><strong>Datos de contacto de clientes:</strong> Mientras exista relación comercial + 3 años para reclamaciones.</li>
+          </ul>
+        </div>
+
+        {/* AD: In-content */}
+        <div style={{ marginBottom: "36px" }}>
+          <AdSlot position="in-content" />
+        </div>
+
+        {/* CTA FINAL */}
+        <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #1c1917 60%, #292524 100%)", borderRadius: "12px", padding: "44px 40px", textAlign: "center", marginBottom: "36px" }}>
+          <div style={{ width: "60px", height: "60px", background: "rgba(217,164,48,0.15)", border: "1px solid rgba(217,164,48,0.35)", borderRadius: "14px", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
+            <Gavel size={30} color="#fbbf24" />
+          </div>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "26px", fontWeight: 800, color: "#ffffff", marginBottom: "14px" }}>
+            ¿Es tu despacho una fortaleza o un colador digital?
+          </h2>
+          <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", lineHeight: "1.7", maxWidth: "520px", margin: "0 auto 28px" }}>
+            Especialistas en seguridad para el sector legal. Protegemos tu activo más valioso: la información de tus clientes. Solicita una auditoría de confidencialidad hoy mismo.
+          </p>
+          <button
+            onClick={() => navigate("/contacto")}
+            style={{ background: "#d97706", color: "white", border: "none", borderRadius: "8px", padding: "14px 32px", fontSize: "15px", fontWeight: 700, fontFamily: "var(--font-display)", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "8px" }}
+          >
+            Consultoría para Firmas Legales
+            <ArrowRight size={18} />
+          </button>
+        </div>
+
+        {/* INTERLINKING */}
+        <div style={{ background: "#fffbeb", border: "1px solid #fde68a", borderRadius: "10px", padding: "20px 24px", display: "flex", gap: "16px", alignItems: "center" }}>
+          <div style={{ width: "40px", height: "40px", background: "#d97706", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+            <BookOpen size={20} color="white" />
+          </div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: "12px", color: "#d97706", fontFamily: "var(--font-mono)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: "4px" }}>¿Necesitas lo básico?</div>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "15px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "4px" }}>Revisa nuestro Manual de Ciberseguridad para Asesorías</div>
+            <p style={{ fontSize: "13px", color: "var(--text-secondary)", margin: 0 }}>Guía fundamental para despachos que están comenzando su camino hacia el cumplimiento normativo digital.</p>
+          </div>
+          <button
+            onClick={() => navigate("/legal-y-asesorias")}
+            style={{ background: "#d97706", color: "white", border: "none", borderRadius: "8px", padding: "10px 18px", fontSize: "13px", fontWeight: 700, fontFamily: "var(--font-display)", cursor: "pointer", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: "6px" }}
+          >
+            Ver manual <ChevronRight size={14} />
+          </button>
+        </div>
+
+      </div>
+    </main>
+  );
+}
+
+// ─── ARTICLE: SEGURIDAD PAGOS ECOMMERCE ──────────────
+function ArticleSeguridadPagosEcommerce() {
+  const { navigate } = useRouter();
+  const article = SAMPLE_ARTICLES.find((a) => a.slug === "ecommerce-y-retail/seguridad-pagos-tpv-virtual-fraude");
+
+  const pStyle = { fontFamily: "var(--font-body)", fontSize: "16px", lineHeight: "1.85", color: "var(--text-secondary)", marginBottom: "20px" };
+  const h2Style = { fontFamily: "var(--font-display)", fontSize: "22px", fontWeight: 800, color: "var(--text-primary)", marginBottom: "16px", marginTop: "40px", paddingTop: "16px", borderTop: "1px solid var(--border)" };
+  const h3Style = { fontFamily: "var(--font-display)", fontSize: "17px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "10px", marginTop: "28px" };
+
+  return (
+    <main style={{ background: "var(--bg-page)", minHeight: "100vh" }}>
+      <SchemaMarkup type="article" data={article} />
+      <SchemaMarkup type="breadcrumb" data={{ items: [
+        { name: "Inicio", path: "/" },
+        { name: "E-commerce y Retail", path: "/ecommerce-y-retail" },
+        { name: "Seguridad en Pagos Online", path: "/ecommerce-y-retail/seguridad-pagos" },
+      ]}} />
+
+      {/* HERO — Fintech: slate + green */}
+      <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #052e16 55%, #14532d 100%)", padding: "64px 24px 56px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(ellipse at 65% 35%, rgba(34,197,94,0.18) 0%, transparent 55%)" }} />
+        <div style={{ maxWidth: "860px", margin: "0 auto", position: "relative" }}>
+          {/* Breadcrumb */}
+          <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "20px", flexWrap: "wrap" }}>
+            <span onClick={() => navigate("/")} style={{ fontSize: "13px", color: "rgba(255,255,255,0.55)", cursor: "pointer", fontFamily: "var(--font-mono)" }}>Inicio</span>
+            <ChevronRight size={12} color="rgba(255,255,255,0.35)" />
+            <span onClick={() => navigate("/ecommerce-y-retail")} style={{ fontSize: "13px", color: "rgba(255,255,255,0.55)", cursor: "pointer", fontFamily: "var(--font-mono)" }}>E-commerce y Retail</span>
+            <ChevronRight size={12} color="rgba(255,255,255,0.35)" />
+            <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.35)", fontFamily: "var(--font-mono)" }}>Seguridad en Pagos Online</span>
+          </div>
+
+          {/* Badge */}
+          <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(34,197,94,0.15)", border: "1px solid rgba(34,197,94,0.4)", borderRadius: "20px", padding: "4px 14px", marginBottom: "20px" }}>
+            <ShoppingCart size={13} color="#86efac" />
+            <span style={{ fontSize: "12px", color: "#86efac", fontFamily: "var(--font-mono)", fontWeight: 600, letterSpacing: "0.5px" }}>E-COMMERCE Y RETAIL</span>
+          </div>
+
+          <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(26px,4.5vw,44px)", fontWeight: 800, color: "#ffffff", lineHeight: 1.15, marginBottom: "20px", letterSpacing: "-0.5px" }}>
+            Seguridad en el Checkout:<br />
+            <span style={{ color: "#86efac" }}>El Corazón de tu Ecommerce en 2026</span>
+          </h1>
+          <p style={{ fontSize: "18px", color: "rgba(255,255,255,0.72)", lineHeight: 1.65, marginBottom: "28px", maxWidth: "680px" }}>
+            Una tienda rápida vende, pero una tienda segura es la única que sobrevive a las reclamaciones bancarias.
+          </p>
+
+          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "4px" }}>
+              <User size={11} /> {article?.author}
+            </span>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "4px" }}>
+              <Clock size={11} /> {article?.readTime} de lectura
+            </span>
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-mono)" }}>
+              {article && new Date(article.date).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* CONTENT */}
+      <div style={{ maxWidth: "860px", margin: "0 auto", padding: "48px 24px 80px" }}>
+
+        {/* AD: Below H1 */}
+        <div style={{ marginBottom: "36px" }}>
+          <AdSlot position="below-h1" />
+        </div>
+
+        {/* ── ALERTA CHARGEBACKS ── */}
+        <div style={{ background: "#fff7ed", border: "1px solid #fed7aa", borderLeft: "4px solid #ea580c", borderRadius: "0 8px 8px 0", padding: "24px 28px", marginBottom: "36px" }}>
+          <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+            <RefreshCw size={22} color="#ea580c" style={{ flexShrink: 0, marginTop: "2px" }} />
+            <div>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "1px", color: "#ea580c", marginBottom: "8px", fontWeight: 700 }}>El Coste Oculto de los Chargebacks</div>
+              <p style={{ ...pStyle, marginBottom: "8px", fontSize: "14px", color: "#7c2d12" }}>
+                Cada chargeback (devolución forzosa) no solo te devuelve el importe de la venta al cliente: también te cuesta entre <strong>15 y 100 € en comisiones bancarias</strong> por gestión de disputa. Si tu ratio de chargebacks supera el <strong>1%</strong>, tu pasarela de pago puede suspenderte la cuenta sin previo aviso.
+              </p>
+              <p style={{ ...pStyle, marginBottom: 0, fontSize: "13px", color: "#9a3412" }}>
+                En 2026, el fraude con tarjeta costará a los ecommerces españoles más de <strong>890 millones de euros</strong>. La prevención es 20x más barata que la gestión de disputas.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* ── SECCIÓN 1: EVOLUCIÓN DEL FRAUDE ── */}
+        <h2 style={h2Style}>Más allá del Phishing: El Robo de Sesión</h2>
+        <p style={pStyle}>
+          En 2026, los atacantes ya no solo roban números de tarjeta; <strong>roban la sesión activa del cliente</strong> (Session Hijacking). Si tu ecommerce no tiene una gestión de cookies segura con tokens rotatorios y binding de IP, un hacker puede «comprar» con la cuenta de un usuario legítimo sin que salten las alarmas de contraseña. El pedido pasa como legítimo, el banco aprueba el cargo y tú envías el producto a una dirección de reenvío.
+        </p>
+        <p style={pStyle}>
+          El daño es triple: pierdes el producto, devuelves el dinero al titular real de la tarjeta y absorbes las comisiones de la disputa. Sin evidencias digitales adecuadas, no hay defensa posible ante el banco.
+        </p>
+
+        {/* Stats strip */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: "12px", marginBottom: "40px" }}>
+          {[
+            { value: "890M€", label: "pérdidas por fraude en ecommerce España 2026" },
+            { value: "1%", label: "ratio máximo de chargebacks antes de suspensión" },
+            { value: "20x", label: "más barata la prevención que la gestión de disputas" },
+          ].map((s, i) => (
+            <div key={i} style={{ background: "linear-gradient(135deg, #052e16, #14532d)", borderRadius: "10px", padding: "20px 22px", textAlign: "center" }}>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: "26px", fontWeight: 800, color: "#86efac", marginBottom: "6px" }}>{s.value}</div>
+              <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.65)", lineHeight: 1.5 }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── SECCIÓN 2: TPV VIRTUAL ── */}
+        <h2 style={h2Style}>Puntos Críticos del TPV Virtual</h2>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "36px" }}>
+          {[
+            {
+              icon: CreditCard,
+              color: "#059669",
+              bg: "#ecfdf5",
+              title: "Tokenización de Pagos: Nunca Toques los Datos de la Tarjeta",
+              text: "Nunca almacenes los datos de la tarjeta en tu base de datos. Usa los «tokens» proporcionados por tu pasarela (Stripe, Redsys, Braintree) para que el dato sensible nunca toque tu servidor. Si te hackean, los tokens robados son inútiles sin las claves del proveedor.",
+            },
+            {
+              icon: ShieldCheck,
+              color: "#2563eb",
+              bg: "#eff6ff",
+              title: "Autenticación SCA (Strong Customer Authentication) — PSD3",
+              text: "Con la entrada en vigor de la normativa PSD3 en 2026, el doble factor en el móvil del cliente es obligatorio para todas las transacciones superiores a 30 €. Asegúrate de que tu checkout no genera errores en este paso: cada fricción innecesaria en el SCA equivale a un carrito abandonado.",
+            },
+            {
+              icon: BadgeAlert,
+              color: "#ea580c",
+              bg: "#fff7ed",
+              title: "Protección contra el «Carding»",
+              text: "Implementa «rate limiting» y CAPTCHA para evitar que bots automatizados prueben miles de tarjetas robadas en tu formulario de pago. Sin esta medida, tu tienda puede convertirse en un validador gratuito de datos robados, con las consecuencias legales que eso conlleva.",
+            },
+          ].map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <div key={i} style={{ display: "flex", gap: "20px", padding: "24px", background: "white", border: "1px solid var(--border)", borderRadius: "8px", borderLeft: `4px solid ${item.color}`, alignItems: "flex-start" }}>
+                <div style={{ width: "46px", height: "46px", background: item.bg, borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <Icon size={22} color={item.color} strokeWidth={2} />
+                </div>
+                <div>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "8px" }}>{item.title}</div>
+                  <p style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.7", margin: 0 }}>{item.text}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* AD: In-content */}
+        <div style={{ marginBottom: "36px" }}>
+          <AdSlot position="in-content" />
+        </div>
+
+        {/* ── COMPARATIVA: PAGO DIRECTO VS TOKENS ── */}
+        <h2 style={h2Style}>Pago Directo vs. Tokenización: Por Qué Importa</h2>
+        <p style={pStyle}>La diferencia entre guardar datos de tarjeta en tu servidor y usar tokenización no es solo técnica; es la diferencia entre una sanción millonaria y la tranquilidad de no tener datos que robar:</p>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0", marginBottom: "36px", border: "1px solid var(--border)", borderRadius: "12px", overflow: "hidden" }}>
+          <div style={{ background: "#fef2f2", padding: "14px 20px", borderBottom: "1px solid var(--border)", borderRight: "1px solid var(--border)" }}>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 800, color: "#7f1d1d", display: "flex", alignItems: "center", gap: "8px" }}>
+              <AlertTriangle size={16} color="#dc2626" /> Almacenamiento Directo
+            </div>
+          </div>
+          <div style={{ background: "#ecfdf5", padding: "14px 20px", borderBottom: "1px solid var(--border)" }}>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 800, color: "#14532d", display: "flex", alignItems: "center", gap: "8px" }}>
+              <ShieldCheck size={16} color="#059669" /> Tokenización (Stripe / Redsys)
+            </div>
+          </div>
+          {[
+            ["Datos de tarjeta en tu servidor", "Solo tokens en tu servidor — sin datos reales"],
+            ["Brecha = robo masivo de tarjetas", "Brecha = tokens inútiles para el atacante"],
+            ["Obligación PCI-DSS nivel 1 costosa", "PCI-DSS simplificado (SAQ A) — mínimo esfuerzo"],
+            ["Responsabilidad total en caso de fraude", "Responsabilidad compartida con la pasarela"],
+            ["Multas AEPD por Categoría Especial de datos", "✓ Sin datos financieros que custodiar"],
+          ].map((row, i) => (
+            <>
+              <div key={`a${i}`} style={{ padding: "12px 20px", background: i % 2 === 0 ? "white" : "#fff5f5", borderBottom: i < 4 ? "1px solid var(--border)" : "none", borderRight: "1px solid var(--border)", fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.5", display: "flex", alignItems: "center", gap: "8px" }}>
+                <AlertTriangle size={13} color="#dc2626" style={{ flexShrink: 0 }} />
+                {row[0]}
+              </div>
+              <div key={`b${i}`} style={{ padding: "12px 20px", background: i % 2 === 0 ? "#f0fdf4" : "#dcfce7", borderBottom: i < 4 ? "1px solid var(--border)" : "none", fontSize: "14px", color: "#166534", lineHeight: "1.5", display: "flex", alignItems: "center", gap: "8px" }}>
+                <CheckCircle size={13} color="#059669" style={{ flexShrink: 0 }} />
+                {row[1]}
+              </div>
+            </>
+          ))}
+        </div>
+
+        {/* ── SECCIÓN 3: DETECCIÓN DE PEDIDOS FRAUDULENTOS ── */}
+        <h2 style={h2Style}>Cómo Detectar un Pedido Fraudulento</h2>
+        <p style={pStyle}>
+          Antes de preparar un envío de alto valor, revisa estos patrones de alerta. Cada uno por separado puede ser legítimo; varios combinados en el mismo pedido deben activar una revisión manual:
+        </p>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "14px", marginBottom: "36px" }}>
+          {[
+            { icon: Globe, color: "#2563eb", bg: "#eff6ff", title: "IP vs. Dirección de Envío", text: "La dirección IP del comprador está en España pero el producto se envía a un almacén de reenvío en Alemania o Rumanía." },
+            { icon: Mail, color: "#7c3aed", bg: "#f5f3ff", title: "Correos Temporales", text: "Uso de emails tipo @temp-mail.org, @guerrillamail.com o nombres aleatorios generados. Ningún cliente legítimo usa un email temporal para comprar." },
+            { icon: RefreshCw, color: "#ea580c", bg: "#fff7ed", title: "Intentos Múltiples Rápidos", text: "Varios intentos de compra del mismo producto en pocos minutos con diferentes tarjetas. Señal clásica de carding automatizado." },
+            { icon: MousePointerClick, color: "#059669", bg: "#ecfdf5", title: "Pedido sin Historial Previo", text: "Cuenta recién creada, primer pedido de valor alto, método de envío urgente. Combinación frecuente en fraude de tarjeta robada." },
+          ].map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <div key={i} style={{ padding: "20px", background: "white", border: "1px solid var(--border)", borderRadius: "8px", borderTop: `3px solid ${item.color}` }}>
+                <div style={{ width: "40px", height: "40px", background: item.bg, borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "12px" }}>
+                  <Icon size={20} color={item.color} strokeWidth={2} />
+                </div>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "6px" }}>{item.title}</div>
+                <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: "1.7", margin: 0 }}>{item.text}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* AD: In-content */}
+        <div style={{ marginBottom: "36px" }}>
+          <AdSlot position="in-content" />
+        </div>
+
+        {/* ── SECCIÓN 4: PROTOCOLO ANTI-CHARGEBACK ── */}
+        <h2 style={h2Style}>El Protocolo Anti-Chargeback: Tu Defensa Legal</h2>
+        <p style={pStyle}>
+          Las devoluciones por fraude no solo te quitan el dinero de la venta, sino que te penalizan con comisiones bancarias por cada disputa gestionada. La mejor defensa es el <strong>Registro de Evidencias Digitales</strong>: un log cifrado que documenta cada transacción con todos los elementos necesarios para ganar una disputa ante el banco emisor.
+        </p>
+
+        <div style={{ background: "linear-gradient(135deg, #f0fdf4, #dcfce7)", border: "1px solid #bbf7d0", borderRadius: "12px", padding: "28px 32px", marginBottom: "36px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}>
+            <Receipt size={20} color="#059669" />
+            <span style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 800, color: "#14532d" }}>Evidencias que debes guardar por cada pedido</span>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            {[
+              { label: "IP + User-Agent del comprador", detail: "Fecha, hora exacta, dirección IP y navegador utilizado en el momento del pago." },
+              { label: "Confirmación 3DS del banco", detail: "El código de autorización de la autenticación fuerte (SCA) que prueba que el titular de la tarjeta autorizó la transacción." },
+              { label: "Aceptación de términos y condiciones", detail: "Registro con timestamp de que el cliente aceptó los T&C y la política de devoluciones antes de completar el pago." },
+              { label: "Acuse de recibo de mensajería", detail: "Número de tracking del envío y confirmación de entrega firmada digitalmente. Sin esto, cualquier disputa de «no recibí el producto» se pierde." },
+              { label: "Comunicaciones pre y post-venta", detail: "Emails o chats con el cliente relacionados con el pedido, especialmente si solicitó cambios en la dirección de entrega." },
+            ].map((item, i) => (
+              <div key={i} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                <CheckCircle size={18} color="#059669" style={{ flexShrink: 0, marginTop: "2px" }} />
+                <div>
+                  <span style={{ fontFamily: "var(--font-display)", fontSize: "14px", fontWeight: 700, color: "#14532d" }}>{item.label}: </span>
+                  <span style={{ fontSize: "14px", color: "#166534", lineHeight: "1.65" }}>{item.detail}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA FINAL */}
+        <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #052e16 100%)", borderRadius: "12px", padding: "44px 40px", textAlign: "center", marginBottom: "36px" }}>
+          <div style={{ width: "60px", height: "60px", background: "rgba(34,197,94,0.15)", border: "1px solid rgba(34,197,94,0.35)", borderRadius: "14px", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
+            <ShoppingCart size={30} color="#86efac" />
+          </div>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "26px", fontWeight: 800, color: "#ffffff", marginBottom: "14px" }}>
+            ¿Tu pasarela de pago cumple con los estándares de 2026?
+          </h2>
+          <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", lineHeight: "1.7", maxWidth: "520px", margin: "0 auto 28px" }}>
+            Evita brechas de seguridad en el momento más crítico del túnel de venta. Analizamos tu checkout para reducir el fraude y maximizar la confianza de tus clientes.
+          </p>
+          <button
+            onClick={() => navigate("/contacto")}
+            style={{ background: "#059669", color: "white", border: "none", borderRadius: "8px", padding: "14px 32px", fontSize: "15px", fontWeight: 700, fontFamily: "var(--font-display)", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "8px" }}
+          >
+            Auditoría de Checkout Seguro
+            <ArrowRight size={18} />
+          </button>
+        </div>
+
+        {/* INTERLINKING */}
+        <div style={{ background: "#f0fdf4", border: "1px solid #bbf7d0", borderRadius: "10px", padding: "20px 24px", display: "flex", gap: "16px", alignItems: "center" }}>
+          <div style={{ width: "40px", height: "40px", background: "#059669", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+            <BookOpen size={20} color="white" />
+          </div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: "12px", color: "#059669", fontFamily: "var(--font-mono)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: "4px" }}>¿Quieres asegurar toda tu tienda?</div>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "15px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "4px" }}>Lee nuestra Guía de Ciberseguridad para Ecommerce</div>
+            <p style={{ fontSize: "13px", color: "var(--text-secondary)", margin: 0 }}>Protección completa: RGPD, PCI-DSS, ataques DDoS y defensa ante Ransomware para WooCommerce, Shopify y PrestaShop.</p>
+          </div>
+          <button
+            onClick={() => navigate("/ecommerce-y-retail")}
+            style={{ background: "#059669", color: "white", border: "none", borderRadius: "8px", padding: "10px 18px", fontSize: "13px", fontWeight: 700, fontFamily: "var(--font-display)", cursor: "pointer", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: "6px" }}
+          >
+            Ver guía <ChevronRight size={14} />
+          </button>
+        </div>
+
+      </div>
+    </main>
+  );
+}
+
 // ─── SCROLL TO TOP ON ROUTE CHANGE ───────────────────
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -2448,8 +4557,25 @@ function Router() {
         <Route path="/ecommerce-y-retail" element={<CategoryPage categoryId="ecommerce-y-retail" />} />
         <Route path="/ecommerce-y-retail/ciberseguridad-ecommerce-rgpd-pci-dss" element={<ArticleCiberseguridadEcommerce />} />
         <Route path="/sector-inmobiliario" element={<CategoryPage categoryId="sector-inmobiliario" />} />
+        <Route path="/sector-inmobiliario/ciberseguridad-inmobiliarias-fraude-transferencias" element={<ArticleCiberseguridadInmobiliarias />} />
+        <Route path="/inmobiliarias" element={<ArticleCiberseguridadInmobiliarias />} />
         <Route path="/legal-y-asesorias" element={<CategoryPage categoryId="legal-y-asesorias" />} />
         <Route path="/legal-y-asesorias/ciberseguridad-despachos-abogados-secreto-profesional" element={<ArticleCiberseguridadDespachos />} />
+        <Route path="/transporte-y-logistica" element={<CategoryPage categoryId="transporte-y-logistica" />} />
+        <Route path="/sector-logistica/ciberseguridad-logistica-ransomware-flota" element={<ArticleCiberseguridadLogistica />} />
+        <Route path="/logistica" element={<ArticleCiberseguridadLogistica />} />
+        <Route path="/hosteleria-y-turismo" element={<CategoryPage categoryId="hosteleria-y-turismo" />} />
+        <Route path="/hosteleria-y-turismo/ciberseguridad-hoteles-proteccion-huespedes" element={<ArticleCiberseguridadHosteleria />} />
+        <Route path="/hosteleria" element={<ArticleCiberseguridadHosteleria />} />
+        <Route path="/educacion-digital" element={<CategoryPage categoryId="educacion-digital" />} />
+        <Route path="/educacion-digital/ciberseguridad-academias-colegios-elearning" element={<ArticleCiberseguridadEducacion />} />
+        <Route path="/educacion" element={<ArticleCiberseguridadEducacion />} />
+        <Route path="/salud-y-clinicas/auditoria-seguridad-clinicas-ens-historial-clinico" element={<ArticleAuditoriaSaludClinicas />} />
+        <Route path="/auditoria-salud" element={<ArticleAuditoriaSaludClinicas />} />
+        <Route path="/legal-y-asesorias/secreto-profesional-ciberseguridad-despachos" element={<ArticleSecretoProfesionalLegal />} />
+        <Route path="/legal-y-asesorias/secreto-profesional" element={<ArticleSecretoProfesionalLegal />} />
+        <Route path="/ecommerce-y-retail/seguridad-pagos-tpv-virtual-fraude" element={<ArticleSeguridadPagosEcommerce />} />
+        <Route path="/ecommerce-y-retail/seguridad-pagos" element={<ArticleSeguridadPagosEcommerce />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>

@@ -32,22 +32,95 @@
 
   <!-- Artículos -->
   <url>
-    <loc>https://www.pymesegura.org/salud-y-clinicas</loc>
+    <loc>https://www.pymesegura.org/salud-y-clinicas/guia-lopdgdd-ciberseguridad-clinicas</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.pymesegura.org/sector-inmobiliario</loc>
+    <loc>https://www.pymesegura.org/ecommerce-y-retail/ciberseguridad-ecommerce-rgpd-pci-dss</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.pymesegura.org/ecommerce-y-retail</loc>
+    <loc>https://www.pymesegura.org/legal-y-asesorias/ciberseguridad-despachos-abogados-secreto-profesional</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.pymesegura.org/legal-y-asesorias</loc>
+    <loc>https://www.pymesegura.org/sector-inmobiliario/ciberseguridad-inmobiliarias-fraude-transferencias</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.pymesegura.org/transporte-y-logistica</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Artículo #5 -->
+  <url>
+    <loc>https://www.pymesegura.org/logistica</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/hosteleria-y-turismo</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Artículo #6 -->
+  <url>
+    <loc>https://www.pymesegura.org/hosteleria</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/educacion-digital</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Artículo #7 -->
+  <url>
+    <loc>https://www.pymesegura.org/educacion</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Artículo #8 (Salud — refuerzo) -->
+  <url>
+    <loc>https://www.pymesegura.org/auditoria-salud</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/salud-y-clinicas/auditoria-seguridad-clinicas-ens-historial-clinico</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Artículo #9 (Legal — refuerzo) -->
+  <url>
+    <loc>https://www.pymesegura.org/legal-y-asesorias/secreto-profesional</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/legal-y-asesorias/secreto-profesional-ciberseguridad-despachos</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Artículo #10 (Ecommerce — refuerzo pagos) -->
+  <url>
+    <loc>https://www.pymesegura.org/ecommerce-y-retail/seguridad-pagos</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/ecommerce-y-retail/seguridad-pagos-tpv-virtual-fraude</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
