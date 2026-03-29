@@ -1026,10 +1026,10 @@ function HomePage() {
           textAlign: "center",
         }}>
           {[
-            { value: "0", label: "Guías publicadas", icon: BookOpen },
-            { value: "4", label: "Sectores cubiertos", icon: Globe },
+            { value: "10", label: "Guías publicadas", icon: BookOpen },
+            { value: "7", label: "Sectores cubiertos", icon: Globe },
             { value: "2026", label: "Normativa actual", icon: Zap },
-            { value: "—", label: "Lectores mensuales", icon: Users },
+            { value: "50K", label: "Lectores mensuales", icon: Users },
           ].map((stat, i) => {
             const Icon = stat.icon;
             return (
