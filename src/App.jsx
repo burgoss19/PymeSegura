@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate, useLocation, Routes, Route } from "react-router-dom";
+import CookieBanner from "./CookieBanner";
 import { Shield, Building2, ShoppingCart, Scale, Heart, ChevronRight, Menu, X, Search, Clock, User, ArrowRight, CheckCircle, AlertTriangle, Lock, FileText, Mail, Phone, MapPin, ExternalLink, TrendingUp, Eye, BookOpen, ChevronDown, Globe, Zap, Award, Users, Truck, Package, ShieldCheck, Hotel, Wifi, CreditCard, UserCheck, ShieldAlert, GraduationCap, Video, FileLock, Stethoscope, Activity, Trash2, Download, Gavel, FileKey, FileX, Cloud, RefreshCw, BadgeAlert, MousePointerClick, Receipt, Target } from "lucide-react";
 
 /* ═══════════════════════════════════════════════════════
@@ -5183,6 +5184,7 @@ export default function App() {
       <Navbar />
       <Router />
       <Footer />
+      <CookieBanner />
     </>
   );
 }
