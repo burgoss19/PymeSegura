@@ -621,6 +621,489 @@ const ARTICLES = [
       },
     ],
   },
+  {
+    slug: "phishing-2026-7-senales-equipo-ignora",
+    category: "legal-y-asesorias",
+    title: "Phishing en 2026: las 7 senales que tu equipo sigue ignorando",
+    description:
+      "Guia practica para detectar phishing moderno en 2026: urgencia falsa, dominios clonados, cuentas comprometidas, adjuntos maliciosos y fraude BEC.",
+    updatedAt: "2026-04-19",
+    readTime: "12 min",
+    level: "Basico",
+    keyPoints: [
+      "La urgencia sigue siendo la palanca psicologica mas efectiva.",
+      "Un correo perfecto ya no es prueba de legitimidad.",
+      "Confiar solo en el remitente es un error frecuente.",
+      "La defensa real combina formacion, procesos y controles tecnicos.",
+    ],
+    sections: [
+      {
+        title: "Por que el phishing sigue creciendo en 2026",
+        paragraphs: [
+          "El phishing sigue siendo una de las amenazas mas rentables para los atacantes porque explota decisiones humanas, no solo fallos tecnicos. Incluso con filtros de correo avanzados, IA defensiva y protecciones cloud, muchas empresas caen por prisa, habitos inseguros o validaciones incompletas.",
+          "En 2026 los ataques ya no se limitan al correo mal redactado. Tambien llegan por Teams, Slack, WhatsApp corporativo y SMS, con mensajes personalizados que imitan tono, procesos y contexto interno de la empresa.",
+        ],
+        checklist: [
+          "Asume que cualquier canal digital puede usarse para phishing.",
+          "Trata mensajes de dinero, credenciales o accesos como operaciones sensibles.",
+          "Valida siempre por un segundo canal cuando haya dudas.",
+        ],
+      },
+      {
+        title: "Senal 1: mensajes urgentes que exigen actuar ahora",
+        paragraphs: [
+          "La urgencia sigue siendo el arma psicologica numero uno. Frases como 'tu cuenta sera suspendida en 30 minutos' o 'necesitamos esta transferencia hoy' reducen pensamiento critico y empujan a actuar sin verificar.",
+          "Cuando una solicitud urgente afecta pagos, credenciales o datos sensibles, el riesgo debe considerarse alto aunque el mensaje parezca interno y autentico.",
+        ],
+        checklist: [
+          "Bloquea cualquier pago urgente sin doble validacion.",
+          "Define una regla interna: urgencia nunca anula procedimiento.",
+          "Escala a responsable si hay presion fuera de proceso.",
+        ],
+      },
+      {
+        title: "Senal 2: correos impecables, demasiado impecables",
+        paragraphs: [
+          "Hoy los atacantes usan IA para redactar mensajes perfectos en espanol, sin faltas y con tono profesional. Eso elimina una senal clasica de alerta y aumenta la tasa de engaño.",
+          "Si el mensaje solicita algo inusual como claves, documentos confidenciales o cambios operativos, no lo des por legitimo solo porque esta bien escrito.",
+        ],
+        checklist: [
+          "Prioriza contexto y procedimiento, no calidad del texto.",
+          "Marca como sospechoso todo pedido extraordinario.",
+          "Reporta correos dudosos aunque parezcan profesionales.",
+        ],
+      },
+      {
+        title: "Senal 3: enlaces casi reales y dominios clonados",
+        paragraphs: [
+          "Dominios como micr0soft.com o paypaI.com siguen funcionando porque el ojo humano no detecta cambios minimos cuando actua con prisa. Un solo clic puede llevar a una pagina de robo de credenciales.",
+          "Muchos ataques actuales usan subdominios y extensiones poco habituales para generar confianza visual sin ser la web oficial.",
+        ],
+        checklist: [
+          "Pasa el cursor por el enlace y revisa dominio completo.",
+          "Desconfia de extensiones no habituales en proveedores criticos.",
+          "Si dudas, entra manualmente desde la web oficial.",
+        ],
+      },
+      {
+        title: "Senal 4: solicitudes inusuales desde cuentas conocidas",
+        paragraphs: [
+          "En muchos incidentes modernos, la cuenta ya esta comprometida. Por eso un mensaje puede venir desde un correo real de un companero y aun asi ser fraudulento.",
+          "Peticiones como 'estoy reunido, haz este pago ahora' son tipicas en fraude interno y aprovechan confianza previa entre equipos.",
+        ],
+        checklist: [
+          "Valida por llamada o chat directo toda orden financiera atipica.",
+          "Exige doble aprobacion para pagos y cambios de acceso.",
+          "Registra validaciones para auditoria y trazabilidad.",
+        ],
+      },
+      {
+        title: "Senal 5: adjuntos normales que esconden malware",
+        paragraphs: [
+          "Facturas, nominas, contratos o CV siguen siendo vectores frecuentes. Un archivo aparentemente inocente puede contener macros, enlaces maliciosos o redirecciones a portales falsos.",
+          "La frase 'es solo un PDF' sigue siendo una de las causas de infeccion mas comunes cuando no existe verificacion previa.",
+        ],
+        checklist: [
+          "No abras adjuntos inesperados sin confirmacion previa.",
+          "Bloquea macros por defecto en ofimatica corporativa.",
+          "Manten antivirus y EDR actualizados en todos los equipos.",
+        ],
+      },
+      {
+        title: "Senal 6: cambio de cuenta bancaria por correo",
+        paragraphs: [
+          "El fraude BEC sigue creciendo porque convierte un email en perdida economica inmediata. El patron habitual es suplantar proveedor o cliente para desviar pagos a una cuenta fraudulenta.",
+          "Aceptar cambios bancarios solo por email es una de las practicas de mayor riesgo en pymes y equipos administrativos.",
+        ],
+        checklist: [
+          "Confirma cambios bancarios por llamada al contacto habitual.",
+          "Solicita validacion documental y doble aprobacion interna.",
+          "Nunca ejecutes un cambio de cuenta sin procedimiento formal.",
+        ],
+      },
+      {
+        title: "Senal 7: creer que nunca te va a pasar",
+        paragraphs: [
+          "La senal mas peligrosa no siempre esta en el mensaje, sino en la mentalidad. El exceso de confianza elimina comprobaciones basicas y acelera errores.",
+          "En 2026 los ataques estan disenados para parecer legitimos incluso para usuarios experimentados. Nadie esta totalmente exento.",
+        ],
+        checklist: [
+          "Impulsa una cultura de reporte sin culpa.",
+          "Refuerza formacion continua con casos reales.",
+          "Premia la verificacion, no la velocidad sin control.",
+        ],
+      },
+      {
+        title: "Como proteger a tu equipo frente al phishing en 2026",
+        paragraphs: [
+          "Reducir riesgo real exige combinar tecnologia con disciplina operativa. La proteccion mejora cuando existen reglas simples, entrenadas y aplicadas en el dia a dia.",
+          "Las empresas mas resilientes no son las que no reciben ataques, sino las que detectan senales antes y contienen el impacto en minutos.",
+        ],
+        checklist: [
+          "Formacion trimestral con escenarios actualizados.",
+          "MFA obligatoria en correo, VPN y herramientas criticas.",
+          "Doble verificacion para pagos, credenciales y cambios sensibles.",
+          "Boton de reporte rapido de phishing en correo corporativo.",
+          "Simulaciones controladas para medir respuesta del equipo.",
+        ],
+      },
+      {
+        title: "Conclusion: revisar habitos hoy evita crisis manana",
+        paragraphs: [
+          "El phishing actual es mas convincente, mas personalizado y mas rentable para los atacantes que hace cinco anos. Muchas organizaciones siguen buscando senales antiguas mientras ignoran las nuevas.",
+          "Si tu equipo ignora estas siete alertas, el riesgo no es hipotetico. Revisar procedimientos, formar personas y reforzar validaciones hoy puede evitar perdidas economicas y operativas manana.",
+        ],
+        checklist: [
+          "Actualiza tu politica anti-phishing este trimestre.",
+          "Define responsables de validacion por proceso critico.",
+          "Mide tiempos de deteccion y reporte en cada simulacro.",
+        ],
+      },
+    ],
+    mistakes: [
+      "Aprobar pagos urgentes sin doble verificacion.",
+      "Confiar en mensajes bien escritos como prueba de autenticidad.",
+      "Abrir adjuntos inesperados sin confirmar origen.",
+      "Permitir cambios bancarios solo por correo electronico.",
+    ],
+    faq: [
+      {
+        q: "Si ya tenemos filtro de correo, seguimos en riesgo?",
+        a: "Si. Los filtros reducen volumen, pero no eliminan ataques personalizados ni fraude por canales internos. El proceso humano sigue siendo clave.",
+      },
+      {
+        q: "Cada cuanto deberiamos entrenar al equipo?",
+        a: "Como minimo cada trimestre, con simulaciones practicas y ejemplos adaptados al contexto de la empresa.",
+      },
+      {
+        q: "Que control ofrece mayor retorno inmediato?",
+        a: "MFA + doble verificacion en pagos y cambios sensibles. Esta combinacion reduce de forma notable el impacto de credenciales robadas y fraude BEC.",
+      },
+    ],
+  },
+  {
+    slug: "error-numero-1-brecha-datos-evitar-multas",
+    category: "legal-y-asesorias",
+    title: "El error numero 1 tras una brecha de datos (y como evitar multas)",
+    description:
+      "Guia para responder correctamente tras una brecha de datos: contencion, evidencias, notificacion, causa raiz y medidas para reducir sanciones.",
+    updatedAt: "2026-04-19",
+    readTime: "11 min",
+    level: "Intermedio",
+    keyPoints: [
+      "El error mas costoso es reaccionar tarde y sin plan documentado.",
+      "La falta de evidencias y trazabilidad incrementa riesgo legal.",
+      "Una respuesta coordinada reduce dano operativo y reputacional.",
+      "Preparacion previa y simulacros evitan decisiones caoticas.",
+    ],
+    sections: [
+      {
+        title: "La brecha no siempre es el mayor problema",
+        paragraphs: [
+          "En 2026, las brechas de datos afectan a empresas de todos los tamanos. El impacto no depende solo del ataque inicial, sino de la calidad de la respuesta en la primera hora.",
+          "Muchas organizaciones descubren tarde que el verdadero dano aparece cuando se improvisa, se retrasa la decision o se intenta ocultar el incidente esperando que se resuelva solo.",
+        ],
+        checklist: [
+          "Asume que puedes sufrir una brecha en cualquier momento.",
+          "Prioriza respuesta temprana sobre busqueda de culpables.",
+          "Activa protocolo formal ante cualquier senal de compromiso.",
+        ],
+      },
+      {
+        title: "Cual es el error numero 1 tras una brecha de datos",
+        paragraphs: [
+          "El error mas costoso es no activar un plan de respuesta inmediato y documentado. Sin estructura, cada departamento actua por su cuenta y el incidente escala rapido.",
+          "Cuando no existe liderazgo claro, aparecen fallos recurrentes: decisiones tardias, perdida de evidencias, avisos fuera de plazo y mensajes contradictorios a clientes y socios.",
+        ],
+        checklist: [
+          "Define quien decide en cada fase del incidente.",
+          "Evita borrar informacion tecnica en las primeras horas.",
+          "Escala legal y compliance desde el inicio, no al final.",
+        ],
+      },
+      {
+        title: "Por que este error incrementa sanciones",
+        paragraphs: [
+          "Las autoridades no revisan solo si te atacaron, tambien evaluan diligencia. Preguntan cuando detectaste, cuando actuaste, que datos estuvieron expuestos y que medidas aplicaste para reducir impacto.",
+          "Si no puedes demostrar tiempos, decisiones y acciones con registros claros, aumenta la probabilidad de sancion y de conflictos adicionales con afectados.",
+        ],
+        checklist: [
+          "Documenta cronologia completa desde la deteccion.",
+          "Conserva evidencias de medidas tecnicas y organizativas.",
+          "Prepara respuesta coordinada ante requerimientos oficiales.",
+        ],
+      },
+      {
+        title: "Fase 1: contener el incidente de inmediato",
+        paragraphs: [
+          "La prioridad inicial es frenar propagacion: revocar accesos comprometidos, aislar equipos, bloquear cuentas sospechosas y limitar movimientos laterales.",
+          "Cada minuto cuenta. Una contencion tardia puede convertir un incidente manejable en interrupcion operativa de varios dias.",
+        ],
+        checklist: [
+          "Revoca sesiones y credenciales potencialmente robadas.",
+          "Aisla sistemas afectados si existe riesgo activo.",
+          "Refuerza autenticacion en activos criticos.",
+        ],
+      },
+      {
+        title: "Fase 2: preservar evidencias tecnicas y legales",
+        paragraphs: [
+          "Formatear equipos o borrar logs demasiado pronto destruye informacion clave para analisis forense, reclamaciones y mejora de controles.",
+          "Debes conservar registros de acceso, correos, eventos de seguridad, capturas y cronologia de decisiones para reconstruir lo ocurrido con precision.",
+        ],
+        checklist: [
+          "Congela logs y evidencias antes de limpieza profunda.",
+          "Registra quien intervino y cuando en cada sistema.",
+          "Protege copias de evidencias para analisis posterior.",
+        ],
+      },
+      {
+        title: "Fase 3: evaluar alcance real de datos afectados",
+        paragraphs: [
+          "No todas las brechas tienen la misma severidad. Es esencial identificar tipo de informacion expuesta: datos personales, financieros, credenciales, datos de empleados o informacion estrategica.",
+          "Sin un analisis de alcance no puedes decidir bien ni comunicar con precision, y eso incrementa errores de notificacion y reputacion.",
+        ],
+        checklist: [
+          "Clasifica datos por sensibilidad y riesgo.",
+          "Identifica colectivos afectados y volumen estimado.",
+          "Valida impacto potencial en negocio y terceros.",
+        ],
+      },
+      {
+        title: "Fase 4: notificar de forma clara y coordinada",
+        paragraphs: [
+          "Una comunicacion tardia o confusa suele agravar la crisis. Los mensajes deben ser veraces, consistentes y accionables para las personas afectadas.",
+          "Comunicar bien no significa especular, significa informar con hechos confirmados, medidas aplicadas y pasos de proteccion recomendados.",
+        ],
+        checklist: [
+          "Usa plantillas de comunicacion predefinidas.",
+          "Coordina mensaje tecnico, legal y corporativo.",
+          "Incluye pasos practicos para personas afectadas.",
+        ],
+      },
+      {
+        title: "Fase 5: corregir la causa raiz",
+        paragraphs: [
+          "Si solo contienes el incidente pero no corriges causa raiz, el problema reaparece. Las causas mas comunes incluyen MFA ausente, software obsoleto, privilegios excesivos y formacion insuficiente.",
+          "La recuperacion completa exige cerrar brechas de proceso y tecnologia, no solo restaurar sistemas.",
+        ],
+        checklist: [
+          "Activa MFA en todos los accesos sensibles.",
+          "Reduce privilegios y revisa segmentacion de red.",
+          "Actualiza software y politicas de backup verificable.",
+        ],
+      },
+      {
+        title: "Como evitar multas y dano reputacional",
+        paragraphs: [
+          "La mejor defensa ante sanciones es demostrar diligencia: plan previo, responsables claros, registros completos y respuesta proporcionada.",
+          "Empresas que practican simulacros y entrenan personal reaccionan mejor bajo presion y reducen costes de incidente.",
+        ],
+        checklist: [
+          "Ten plan de respuesta escrito y validado por direccion.",
+          "Designa responsables tecnico, legal y comunicacion.",
+          "Haz simulacros de ransomware y fuga de datos al menos dos veces al ano.",
+          "Mantiene inventario de sistemas y backups verificados.",
+        ],
+      },
+      {
+        title: "Conclusion: la primera hora define el coste final",
+        paragraphs: [
+          "El error numero 1 no es el ataque en si, sino reaccionar tarde, sin plan y sin documentacion. Esa combinacion multiplica riesgo legal, economico y reputacional.",
+          "Si una brecha ocurre manana, la pregunta clave es si tu empresa sabe exactamente que hacer en la primera hora. Prepararlo hoy evita crisis mayores manana.",
+        ],
+        checklist: [
+          "Revisa hoy mismo tu plan de respuesta.",
+          "Actualiza contactos criticos y escalado de crisis.",
+          "Comprueba MFA, permisos y restauracion de copias.",
+        ],
+      },
+    ],
+    mistakes: [
+      "Esperar para actuar hasta tener toda la informacion.",
+      "Borrar evidencias tecnicas en las primeras horas.",
+      "Notificar tarde o con mensajes contradictorios.",
+      "No corregir la causa raiz tras la contencion.",
+    ],
+    faq: [
+      {
+        q: "Que deberiamos hacer en los primeros 30 minutos?",
+        a: "Contener el incidente, preservar evidencias y activar equipo de respuesta con roles claros. Evita acciones impulsivas que destruyan informacion util.",
+      },
+      {
+        q: "Documentar de verdad reduce riesgo de multa?",
+        a: "Si. La trazabilidad de decisiones y medidas es clave para demostrar diligencia y reducir impacto legal en inspecciones o investigaciones.",
+      },
+      {
+        q: "Cada cuanto conviene simular una brecha?",
+        a: "Como minimo dos veces al ano y siempre tras cambios significativos en infraestructura, herramientas o proveedores criticos.",
+      },
+    ],
+  },
+  {
+    slug: "2765-brechas-espana-2025-pyme-riesgo-real",
+    category: "legal-y-asesorias",
+    title: "2.765 brechas en Espana en 2025: esta tu pyme en riesgo real?",
+    description:
+      "Analisis practico para pymes sobre el impacto de las 2.765 brechas registradas en Espana en 2025 y como reducir riesgo con medidas asequibles.",
+    updatedAt: "2026-04-19",
+    readTime: "12 min",
+    level: "Basico",
+    keyPoints: [
+      "Las brechas no afectan solo a grandes empresas.",
+      "Las pymes son objetivos atractivos por menor madurez de seguridad.",
+      "El riesgo real se detecta revisando personas, procesos y tecnologia.",
+      "Con medidas simples puede reducirse gran parte de la exposicion.",
+    ],
+    sections: [
+      {
+        title: "2.765 brechas en Espana en 2025: por que importa a tu pyme",
+        paragraphs: [
+          "La ciberseguridad ya no es un asunto exclusivo de bancos o multinacionales. El volumen de brechas registradas en Espana en 2025 confirma que el riesgo afecta a organizaciones de cualquier tamano.",
+          "Pensar que una pyme no interesa a los atacantes es una suposicion costosa. Menos recursos, controles incompletos y respuesta limitada convierten a muchas pymes en blancos faciles.",
+        ],
+        checklist: [
+          "Asume que tu empresa puede ser objetivo hoy.",
+          "Valora riesgo por exposicion real, no por tamano de plantilla.",
+          "Revisa capacidad de respuesta antes de que ocurra un incidente.",
+        ],
+      },
+      {
+        title: "Que significa realmente una brecha de seguridad",
+        paragraphs: [
+          "Una brecha no es solo robo de contrasenas. Incluye accesos no autorizados, filtraciones de datos, cuentas comprometidas, ransomware, exposiciones accidentales y malware en sistemas criticos.",
+          "En terminos de negocio, una brecha compromete confidencialidad, integridad o disponibilidad de la informacion. Eso puede detener operaciones durante horas o dias.",
+        ],
+        checklist: [
+          "Mapea tipos de incidente que pueden afectar a tu actividad.",
+          "Clasifica datos criticos y procesos que no pueden parar.",
+          "Define criterios de severidad por impacto operativo y legal.",
+        ],
+      },
+      {
+        title: "Por que las pymes estan en el radar de los atacantes",
+        paragraphs: [
+          "Muchos grupos no buscan un gran golpe unico, sino multiples victimas pequenas con defensas debiles. Esta estrategia reduce esfuerzo por ataque y aumenta rentabilidad.",
+          "Cuatro factores se repiten en pymes: menor inversion en seguridad, equipos sin formacion, sistemas antiguos y dependencia total de herramientas digitales para operar.",
+        ],
+        checklist: [
+          "Prioriza presupuesto minimo de ciberseguridad anual.",
+          "Programa formacion trimestral para todo el equipo.",
+          "Actualiza software, routers y equipos sin soporte.",
+          "Identifica dependencias criticas: email, TPV, CRM, ERP y web.",
+        ],
+      },
+      {
+        title: "El error mas comun: somos demasiado pequenos",
+        paragraphs: [
+          "Este pensamiento sigue provocando incidentes evitables. Para un atacante, una pyme puede ser util para fraude bancario, envio de spam, robo de credenciales o acceso a terceros a traves de proveedores.",
+          "Tener antivirus no equivale a estar protegido. Sin MFA, segmentacion, control de accesos y procedimientos claros, el riesgo sigue siendo elevado.",
+        ],
+        checklist: [
+          "Elimina supuestos de inmunidad por tamano de empresa.",
+          "Audita controles reales, no percepciones de seguridad.",
+          "Valida si tus proveedores te ven como vector de riesgo.",
+        ],
+      },
+      {
+        title: "Senales de que tu pyme esta en riesgo real",
+        paragraphs: [
+          "Si tienes equipos sin actualizar, contrasenas repetidas, ausencia de MFA, copias sin pruebas de restauracion o accesos no segmentados, la exposicion es alta.",
+          "Tambien son indicadores de riesgo: no formar al equipo en phishing, no tener protocolo de incidente, no revocar accesos al salir empleados y depender de una sola persona para TI.",
+        ],
+        checklist: [
+          "Activa MFA en correo, banca, CRM y paneles administrativos.",
+          "Implanta baja inmediata de accesos en desvinculaciones.",
+          "Documenta protocolo de incidente con responsables claros.",
+          "Comprueba que backup realmente restaura.",
+        ],
+      },
+      {
+        title: "Impacto real tras una brecha en pyme",
+        paragraphs: [
+          "El dano va mas alla del aspecto tecnico: perdidas economicas directas, fraude en transferencias, parada operativa, costes forenses y consumo de tiempo de direccion y administracion.",
+          "Ademas, la confianza de clientes y proveedores puede deteriorarse rapidamente. En algunos casos tambien aparecen obligaciones de notificacion y riesgo legal segun normativa aplicable.",
+        ],
+        checklist: [
+          "Calcula coste por hora de parada para procesos criticos.",
+          "Define plan de comunicacion ante incidente con mensajes base.",
+          "Prepara contacto legal y tecnico para respuesta coordinada.",
+        ],
+      },
+      {
+        title: "Como reducir riesgo sin gastar una fortuna",
+        paragraphs: [
+          "Muchas mejoras de alto impacto son asequibles para pymes: MFA en cuentas clave, backups probados, formacion basica trimestral, actualizaciones automaticas y minimo privilegio por puesto.",
+          "No necesitas un programa complejo para empezar. Un plan simple y constante reduce mas riesgo que acciones puntuales sin seguimiento.",
+        ],
+        checklist: [
+          "MFA obligatoria en activos criticos.",
+          "Backups con prueba de restauracion mensual.",
+          "Formacion anti-phishing cada trimestre.",
+          "Parches automaticos en sistemas y plugins.",
+          "Permisos ajustados a necesidad real de cada rol.",
+        ],
+      },
+      {
+        title: "Casos comunes que ya afectan a pymes",
+        paragraphs: [
+          "Entre los escenarios mas frecuentes destacan: correo del gerente comprometido para ordenar pagos, ransomware en equipos con acceso compartido, tienda online alterada y fraude desde proveedores comprometidos.",
+          "Lo importante no es si el caso parece sofisticado, sino si existe capacidad de deteccion temprana y respuesta ordenada.",
+        ],
+        checklist: [
+          "Doble verificacion en pagos y cambios bancarios.",
+          "Segmenta carpetas compartidas para limitar cifrado masivo.",
+          "Monitoriza cuentas administrativas de ecommerce.",
+          "Valida solicitudes sensibles por canal alternativo.",
+        ],
+      },
+      {
+        title: "Que hacer hoy: auditoria rapida de 30 minutos",
+        paragraphs: [
+          "Una revision breve puede revelar riesgos criticos: quien accede a cuentas clave, si MFA esta activa, cuando fue el ultimo backup, fecha de actualizacion del router y que pasaria si cae el correo manana.",
+          "Responder estas preguntas con evidencias ayuda a priorizar acciones inmediatas y evita depender de intuiciones.",
+        ],
+        checklist: [
+          "Lista de cuentas criticas y propietarios actualizada.",
+          "Estado MFA validado en servicios esenciales.",
+          "Fecha y resultado de ultima restauracion de backup.",
+          "Responsable de incidente definido y operativo.",
+        ],
+      },
+      {
+        title: "Conclusion: seguir siendo blanco facil es opcional",
+        paragraphs: [
+          "Las 2.765 brechas registradas en Espana en 2025 muestran una tendencia clara: el riesgo digital para pymes es real y recurrente.",
+          "La buena noticia es que muchas amenazas se reducen con medidas simples, sostenidas y bien ejecutadas. La pregunta clave es si tu pyme ya esta actuando o sigue expuesta.",
+        ],
+        checklist: [
+          "Define plan de mejora de 90 dias con acciones concretas.",
+          "Asigna responsables y fechas a cada control prioritario.",
+          "Mide progreso mensual para evitar volver al punto inicial.",
+        ],
+      },
+    ],
+    mistakes: [
+      "Pensar que por ser pyme no eres objetivo.",
+      "Confiar en antivirus como unica medida de seguridad.",
+      "No probar restauracion de copias de seguridad.",
+      "No tener protocolo ni responsables ante incidente.",
+    ],
+    faq: [
+      {
+        q: "De verdad una pyme pequena puede ser objetivo prioritario?",
+        a: "Si. Precisamente por menor madurez defensiva y alta dependencia digital, muchas pymes ofrecen un retorno rapido para los atacantes.",
+      },
+      {
+        q: "Cual es la primera medida que deberiamos activar hoy?",
+        a: "MFA en correo y cuentas criticas, junto con doble verificacion para pagos y cambios sensibles.",
+      },
+      {
+        q: "Cuanto tiempo tarda en notarse una mejora real?",
+        a: "En pocas semanas si se aplican controles basicos con disciplina: MFA, backups probados, parches y formacion recurrente.",
+      },
+    ],
+  },
 ];
 
 const LEGACY_REDIRECTS = [
@@ -808,7 +1291,7 @@ function Header() {
       <div className="header-inner container">
         <Link className="brand" to="/" aria-label="Volver al inicio">
           <span className="brand-mark">
-            <ShieldCheck size={20} />
+            <img src="/favicon.svg" alt="Logo PymeSegura" width="28" height="28" />
           </span>
           <span>
             <strong>{SITE.name}</strong>
