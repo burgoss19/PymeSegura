@@ -1,150 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Portada -->
   <url>
     <loc>https://www.pymesegura.org/</loc>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- Categorías -->
   <url>
-    <loc>https://www.pymesegura.org/salud-y-clinicas</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.pymesegura.org/ecommerce-y-retail</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.pymesegura.org/sector-inmobiliario</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.pymesegura.org/legal-y-asesorias</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Artículos -->
-  <url>
-    <loc>https://www.pymesegura.org/salud-y-clinicas/guia-lopdgdd-ciberseguridad-clinicas</loc>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.pymesegura.org/guias</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.pymesegura.org/ecommerce-y-retail/ciberseguridad-ecommerce-rgpd-pci-dss</loc>
+    <loc>https://www.pymesegura.org/sobre-nosotros</loc>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.pymesegura.org/legal-y-asesorias/ciberseguridad-despachos-abogados-secreto-profesional</loc>
+    <loc>https://www.pymesegura.org/metodologia-editorial</loc>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.pymesegura.org/sector-inmobiliario/ciberseguridad-inmobiliarias-fraude-transferencias</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.pymesegura.org/sector-logistica/ciberseguridad-logistica-ransomware-flota</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Artículo #5 -->
-  <url>
-    <loc>https://www.pymesegura.org/logistica</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.pymesegura.org/hosteleria-y-turismo</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Artículo #6 -->
-  <url>
-    <loc>https://www.pymesegura.org/hosteleria</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.pymesegura.org/educacion-digital</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Artículo #7 -->
-  <url>
-    <loc>https://www.pymesegura.org/educacion</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Artículo #8 (Salud — refuerzo) -->
-  <url>
-    <loc>https://www.pymesegura.org/auditoria-salud</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.pymesegura.org/salud-y-clinicas/auditoria-seguridad-clinicas-ens-historial-clinico</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Artículo #9 (Legal — refuerzo) -->
-  <url>
-    <loc>https://www.pymesegura.org/legal-y-asesorias/secreto-profesional</loc> <!-- Seguir indexando por aquí -->
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.pymesegura.org/legal-y-asesorias/secreto-profesional-ciberseguridad-despachos</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Artículo #10 (Ecommerce — refuerzo pagos) -->
-  <url>
-    <loc>https://www.pymesegura.org/ecommerce-y-retail/seguridad-pagos</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.pymesegura.org/ecommerce-y-retail/seguridad-pagos-tpv-virtual-fraude</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Páginas legales -->
-  <url>
-    <loc>https://www.pymesegura.org/privacidad</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.pymesegura.org/aviso-legal</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.pymesegura.org/cookies</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.pymesegura.org/contacto</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
+  <url>
+    <loc>https://www.pymesegura.org/sectores/salud-y-clinicas</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/sectores/ecommerce-y-retail</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/sectores/legal-y-asesorias</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/sectores/sector-inmobiliario</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/sectores/transporte-y-logistica</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/sectores/hosteleria-y-turismo</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/sectores/educacion-digital</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.pymesegura.org/guias/plan-rgpd-ciberseguridad-clinicas-30-dias</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/guias/hardening-ecommerce-12-controles-prioritarios</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/guias/secreto-profesional-despachos-riesgos-digitales</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/guias/fraude-transferencias-inmobiliaria-protocolo-antibec</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/guias/continuidad-operativa-logistica-ransomware</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/guias/wifi-segura-hoteles-checklist-operativo</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/guias/seguridad-lms-centros-formacion</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/guias/plan-respuesta-incidentes-24-horas-pyme</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.pymesegura.org/herramientas/evaluacion-riesgo</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/herramientas/calculadora-impacto-incidente</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/herramientas/checklist-calidad-web</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.pymesegura.org/mapa-web</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/aviso-legal</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/politica-de-privacidad</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.pymesegura.org/politica-de-cookies</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>

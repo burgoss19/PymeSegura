@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const COOKIE_KEY = "pymesegura_cookies_accepted";
 
@@ -40,19 +40,20 @@ export default function CookieBanner() {
       }}
     >
       <p style={{ margin: 0, flex: 1, minWidth: "220px" }}>
-        Utilizamos cookies propias y de terceros para mejorar tu experiencia de navegación y mostrarte contenido relevante. Al continuar navegando, aceptas nuestra{" "}
+        Utilizamos cookies propias y de terceros para mejorar tu experiencia de navegacion y
+        mostrarte contenido relevante. Al continuar navegando, aceptas nuestra{" "}
         <a
           href="/politica-de-cookies"
           style={{ color: "#60a5fa", textDecoration: "underline" }}
         >
-          Política de Cookies
+          Politica de Cookies
         </a>{" "}
         y nuestra{" "}
         <a
           href="/politica-de-privacidad"
           style={{ color: "#60a5fa", textDecoration: "underline" }}
         >
-          Política de Privacidad
+          Politica de Privacidad
         </a>
         .
       </p>
@@ -70,8 +71,8 @@ export default function CookieBanner() {
           whiteSpace: "nowrap",
           flexShrink: 0,
         }}
-        onMouseOver={(e) => (e.currentTarget.style.background = "#1d4ed8")}
-        onMouseOut={(e) => (e.currentTarget.style.background = "#2563eb")}
+        onMouseOver={(event) => (event.currentTarget.style.background = "#1d4ed8")}
+        onMouseOut={(event) => (event.currentTarget.style.background = "#2563eb")}
       >
         Aceptar
       </button>
