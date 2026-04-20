@@ -44,7 +44,6 @@ const SITE = {
   contactEmail: "hola@pymesegura.org",
   contactPhone: "+34 960 88 44 21",
   location: "Valencia, Espana",
-  updatedAt: "2026-04-20",
 };
 
 const AUTHOR = {
@@ -660,6 +659,7 @@ const LEGACY_REDIRECTS = [
     "/educacion-digital/ciberseguridad-academias-colegios-elearning",
     "/guias/seguridad-lms-centros-formacion",
   ],
+  ["/herramientas/checklist-calidad-web", "/herramientas/plan-recuperacion-datos"],
   ["/privacidad", "/politica-de-privacidad"],
   ["/cookies", "/politica-de-cookies"],
 ];
@@ -701,21 +701,6 @@ const RISK_QUESTIONS = [
     weight: 14,
     recommendation: "Crea un playbook de incidente y ensayalo con escenarios reales.",
   },
-];
-
-const ADSENSE_CHECKLIST = [
-  "Cada pagina resuelve una intencion concreta del usuario.",
-  "Los articulos incluyen pasos accionables y no solo definiciones.",
-  "Existe pagina de autoria, equipo y metodologia editorial.",
-  "La politica de privacidad, cookies y aviso legal son accesibles.",
-  "No hay bloques publicitarios intrusivos antes del contenido principal.",
-  "Los titulos y descripciones no son clickbait ni promesas vacias.",
-  "Las paginas cargan rapido en movil y sin scripts innecesarios.",
-  "Hay enlazado interno logico entre guias relacionadas.",
-  "El contenido se revisa y actualiza con fecha visible.",
-  "El sitio tiene contacto real y vias de soporte visibles.",
-  "No hay paginas finas o duplicadas sin valor diferencial.",
-  "Los textos estan redactados para personas, no para robots.",
 ];
 
 function formatDate(date) {
@@ -818,9 +803,7 @@ function Header() {
   return (
     <header className="site-header">
       <div className="top-strip">
-        <span>
-          Actualizado: {formatDate(SITE.updatedAt)} · Contenido editorial y tecnico para pymes
-        </span>
+        <span>Contenido editorial y tecnico para pymes</span>
       </div>
       <div className="header-inner container">
         <Link className="brand" to="/" aria-label="Volver al inicio">
@@ -869,9 +852,6 @@ function Footer() {
             Biblioteca practica de ciberseguridad y cumplimiento para pequenas y medianas
             empresas en Espana.
           </p>
-          <p className="small-text">
-            Ultima revision editorial global: {formatDate(SITE.updatedAt)}
-          </p>
         </div>
 
         <div>
@@ -881,7 +861,9 @@ function Footer() {
               <Link to="/guias">Todas las guias</Link>
             </li>
             <li>
-              <Link to="/herramientas/checklist-calidad-web">Checklist de calidad web</Link>
+              <Link to="/herramientas/plan-recuperacion-datos">
+                Plan de recuperacion de datos
+              </Link>
             </li>
             <li>
               <Link to="/sobre-nosotros">Sobre nosotros</Link>
@@ -1111,14 +1093,14 @@ function HomePage() {
                 Abrir calculadora <ArrowRight size={14} />
               </span>
             </Link>
-            <Link className="tool-card" to="/herramientas/checklist-calidad-web">
-              <h3>Checklist de calidad para AdSense</h3>
+            <Link className="tool-card" to="/herramientas/plan-recuperacion-datos">
+              <h3>Planificador de recuperacion de datos</h3>
               <p>
-                Revisa puntos clave de contenido, confianza y experiencia antes de solicitar
-                revision.
+                Define frecuencia de copias, objetivos de recuperacion y prioridades de
+                contingencia para tu empresa.
               </p>
               <span className="text-link">
-                Pasar checklist <ArrowRight size={14} />
+                Abrir planificador <ArrowRight size={14} />
               </span>
             </Link>
           </div>
@@ -1643,65 +1625,139 @@ function IncidentImpactPage() {
   );
 }
 
-function AdsenseChecklistPage() {
+function RecoveryPlannerPage() {
   const { pathname } = useLocation();
-  const [checks, setChecks] = useState({});
+  const [inputs, setInputs] = useState({
+    criticalSystems: 4,
+    rtoTarget: 8,
+    backupsPerWeek: 3,
+    offsiteCopies: "no",
+    restoreTest: "no",
+  });
 
   useSEO({
-    title: "Checklist de calidad web para AdSense | PymeSegura",
+    title: "Planificador de recuperacion de datos | PymeSegura",
     description:
-      "Herramienta para revisar calidad de contenido, confianza y experiencia de usuario antes de solicitar aprobacion en AdSense.",
+      "Herramienta para definir prioridades de backup y recuperacion ante incidentes en pymes.",
     pathname,
   });
 
-  const done = ADSENSE_CHECKLIST.filter((_, index) => checks[index]).length;
-  const total = ADSENSE_CHECKLIST.length;
-  const score = Math.round((done / total) * 100);
+  const penalty =
+    Math.max(0, 20 - inputs.backupsPerWeek * 3) +
+    Math.max(0, 18 - Math.max(1, 24 - inputs.rtoTarget)) +
+    (inputs.offsiteCopies === "si" ? 0 : 18) +
+    (inputs.restoreTest === "si" ? 0 : 22) +
+    Math.min(24, inputs.criticalSystems * 3);
 
-  const status =
-    score >= 85
-      ? "Listo para revision"
-      : score >= 60
-        ? "Mejorable antes de enviar"
-        : "Necesita trabajo editorial";
+  const readinessScore = Math.max(0, Math.min(100, 100 - penalty));
+
+  const recommendations = [
+    inputs.backupsPerWeek < 7
+      ? "Sube la frecuencia de copias para sistemas criticos a diario."
+      : null,
+    inputs.offsiteCopies === "no"
+      ? "Mantener una copia externa u offsite reduce el impacto de ransomware."
+      : null,
+    inputs.restoreTest === "no"
+      ? "Programa una prueba mensual de restauracion para validar tiempos reales."
+      : null,
+    inputs.rtoTarget <= 4
+      ? "Alinea infraestructura y personal para cumplir un RTO exigente."
+      : "Define un objetivo RTO mas estricto para procesos de alto impacto.",
+  ].filter(Boolean);
+
+  const level =
+    readinessScore >= 75
+      ? "Base de recuperacion solida"
+      : readinessScore >= 50
+        ? "Base intermedia con mejoras pendientes"
+        : "Riesgo alto de interrupcion prolongada";
+
+  function updateField(field, value) {
+    setInputs((previous) => ({
+      ...previous,
+      [field]: typeof previous[field] === "number" ? Number(value) : value,
+    }));
+  }
 
   return (
     <section className="section">
       <div className="container tool-layout">
         <SectionIntro
           icon={FileText}
-          kicker="Checklist"
-          title="Auditoria de calidad para monetizacion"
-          description="Marca los puntos cumplidos y detecta que debes mejorar para aumentar la probabilidad de aprobacion."
+          kicker="Planificador"
+          title="Plan de recuperacion de datos para pymes"
+          description="Ajusta los parametros y obtendras prioridades concretas para reducir tiempos de parada."
         />
 
-        <div className="tool-panel checklist-panel">
-          {ADSENSE_CHECKLIST.map((item, index) => (
-            <label key={item} className="checkbox-row">
-              <input
-                type="checkbox"
-                checked={Boolean(checks[index])}
-                onChange={(event) =>
-                  setChecks((previous) => ({
-                    ...previous,
-                    [index]: event.target.checked,
-                  }))
-                }
-              />
-              <span>{item}</span>
-            </label>
-          ))}
+        <div className="tool-panel form-grid">
+          <label>
+            Sistemas criticos de negocio
+            <input
+              type="number"
+              min="1"
+              max="20"
+              value={inputs.criticalSystems}
+              onChange={(event) => updateField("criticalSystems", event.target.value)}
+            />
+          </label>
+          <label>
+            Objetivo de recuperacion (RTO, horas)
+            <input
+              type="number"
+              min="1"
+              max="72"
+              value={inputs.rtoTarget}
+              onChange={(event) => updateField("rtoTarget", event.target.value)}
+            />
+          </label>
+          <label>
+            Copias de seguridad por semana
+            <input
+              type="number"
+              min="1"
+              max="21"
+              value={inputs.backupsPerWeek}
+              onChange={(event) => updateField("backupsPerWeek", event.target.value)}
+            />
+          </label>
+          <label>
+            Tienes copia offsite?
+            <select
+              value={inputs.offsiteCopies}
+              onChange={(event) => updateField("offsiteCopies", event.target.value)}
+            >
+              <option value="no">No</option>
+              <option value="si">Si</option>
+            </select>
+          </label>
+          <label>
+            Has probado restauraciones en el ultimo mes?
+            <select
+              value={inputs.restoreTest}
+              onChange={(event) => updateField("restoreTest", event.target.value)}
+            >
+              <option value="no">No</option>
+              <option value="si">Si</option>
+            </select>
+          </label>
         </div>
 
         <div className="result-box">
-          <h2>Progreso de calidad</h2>
-          <p className="big-number">{score}/100</p>
+          <h2>Madurez de recuperacion</h2>
+          <p className="big-number">{readinessScore}/100</p>
           <p>
-            {done} de {total} puntos completados · <strong>{status}</strong>
+            <strong>{level}</strong>
           </p>
+          <ul>
+            {recommendations.map((recommendation) => (
+              <li key={recommendation}>
+                <ArrowRight size={15} /> {recommendation}
+              </li>
+            ))}
+          </ul>
           <p className="small-text">
-            Este checklist no garantiza aprobacion, pero te ayuda a resolver senales
-            habituales de contenido de bajo valor.
+            Resultado orientativo para priorizar acciones de continuidad y backup.
           </p>
         </div>
       </div>
@@ -1813,6 +1869,12 @@ function MethodologyPage() {
 
 function ContactPage() {
   const { pathname } = useLocation();
+  const [formData, setFormData] = useState({
+    nombre: "",
+    email: "",
+    mensaje: "",
+  });
+  const [submitMessage, setSubmitMessage] = useState("");
 
   useSEO({
     title: "Contacto | PymeSegura",
@@ -1820,6 +1882,23 @@ function ContactPage() {
       "Contacta con el equipo de PymeSegura para dudas editoriales o colaboracion en contenidos para pymes.",
     pathname,
   });
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFormData((previous) => ({
+      ...previous,
+      [name]: value,
+    }));
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const subject = `Consulta de ${formData.nombre || "usuario"} desde PymeSegura`;
+    const body = `Nombre: ${formData.nombre}\nEmail: ${formData.email}\n\nMensaje:\n${formData.mensaje}`;
+    const href = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = href;
+    setSubmitMessage("Se ha abierto tu cliente de correo para enviar el mensaje.");
+  }
 
   return (
     <section className="section section-soft">
@@ -1847,19 +1926,28 @@ function ContactPage() {
           </ul>
         </div>
 
-        <form
-          className="contact-form"
-          action={`mailto:${SITE.contactEmail}`}
-          method="post"
-          encType="text/plain"
-        >
+        <form className="contact-form" onSubmit={handleSubmit}>
           <label>
             Nombre
-            <input type="text" name="nombre" required />
+            <input
+              type="text"
+              name="nombre"
+              value={formData.nombre}
+              onChange={handleChange}
+              autoComplete="name"
+              required
+            />
           </label>
           <label>
             Email
-            <input type="email" name="email" required />
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              autoComplete="email"
+              required
+            />
           </label>
           <label>
             Mensaje
@@ -1867,12 +1955,15 @@ function ContactPage() {
               name="mensaje"
               rows="6"
               placeholder="Cuentanos tu situacion y te responderemos por email."
+              value={formData.mensaje}
+              onChange={handleChange}
               required
             />
           </label>
           <button type="submit" className="btn btn-primary">
             Enviar mensaje
           </button>
+          {submitMessage ? <p className="small-text">{submitMessage}</p> : null}
         </form>
       </div>
     </section>
@@ -2023,8 +2114,8 @@ function SiteMapPage() {
                 </Link>
               </li>
               <li>
-                <Link to="/herramientas/checklist-calidad-web">
-                  Checklist de calidad web
+                <Link to="/herramientas/plan-recuperacion-datos">
+                  Plan de recuperacion de datos
                 </Link>
               </li>
             </ul>
@@ -2071,8 +2162,8 @@ function AppRoutes() {
         element={<IncidentImpactPage />}
       />
       <Route
-        path="/herramientas/checklist-calidad-web"
-        element={<AdsenseChecklistPage />}
+        path="/herramientas/plan-recuperacion-datos"
+        element={<RecoveryPlannerPage />}
       />
 
       <Route path="/sobre-nosotros" element={<AboutPage />} />
