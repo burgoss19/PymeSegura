@@ -42,7 +42,7 @@ const SITE = {
   description:
     "Portal especializado en ciberseguridad y cumplimiento digital para pymes. Incluye guias por sector, checklists accionables y herramientas gratuitas.",
   contactEmail: "hola@pymesegura.org",
-  contactPhone: "+34 960 88 44 21",
+  contactPhone: "+34 674720839",
   location: "Valencia, Espana",
 };
 
@@ -1291,7 +1291,7 @@ function Header() {
       <div className="header-inner container">
         <Link className="brand" to="/" aria-label="Volver al inicio">
           <span className="brand-mark">
-            <img src="/favicon.svg" alt="Logo PymeSegura" width="28" height="28" />
+            <img src="/pymesegura_logo.png" alt="Logo PymeSegura" width="28" height="28" />
           </span>
           <span>
             <strong>{SITE.name}</strong>

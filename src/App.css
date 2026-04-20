@@ -94,6 +94,7 @@ a {
   width: 28px;
   height: 28px;
   display: block;
+  object-fit: contain;
 }
 
 .brand strong {
